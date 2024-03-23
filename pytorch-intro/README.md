@@ -1,6 +1,6 @@
 # PyTorch Intro
 
-This is some intro material for using PyTorch.
+This is some [intro material](https://pytorch.org/tutorials/beginner/basics/intro.html) for using PyTorch from pytorch.org
 
 ## Usage
 
