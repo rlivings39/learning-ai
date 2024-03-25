@@ -1,5 +1,9 @@
 # Learning AI
 
+This is my personal dive into AI after keeping my head in the sand for far too long. The intent is to grasp the basic concepts and then apply them to some relevant problems.
+
+https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-2024-cc30c6aa6e16 from [Benedict Neo](https://benedictxneo.medium.com/) is going to be my guide.
+
 ## Directory structure
 
 * [./pytorch-intro](./pytorch-intro/) - Intro material on using PyTorch. See the
