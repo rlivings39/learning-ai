@@ -31,7 +31,7 @@ def load_data():
         print(f"Shape of X [N, C, H, W]: {X.shape}")
         print(f"Shape of y: {y.shape} {y.dtype}")
         break
-    return train_dataloader, test_dataloader
+    return train_dataloader, test_dataloader, test_data
 
 # Define model
 class NeuralNetwork(nn.Module):
@@ -90,8 +90,38 @@ def test_model(dataloader, model, loss_fn, device):
     correct /= size
     print(f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
 
+def save_model(model):
+    torch.save(model.state_dict(), "model.pth")
+    print("Saved PyTorch Model State to model.pth")
+
+def load_model(model, device):
+    model = NeuralNetwork().to(device)
+    model.load_state_dict(torch.load("model.pth"))
+
+def predict(model, test_data, device):
+    classes = [
+        "T-shirt/top",
+        "Trouser",
+        "Pullover",
+        "Dress",
+        "Coat",
+        "Sandal",
+        "Shirt",
+        "Sneaker",
+        "Bag",
+        "Ankle boot",
+    ]
+
+    model.eval()
+    x, y = test_data[0][0], test_data[0][1]
+    with torch.no_grad():
+        x = x.to(device)
+        pred = model(x)
+        predicted, actual = classes[pred[0].argmax(0)], classes[y]
+        print(f'Predicted: "{predicted}", Actual: "{actual}"')
+
 def do_main():
-    [train_dataloader,test_dataloader] = load_data()
+    [train_dataloader,test_dataloader, test_data] = load_data()
 
     # Get cpu, gpu or mps device for training.
     device = (
@@ -114,6 +144,8 @@ def do_main():
         train_model(train_dataloader, model, loss_fn, optimizer, device)
         test_model(test_dataloader, model, loss_fn, device)
     print("Done------------------")
+
+    predict(model, test_data, device)
 
 if __name__ == "__main__":
     do_main()
