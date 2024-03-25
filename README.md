@@ -6,7 +6,7 @@ https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-202
 
 ## Directory structure
 
-* [./pytorch-intro](./pytorch-intro/) - Intro material on using PyTorch. See the
+* [./pytorch-intro](./pytorch-intro/) - Intro material on using PyTorch. See the [README](./pytorch-intro/README.md) for the details there.
 
 ## PyTorch tutorials on YouTube
 
