@@ -24,33 +24,12 @@ A `Dataset` can be indexed like a list `dataset[index]`
 
 To create a custom `Dataset` you create a class inheriting from `Dataset` that implements `__init__, __len__, __getitem__`
 
-```python
-import os
-import pandas as pd
-from torchvision.io import read_image
+`Dataset` allows you to deal with a single sample at a time. Often we want to work on samples in minibatches, shuffle data at every epoch to avoid overfitting, and use `multiprocessing` to accelerate data retrieval. `DataLoader` abstracts all of this.
 
-class CustomImageDataset(Dataset):
-    def __init__(self, annotations_file, img_dir, transform=None, target_transform=None):
-        self.img_labels = pd.read_csv(annotations_file)
-        self.img_dir = img_dir
-        self.transform = transform
-        self.target_transform = target_transform
+Iterating through a `DataLoader` returns Tensors of the features `[batch_size, feature_size...]`.
 
-    def __len__(self):
-        return len(self.img_labels)
-
-    def __getitem__(self, idx):
-        img_path = os.path.join(self.img_dir, self.img_labels.iloc[idx, 0])
-        image = read_image(img_path)
-        label = self.img_labels.iloc[idx, 1]
-        if self.transform:
-            image = self.transform(image)
-        if self.target_transform:
-            label = self.target_transform(label)
-        return image, label
-```
 ## Usage
 
-* Activate the `venv` `source .env/bin/activate` or `source .env/bin/activate.fish`
+* Activate the `venv`: `source .env/bin/activate` or `source .env/bin/activate.fish`
 * Install any needed packages `pip install -r requirements.txt`
 * Enjoy
