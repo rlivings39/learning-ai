@@ -18,7 +18,9 @@ https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-202
 * **Anaconda** Distribution of conda, Anaconda navigator, and 250+ scientific and ML packages
 * **PyTorch** A Python machine learning framework, library, etc.
 * **venv** The somewhat standard Python tool to manage virtual environments. There are about 3,000 such other tools doing similar things with confusingly similar names. Just pick one so you don't lose your mind. I'll go with this for now.
-* **Tensor (in PyTorch)** The PyTorch analog to ND arrays. They resemble NumPy arrays in many was and are convertible to/from numpy. For data on the CPU, memory is shared between the Tensor and NumPy array.
+* **Tensor (PyTorch)** The PyTorch analog to ND arrays. They resemble NumPy arrays in many was and are convertible to/from numpy. For data on the CPU, memory is shared between the Tensor and NumPy array.
+* **Dataset (PyTorch)** Data structure storing data samples and corresponding labels
+* **DataLoader (PyTorch)** Wraps an iterable around a `Dataset` for easy access
 
 ## Resources
 
