@@ -1,3 +1,6 @@
+"""
+A quickstart for PyTorch from https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html
+"""
 import torch
 from torch import nn
 from torch.utils.data import DataLoader
@@ -94,9 +97,10 @@ def save_model(model):
     torch.save(model.state_dict(), "model.pth")
     print("Saved PyTorch Model State to model.pth")
 
-def load_model(model, device):
+def load_model(device):
     model = NeuralNetwork().to(device)
     model.load_state_dict(torch.load("model.pth"))
+    return model
 
 def predict(model, test_data, device):
     classes = [
