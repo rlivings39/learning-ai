@@ -14,6 +14,10 @@ Tensors are the PyTorch analog of ND arrays. They are very similar to NumPy arra
 
 Tensors are allocated on the CPU by default and must be moved using the `to` method to use them on a GPU or other device. Moving data can be expensive so keep that in mind.
 
+By default, CPU tensors and numpy arrays share memory when one is created from the other.
+
 ## Usage
 
-Activate the `venv` `source .env/bin/activate` or `source .env/bin/activate.fish`
+* Activate the `venv` `source .env/bin/activate` or `source .env/bin/activate.fish`
+* Install any needed packages `pip install -r requirements.txt`
+* Enjoy
