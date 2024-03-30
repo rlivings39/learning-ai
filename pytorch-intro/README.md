@@ -28,6 +28,8 @@ To create a custom `Dataset` you create a class inheriting from `Dataset` that i
 
 Iterating through a `DataLoader` returns Tensors of the features `[batch_size, feature_size...]`.
 
+Data often requires transformation to be ready for learning. Both the features and labels may require such transformations.
+
 ## Usage
 
 * Activate the `venv`: `source .env/bin/activate` or `source .env/bin/activate.fish`
