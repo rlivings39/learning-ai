@@ -32,6 +32,9 @@ Data often requires transformation to be ready for learning. Both the features a
 
 Neural networks are composed of multiple layers/modules that operate on data. `torch.nn` has all of the building blocks. All modules subclasses `nn.Module`. A neural network is a module that is composed of other modules (i.e. layers).
 
+Add layers to the model simply by adding properties to `self`. They are treated like a dict and insertion order is preserved.
+
+To use a model, call it with the input data.
 ## Usage
 
 * Activate the `venv`: `source .env/bin/activate` or `source .env/bin/activate.fish`
