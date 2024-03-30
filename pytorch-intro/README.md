@@ -30,6 +30,8 @@ Iterating through a `DataLoader` returns Tensors of the features `[batch_size, f
 
 Data often requires transformation to be ready for learning. Both the features and labels may require such transformations.
 
+Neural networks are composed of multiple layers/modules that operate on data. `torch.nn` has all of the building blocks. All modules subclasses `nn.Module`. A neural network is a module that is composed of other modules (i.e. layers).
+
 ## Usage
 
 * Activate the `venv`: `source .env/bin/activate` or `source .env/bin/activate.fish`
