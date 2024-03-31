@@ -35,6 +35,11 @@ Neural networks are composed of multiple layers/modules that operate on data. `t
 Add layers to the model simply by adding properties to `self`. They are treated like a dict and insertion order is preserved.
 
 To use a model, call it with the input data.
+
+Back propagation is the most frequently used algorithm. Parameters are adjusted according to the gradient of the loss function. `torch.autograd` is the automatic differentiation engine used for this.
+
+You want to be able to compute the gradients of the loss functions with respect to the parameters. So mark those with `requires_grad=True` or `x.requires_grad_(True)`.
+
 ## Usage
 
 * Activate the `venv`: `source .env/bin/activate` or `source .env/bin/activate.fish`
