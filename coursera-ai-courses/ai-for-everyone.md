@@ -47,6 +47,10 @@ Input and output data can really be anything. For example pairs (size of house, 
 * **LLM** Large language model uses supervised learning (A->B) to predict the next word
 * **Supervised learning** Learns a mapping of A -> B like email -> spam (0/1); audio -> text transcripts; English -> Chinese; ad, user info -> click (0/1); image, radar info -> position of cars, obstacles, etc.
 * **Unstructured data** Generally things that humans produce without a direct scheme like images, audio, text.
+* **Machine learning** Field of study that gives computers the ability to learn without being explicitly programmed (Arthur Samuel 1959 made chekers AI). Often results in building a system that can take inputs at any time and give outputs.
+* **Data science** Science of extracting knowledge and insights from data. Often results in reports and presentations.
+* **Deep learning** Neural networks take an input A and produce an output B which is the prediction. E.g. for houses (size, # bedrooms, # baths, is rennovated) -> price. The NN is a big equation producing the output.
+* **
 
 
 AI serves to impact most fields
