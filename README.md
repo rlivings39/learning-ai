@@ -27,6 +27,11 @@ https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-202
 * https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-2024-cc30c6aa6e16
 * https://www.swyx.io/learn-in-public
 * https://pytorch.org/tutorials/beginner/basics/intro.html
+* Andrew Ng on Coursera
+** https://www.coursera.org/learn/ai-for-everyone
+** https://www.coursera.org/learn/machine-learning
+** https://www.coursera.org/learn/unsupervised-learning-recommenders-reinforcement-learning
+** https://www.coursera.org/learn/neural-networks-deep-learning
 
 ## Actions
 
