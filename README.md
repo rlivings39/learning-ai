@@ -24,6 +24,9 @@ https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-202
 
 ## Resources
 
+* https://dabeaz-course.github.io/practical-python/Notes/Contents.html
+* https://github.com/dabeaz-course/python-mastery?tab=readme-ov-file
+* https://python-patterns.guide/
 * https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-2024-cc30c6aa6e16
 * https://www.swyx.io/learn-in-public
 * https://pytorch.org/tutorials/beginner/basics/intro.html
