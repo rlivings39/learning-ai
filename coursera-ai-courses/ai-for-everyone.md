@@ -91,6 +91,56 @@ The digitization of data means that data science and ML can impact many jbos.
 
 Data science can help optimize a sales funnel. ML can help with automated lead sorting. Data science can optimize a manufacturing line. ML can help final inspection for defect detection. A/B testing on a website is more data science. Giving customized product recommendations using ML works well.
 
+## Choosing AI projects
+
+Look for things at the intersection of what AI can do and what would be valuable for your team.
+
+Framework
+
+* Think about automating tasks rather than automating jobs
+* What are the main drivers of business value?
+* What are the main pain points in your business?
+
+**Note** You can make progress without big data. Having more data is rarely bad. You can often make progress with a small data set.
+
+Project due diligence is a matter of doing technical diligence and business diligence.
+
+Technical diligence:
+
+* Can AI system meet necessary performance? Can you achieve the needed accuracy?
+* How much data is needed and can you get it
+* Engineering timeline
+
+Business diligence:
+
+* Lower costs by automating tasks or improving efficiency
+* Increase revenue (e.g. by driving more purchases)
+* Launch new product or business
+* Model out potential monetary savings or gains
+
+Ethical diligence:
+
+* Make sure what you're doing is making humanity and society better off
+
+Decide build vs. buy
+
+* ML projects can be in-house or outsourced
+* DS projects are more commonly in-house as they often require intimate business knowledge
+* Some things will be industry standard, don't build those
+* "Don't sprint in front of a train"
+
+Diligence can take weeks, especially for large important projects
+
+## Working with an AI team
+
+First specify a goal like "Detect defective mugs with 95% accuracy". Provide AI team a dataset on which to measure performance. E.g. a set of images of mugs labeled ok or defect. Test sets don't have to be massive, maybe 1000 images or so.
+
+Training sets typically need to be much bigger than test sets. In some cases, 2 test sets are needed. E.g. validation/dev datasets.
+
+Don't expect 100% accuracy from AI system. You can run into ML limitations, insufficient data, mislabeled data, and ambiguous labels (e.g. minor debatable defects).
+
+
+
 ## Glossary
 
 * **ANI** Artificial narrow intelligense like smart speaker, self-driving car, web search
