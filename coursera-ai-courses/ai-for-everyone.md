@@ -139,7 +139,18 @@ Training sets typically need to be much bigger than test sets. In some cases, 2 
 
 Don't expect 100% accuracy from AI system. You can run into ML limitations, insufficient data, mislabeled data, and ambiguous labels (e.g. minor debatable defects).
 
+## Technical tools for AI teams
 
+Open-source frameworks
+
+* PyTorch
+* TensorFlow
+* Hugging Face
+* PaddlePaddle
+* Scikit-learn
+* R
+
+Research publications often show up on Arxiv. GitHub has tons of AI repos.
 
 ## Glossary
 
