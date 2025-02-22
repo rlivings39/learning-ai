@@ -63,6 +63,34 @@ Examples
 
 ML tends to work poorly learning from small amounts of data or when operating on new types of data. E.g. images are rotated or have defects when taken from another machine.
 
+## Deep learning
+
+Predicting t-shirt buying demand given only price is a simple linear NN. Price comes in, hits the single neuron computing the linear mapping, and demand comes out.
+
+NNs are just piles of these neurons, each computing simple functions, arranged in various manners. NNs can deal with complex mappings and predict the output from inputs quite well.
+
+So you could map (price, shipping cost, material, marketing) -> demand using an NN. The NN training process figures out the internal node relationships (???).
+
+Similarly for facial recognition, one inputs images as pixel data to train.
+
+## Building AI projects
+
+Steps of building ML project to perform "Alexa" audio detection
+
+1. Collect data samples of people saying words like "Alexa" and many others
+2. Train model using labeled data. Iterate many times until trained model is good enough.
+3. Deploy the model to be used in real life. Acquire more data from the live model. Use this data to improve/update the model.
+
+Workflow of data science project optimizing a sales funnel: visit website -> product page -> shopping cart -> purchase
+
+1. Collect data - user id, country, time, webpage
+2. Analyze data. Iterate many times to get good ideas for insights
+3. Suggest hypotheses/actions based on analysis. Deploy changes, re-analyze new data
+
+The digitization of data means that data science and ML can impact many jbos.
+
+Data science can help optimize a sales funnel. ML can help with automated lead sorting. Data science can optimize a manufacturing line. ML can help final inspection for defect detection. A/B testing on a website is more data science. Giving customized product recommendations using ML works well.
+
 ## Glossary
 
 * **ANI** Artificial narrow intelligense like smart speaker, self-driving car, web search
