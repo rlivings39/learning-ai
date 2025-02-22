@@ -38,6 +38,31 @@ Input and output data can really be anything. For example pairs (size of house, 
 
 **Data is messy** Data will have incorrect or missing values. Your data team needs to figure out how to clean and handle these things.
 
+## Andrew's AI company transformation strategy
+
+1. Use pilot projects to gain momentum
+2. Build in-house AI team
+3. Provide broad AI training to the whole company
+4. Develop AI strategy
+5. Develop internal and external comms
+
+## Machine learning capabilities and inabilities
+
+It is important to perform a technical feasibility study before embarking on a project. Such studies can take weeks even for experts like Andrew Ng.
+
+"Anything you can do with 1 second of thought, we can probably now or soon automate"
+
+What makes an ML problem easier? Learning a "simple" concept (e.g. less than 1 sec of thought). Lots of data available.
+
+Examples
+
+1. Can do: Vision systems identifying vehicle locations
+2. Can't do: Identifying hand gestures (e.e. hands outheld saying stop, hitchhiking, left turn bike signal). These are also safety-critical so the systems have to be exceptionally accurate
+3. Can do: X-ray diagnosis of pneumonia from 10,000 labeled images
+4. Can't do: Diagnose pneumonia from 10 images and a medical textbook description. Humans could learn with this info
+
+ML tends to work poorly learning from small amounts of data or when operating on new types of data. E.g. images are rotated or have defects when taken from another machine.
+
 ## Glossary
 
 * **ANI** Artificial narrow intelligense like smart speaker, self-driving car, web search
