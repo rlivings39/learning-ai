@@ -4,6 +4,6 @@
 * https://github.com/dabeaz-course/python-mastery?tab=readme-ov-file
 * https://python-patterns.guide/
 
-## Practical Python
+See subdirectories for more info on the courses and notes.
 
 
