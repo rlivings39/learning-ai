@@ -152,6 +152,23 @@ Open-source frameworks
 
 Research publications often show up on Arxiv. GitHub has tons of AI repos.
 
+## Case study: building smart speaker
+
+We want to design a device to respond to "Hey device, tell me a joke". How do we build this?
+
+1. Trigger word/wakeword detection. Audio -> "Hey device" detection (0/1) (A->B mapping)
+2. Speech recognition. Audio -> "tell me a joke" (A->B mapping to text transcript)
+3. Intent recognition. "tell me a joke" -> joke intent (A->B transcipt to user intent from fixed list of intents)
+4. Execute joke
+
+"Hey device, set timer for 10 minutes"
+
+1. Trigger word/wakeword detection. Audio -> "Hey device"
+2. Speech recognition. Audio -> "set timer for 10 minutes"
+3. Intent recognition. "set timer for 10 minutes" -> timer
+4. Extract duration. "Set timer for 10 mintes; Let me know when 10 minutes is up" -> 10 minutes
+5. Start timer with specified duration
+
 ## Glossary
 
 * **ANI** Artificial narrow intelligense like smart speaker, self-driving car, web search
