@@ -282,45 +282,45 @@ Do
 ## Taking your first steps in AI
 
 * Get friends to learn about AI
-** Take courses, doing a reading group, etc.
+    * Take courses, doing a reading group, etc.
 * Start brainstorming projects
-** No project is too small. Starting small and succeeding is better than going big and failing.
+    * No project is too small. Starting small and succeeding is better than going big and failing.
 * Hire a few ML/DS people to help out
 * Hire or appoint an AI leader (VP of AI, CAIO, etc.). Can hire folks without a senior AI leader.
 * Discuss AI possibilities with CEO/board
-** Will your company be more valuable or effective if it were good at AI?
+    * Will your company be more valuable or effective if it were good at AI?
 
 ## Survey of major AI application areas
 
 * Computer vision
-** Image classification & object recognition
-*** Face recognition
-** Object detection. Find presence and position of objects in image.
-** Image segmentation classifies each pixel as being part of some object or not. E.g. these are pedestrians, cars, etc.
-** Tracking follows where objects move over time in a video
+    * Image classification & object recognition
+        * Face recognition
+    * Object detection. Find presence and position of objects in image.
+    * Image segmentation classifies each pixel as being part of some object or not. E.g. these are pedestrians, cars, etc.
+    * Tracking follows where objects move over time in a video
 * Natural language processing (deep learning specifically)
-** Text classification: email -> spam/not spam or product description -> product category
-*** Sentiment recognition takes user text and computes a user sentiment, review level, etc.
-** Information retrieval like web search
-** Name entity recognition finds names, locations, companies, phone numbers, etc. in text
-** Machine translation
+    * Text classification: email -> spam/not spam or product description -> product category
+        * Sentiment recognition takes user text and computes a user sentiment, review level, etc.
+    * Information retrieval like web search
+    * Name entity recognition finds names, locations, companies, phone numbers, etc. in text
+    * Machine translation
 * Speech
-** Speech recognition converts digital audio to text
-** Trigger word/wakeword detection finds certain words like "Alexa", "Hey Google"
-** Speaker ID identifies speakers based on listening to speech
-** Speech synthesis or text to speech (TTS) takes input text and produces speech for it
+    * Speech recognition converts digital audio to text
+    * Trigger word/wakeword detection finds certain words like "Alexa", "Hey Google"
+    * Speaker ID identifies speakers based on listening to speech
+    * Speech synthesis or text to speech (TTS) takes input text and produces speech for it
 * Generative AI
-** AI systems that can produce high-quality content like text, images, and audio
-** LLMs are great at text generation, editing, generating summaries, chatting, etc. LLMs can help increase productivity via brainstorming, learning, etc.
-** Image generation from text descriptions
-** Audio generation can generate speech, music, or sound effects from a prompt like "drum solo 140 bpm"
+    * AI systems that can produce high-quality content like text, images, and audio
+    * LLMs are great at text generation, editing, generating summaries, chatting, etc. LLMs can help increase productivity via brainstorming, learning, etc.
+    * Image generation from text descriptions
+    * Audio generation can generate speech, music, or sound effects from a prompt like "drum solo 140 bpm"
 * Robotics
-** Perception: understanding the world around a machine
-** Motion planning helps find a path for the robot to follow
-** Control sends commands to motors to execute actions smoothly
+    * Perception: understanding the world around a machine
+    * Motion planning helps find a path for the robot to follow
+    * Control sends commands to motors to execute actions smoothly
 * General ML
-** Unstructured data like images, audio, text is popularized in the media compared to structured data
-** AI on structured data creates tremendous data even though it's less commonly reported on
+    * Unstructured data like images, audio, text is popularized in the media compared to structured data
+    * AI on structured data creates tremendous data even though it's less commonly reported on
 
 ## Glossary
 
@@ -334,7 +334,5 @@ Do
 * **Machine learning** Field of study that gives computers the ability to learn without being explicitly programmed (Arthur Samuel 1959 made chekers AI). Often results in building a system that can take inputs at any time and give outputs.
 * **Data science** Science of extracting knowledge and insights from data. Often results in reports and presentations.
 * **Deep learning** Neural networks take an input A and produce an output B which is the prediction. E.g. for houses (size, # bedrooms, # baths, is rennovated) -> price. The NN is a big equation producing the output.
-* **
-
 
 AI serves to impact most fields
