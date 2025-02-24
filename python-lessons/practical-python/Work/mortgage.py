@@ -23,10 +23,10 @@ def main():
                                              this_payment,
                                              total_paid)
 
-        print(payment_month, total_paid, principal)
+        print(f'{payment_month}\t${total_paid:0.2f}\t${principal:0.2f}')
         payment_month += 1
 
-    print('Total paid', total_paid)
+    print(f"Total paid ${total_paid}")
 
 def make_payment(principal, rate, payment, total_paid):
     if payment >= principal:

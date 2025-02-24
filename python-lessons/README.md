@@ -10,6 +10,11 @@ See subdirectories for more info on the courses and notes.
 
 Python supports chained comparisons `a < b < c` means `a < b and b < c`
 
+### Interpreter notes
+
+`_` refers to last output value
+
+`dir(s)` returns the set of methods on `s`. So does `s.<TAB>` usually
 ### Python indexing and slicing
 
 ```python
