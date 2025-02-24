@@ -195,7 +195,7 @@ Regardless of a team size there are common roles and responsibilities which show
 
 ## AI transformation playbook
 
-Read [AI-Transformation-Playbook.pdf](./AI-Transformation-Playbook.pdf)
+Read [AI-Transformation-Playbook.pdf](./AI-Transformation-Playbook.pdf). Download from [here](https://landing.ai/case-studies/ai-transformation-playbook).
 
 Andrew Ng wrote an "AI Transformation Playbook" for companies to become great at AI. The steps are
 
@@ -261,9 +261,38 @@ AI can change a company and products. You need to communicate about it:
 * Talent/recruitment. Showing success and strategy gives talent a reason to join your company
 * Internal communication as company strategy changes
 
+## AI pitfalls to avoid
+
+Don't
+
+* Expect AI to solve everything
+* Hire 2-3 ML engineers and solely rely on them to come up with use cases or do everything
+* Expect AI projects to work the first time
+* Expect traditional planning processes to apply without modifications
+* Think you need superstar AI engineers before you can make any progress
+
+Do
+
+* Be realistic about what AI can do given the limitations of technology, data, and engineering resources
+* Pair engineering talent with cross-functional teams to find feasible and valuable projects. Use scarce ML engineering resources carefully to augment your organization.
+* Plan for AI development to be iterative with multiple attempts needed
+* Work with AI teams to establish timelines, milestones, KPIs, etc. These differ for AI projects. Leverage experienced AI engineers to help build these.
+* Just get started
+
+## Taking your first steps in AI
+
+* Get friends to learn about AI
+** Take courses, doing a reading group, etc.
+* Start brainstorming projects
+** No project is too small. Starting small and succeeding is better than going big and failing.
+* Hire a few ML/DS people to help out
+* Hire or appoint an AI leader (VP of AI, CAIO, etc.). Can hire folks without a senior AI leader.
+* Discuss AI possibilities with CEO/board
+** Will your company be more valuable or effective if it were good at AI?
+
 ## Glossary
 
-* **ANI** Artificial narrow intelligense like smart speaker, self-driving car, web search
+* **ANI** Artificial narrow intelligence like smart speaker, self-driving car, web search
 * **Generative AI** Generative artificial intelligence like ChatGPT, Bard, Midjourney, DALL-E
 * **AGI** Artificial general intelligence. Anything a human can do and more. Andrew says this is decades off. I agree.
 * **Machine learning**
