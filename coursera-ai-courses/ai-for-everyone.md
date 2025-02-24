@@ -322,6 +322,40 @@ Do
     * Unstructured data like images, audio, text is popularized in the media compared to structured data
     * AI on structured data creates tremendous data even though it's less commonly reported on
 
+## Major AI techiques
+
+### Unsupervised learning
+
+Doesn't provide the set of desired labels or categories
+
+Clustering
+
+Consider a grocery selling packets of potato chips based on cost per packet. A clustering algorithm would group data (# packets bought, price per packet) into various clusters of shoppers.
+
+### Transfer learning
+
+Suppose you have a car detection algorithm and need to apply this to golf cart detection. Transfer learning helps you learn from task A to allow you to work on task B with much smaller data sets.
+
+Many computer vision systems are built using transfer learning
+
+### Reinforcement learning
+
+Suppose you want to teach a helicopter to fly itself. Supervised learning is not effective as it's hard to define the outputs.
+
+You let the system behave as it will encouraging good behaviors and discouraging bad behaviors. It uses a "reward signal" to tell the AI when it is doing well or poorly. The training system automatically learns to maximize rewards.
+
+Reinforcement learning has been applied well to robots, autonomous vehicles, or games like chess or go.
+
+Reinforcement learning requires many many experiments to learn. Systems where simulation are present are best for reinforcement learning.
+
+### Generative adversarial networks (GANs)
+
+Synthesize new images from scratch
+
+### Knowledge graph
+
+Collection of related knowledge on a given topic?? He didn't really go into this very well.
+
 ## Glossary
 
 * **ANI** Artificial narrow intelligence like smart speaker, self-driving car, web search
