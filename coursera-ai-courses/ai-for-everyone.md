@@ -169,6 +169,98 @@ We want to design a device to respond to "Hey device, tell me a joke". How do we
 4. Extract duration. "Set timer for 10 mintes; Let me know when 10 minutes is up" -> 10 minutes
 5. Start timer with specified duration
 
+## Case study: self-driving car
+
+Steps for deciding how to drive
+
+1. Gather input from image, radar, lidar, GPS, accelerometers, maps
+2. Detect other cars, pedestrians, obstacles, etc. (supervised ML using A->B mapping sensing to bounding boxes/regions)
+3. Trajectory prediction of obstacles
+4. Lane detection
+5. Traffic light, stop sign, etc. detection
+6. Motion/path planning
+7. Translate into steering, acceleration, braking
+
+## Example roles on AI team
+
+Regardless of a team size there are common roles and responsibilities which show up on AI teams
+
+* **Software engineers** write software to perform actions, build ML algorithms, etc.
+* **Machine learning engineers** write software to build ML algorithms, gather data, train networks, test networks
+* **Machine learning researcher** extends state-of-the-art in ML
+* **Applied ML scientist** blends the roles of ML engineers and ML researchers by staying up to date on the state of the art and adapting to current problems
+* **Data scientists** examine data, provide insights, present to teams and executives, sometimes work on ML
+* **Data engineers** organize data to ensure it's saved in an accessible, secure, cost-effective manner
+* **AI product managers** help decide what to build, what's feasible, what's valuable
+
+## AI transformation playbook
+
+Read [AI-Transformation-Playbook.pdf](./AI-Transformation-Playbook.pdf)
+
+Andrew Ng wrote an "AI Transformation Playbook" for companies to become great at AI. The steps are
+
+1. Execute pilot projects to gain momentum
+2. Build an in-house AI team
+3. Provide broad AI training
+4. Develop an AI strategy
+5. Develop internal and external communications
+
+### 1. Execute pilot projects to gain momentum
+
+Success of pilot projects is more important than project value. Success shows other teams what things are possible. Just get the flywheel turning.
+
+Show traction quickly (6-12 months). Pilot projects can be in-house or outsourced. Outsourcing can help build momentum faster.
+
+### 2. Build an in-house AI team
+
+Andrew suggests building a centralized AI team and then integrating AI team members into other business units throughout the company as needed.
+
+The centralized AI team allows that team to build a community of like-minded people who can then service the company. The AI team can also build company-wide AI platforms to service the entire company.
+
+AI team should be under a director like CTO, CIO, CDO, or CAIO. The CEO should provide initial funding for the AI team to kickstart things.
+
+### 3. Provide broad AI training
+
+Multiple people at multiple levels need to understand AI
+
+* Executives and senior business leaders should learn what AI can do for the business, AI strategy, and resource allocation.
+* Leaders of divisions working on AI projects need to set project directions (technical and business diligence), resource allocation, and monitor progress.
+* AI engineer trainees. Existing engineering staff can be trained (100 hrs ish) to build and ship AI software, gather data, and execute on specific AI projects
+
+A smart CLO should curate content rather than create content. There's tons of info in online courses, books, videos, and blog posts that already exist. Use these rather than creating whenver necessary.
+
+### 4. Develop an AI strategy
+
+Trying to define AI strategy prior to getting experience with steps 1-3 can be premature. It's hard to know what is possible and valuable without experience and can lead to poor strategies beforehand.
+
+Design strategy aligned with the "Virtuous cycle of AI": better product -> more users -> more data -> AI system -> better product. This shows why existing players often have huge advantage in fields like web search.
+
+For example, Blue River used smart phones to take pictures of crops and weeds to train an ML system to identify weeds. They built an underwhelming but functional product they could demo. Then they could deploy the system, gather more data, improve the product, and iterate.
+
+Consider creating an AI data strategy.
+
+Think of strategic data acquisition. E.g. create a free service meant to collect data. E.g. free email or photo service to mine tons of data.
+
+Build a unified data warehouse so that the whole company can pull in all necessary data available to the company.
+
+Create network effects and platform advantages. AI can be an accelerator in industries with winner take all dynamics (e.g. Uber & Lyft, or social media). Gaining a large share can lead to accelerating growth.
+
+Strategy is very company, industry, and situation-specific.
+
+AI can fit into more traditional frameworks. E.g. AI can reduce costs or increase value for traditional low cost/high value frameworks.
+
+**Important** AI is a superpower. Build businesses that make humanity better.
+
+### 5. Develop internal and external communications
+
+AI can change a company and products. You need to communicate about it:
+
+* Investor relations
+* Government relations. E.g. in healthcare showing how AI can be used in ways that protect patients
+* Customer/user education as your products change
+* Talent/recruitment. Showing success and strategy gives talent a reason to join your company
+* Internal communication as company strategy changes
+
 ## Glossary
 
 * **ANI** Artificial narrow intelligense like smart speaker, self-driving car, web search
