@@ -290,6 +290,38 @@ Do
 * Discuss AI possibilities with CEO/board
 ** Will your company be more valuable or effective if it were good at AI?
 
+## Survey of major AI application areas
+
+* Computer vision
+** Image classification & object recognition
+*** Face recognition
+** Object detection. Find presence and position of objects in image.
+** Image segmentation classifies each pixel as being part of some object or not. E.g. these are pedestrians, cars, etc.
+** Tracking follows where objects move over time in a video
+* Natural language processing (deep learning specifically)
+** Text classification: email -> spam/not spam or product description -> product category
+*** Sentiment recognition takes user text and computes a user sentiment, review level, etc.
+** Information retrieval like web search
+** Name entity recognition finds names, locations, companies, phone numbers, etc. in text
+** Machine translation
+* Speech
+** Speech recognition converts digital audio to text
+** Trigger word/wakeword detection finds certain words like "Alexa", "Hey Google"
+** Speaker ID identifies speakers based on listening to speech
+** Speech synthesis or text to speech (TTS) takes input text and produces speech for it
+* Generative AI
+** AI systems that can produce high-quality content like text, images, and audio
+** LLMs are great at text generation, editing, generating summaries, chatting, etc. LLMs can help increase productivity via brainstorming, learning, etc.
+** Image generation from text descriptions
+** Audio generation can generate speech, music, or sound effects from a prompt like "drum solo 140 bpm"
+* Robotics
+** Perception: understanding the world around a machine
+** Motion planning helps find a path for the robot to follow
+** Control sends commands to motors to execute actions smoothly
+* General ML
+** Unstructured data like images, audio, text is popularized in the media compared to structured data
+** AI on structured data creates tremendous data even though it's less commonly reported on
+
 ## Glossary
 
 * **ANI** Artificial narrow intelligence like smart speaker, self-driving car, web search
