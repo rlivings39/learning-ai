@@ -37,6 +37,12 @@ g = a[-5:]    # 'world', 5 from the end through end
 
 Strings work like character arrays with indexing. Other kinds of strings are raw strings `a = r'C:\a\path'` which don't interpret `\`, byte strings `b'Hello world'` that are byte streams so indexing returns byte values, format strings `a = f'{name:>10s} {shares:10d} {price:10.2f}'` which substitute format values using format specifiers (Python 3.6 or newer)
 
+`{name:>10s} {shares:d}.format_map(s)` replaces holes using the dictionary `s`
+
+The `format` method works the same way on strings using keyword arguments
+
+C-style formatting works with `'The value is %d' % 3`. That's the only formatting available on byte strings.
+
 ## Lists
 
 Lists are Python's type for ordered collections of values `names = ['Elwood','Jake','Curtis']`. The `*` operator repeats a list `s*3` replicates `s` 3 times like `s+s+s`.
