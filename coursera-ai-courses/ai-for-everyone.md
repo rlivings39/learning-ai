@@ -356,6 +356,19 @@ Synthesize new images from scratch
 
 Collection of related knowledge on a given topic?? He didn't really go into this very well.
 
+## Realistic view of AI
+
+* Too optimistic: AI will solve all of humanity's problems creating a utopia
+* Too pessimistic: Super intelligent/sentient killer AI can lead to human extinction
+* Accurate: AI is a powerful tool with limitations. We can control potential harms and create tremendous value.
+
+Limitations of AI
+
+* Performance limitations
+* Explainability is hard but sometimes doable
+* Biased AI through biased data (e.g. gender, ethnicity, etc.). An AI system can easily come to discriminate based on these variables.
+* Adversarial attacks on AI, especially on those making important economic decisions
+
 ## Glossary
 
 * **ANI** Artificial narrow intelligence like smart speaker, self-driving car, web search
