@@ -10,6 +10,8 @@ See subdirectories for more info on the courses and notes.
 
 Python supports chained comparisons `a < b < c` means `a < b and b < c`
 
+`pprint` module is useful to pretty print objects
+
 ## Interpreter notes
 
 `_` refers to last output value
@@ -70,3 +72,5 @@ The Python `next` command advances an iterable by one. That's what is used in `f
 * Dictionaries are key-value mappings `d = {'name': 'GOOG', 'shares': 100, 'price': 490.1}`. `for k,v in d.items():` is a good way to loop through entries. `d.keys()` returns a view into the keys which responds to modification of `d`. `in` checks for key membership. `d.get(key,default)` will return a default value if `key` is missing. Dictionary keys must be immutable.
 * Sets are unordered collections of unique items `s = {'IBM','AAPL','MSFT'}` or `s = set(['IBM','AAPL','MSFT'])`
 *
+
+<>

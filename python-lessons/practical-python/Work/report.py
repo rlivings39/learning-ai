@@ -13,7 +13,8 @@ def read_portfolio(filename):
             name = line[0].strip()
             shares = int(line[1])
             price = float(line[2])
-            portfolio.append((name, shares, price))
+            portfolio.append({'name': name, 'shares': shares, 'price': price})
+
     return portfolio
 
 if __name__ == "__main__":
