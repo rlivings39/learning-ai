@@ -392,6 +392,15 @@ AI systems are making important decisions. So reducing/eliminating bias is criti
 
 ## Adversarial attacks on AI
 
+For example a minor perturbation (imperceptible to the human eye) to an image can fool an AI system into misidentifying an image.
+
+A CMU researcher fooled an AI into saying he's Milla Jovovich by wearing glasses. Adding stickers to a stop sign caused AI to fail to detect it as a stop sign. Google researchers designed a sticker to add to the image causing an AI system to identify it as a toaster.
+
+Attack defenses exist but incur cost like causing the AI system to run slower. Andrew says they're far off from having great strategies.
+
+There is some sort of an arms race in various areas of AI.
+
+## Adverse uses of AI
 
 
 ## Glossary
