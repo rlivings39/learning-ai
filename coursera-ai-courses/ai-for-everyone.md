@@ -369,6 +369,31 @@ Limitations of AI
 * Biased AI through biased data (e.g. gender, ethnicity, etc.). An AI system can easily come to discriminate based on these variables.
 * Adversarial attacks on AI, especially on those making important economic decisions
 
+## Discrimination and bias in AI
+
+A group in Microsoft found that when an AI learns from text on the internet, it can learn about unhealthy stereotypes.
+
+Why bias matters
+
+* A company had a hiring tool that discriminated against women
+* Facial recognition working better for light-skinned than dark-skinned individuals
+* Bank loan approvals discriminated against minority ethnic groups
+* Toxic effect of reinforcing unhealthy stereotypes. E.g. if an 8 year old girl searches for "CEO" and sees no one looking like her, she may be demotivated
+
+Combating bias
+
+* Technical solutions
+    * Zero out the bias in words
+    * Use less biased or more inclusive data. E.g. all genders, ethnicities, etc.
+* Transparency and/or auditing process for systems to identify issues
+* Having a diverse workforce will increase odds of employees spotting problems and create less biased applications.
+
+AI systems are making important decisions. So reducing/eliminating bias is critical. Since AI systems are computers, they can be incrementally improved more easily than humans.
+
+## Adversarial attacks on AI
+
+
+
 ## Glossary
 
 * **ANI** Artificial narrow intelligence like smart speaker, self-driving car, web search
