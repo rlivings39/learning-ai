@@ -10,12 +10,14 @@ See subdirectories for more info on the courses and notes.
 
 Python supports chained comparisons `a < b < c` means `a < b and b < c`
 
-### Interpreter notes
+## Interpreter notes
 
 `_` refers to last output value
 
+`python -i afile.py` runs the script and enters interactive mode. You can then call functions defined in the script.
+
 `dir(s)` returns the set of methods on `s`. So does `s.<TAB>` usually
-### Python indexing and slicing
+## Python indexing and slicing
 
 ```python
 a = 'Hello world'
@@ -29,17 +31,17 @@ g = a[-5:]    # 'world', 5 from the end through end
 ```
 `'llo' in "Hello world"` tests substring membership and returns true
 
-### Strings
+## Strings
 
 Strings work like character arrays with indexing. Other kinds of strings are raw strings `a = r'C:\a\path'` which don't interpret `\`, byte strings `b'Hello world'` that are byte streams so indexing returns byte values, format strings `a = f'{name:>10s} {shares:10d} {price:10.2f}'` which substitute format values using format specifiers (Python 3.6 or newer)
 
-### Lists
+## Lists
 
 Lists are Python's type for ordered collections of values `names = ['Elwood','Jake','Curtis']`. The `*` operator repeats a list `s*3` replicates `s` 3 times like `s+s+s`.
 
 Given 2 lists `list1[-2:] = list2` will resize `list1` to accommodate `list2` either by shrinking if `list2` is only 1 element or growing if `list2` is more than 2 elements.
 
-### File I/O
+## File I/O
 
 Use the `with` idiom to automatically close the file
 
@@ -54,6 +56,9 @@ with open('foo.txt','rwt') as file:
 
 Pandas is a great Python data analysis library providing CSV support
 
-### Iteration
+## Functions
+
+
+## Iteration
 
 The Python `next` command advances an iterable by one. That's what is used in `for` loops.
