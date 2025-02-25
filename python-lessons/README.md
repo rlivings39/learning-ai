@@ -38,3 +38,22 @@ Strings work like character arrays with indexing. Other kinds of strings are raw
 Lists are Python's type for ordered collections of values `names = ['Elwood','Jake','Curtis']`. The `*` operator repeats a list `s*3` replicates `s` 3 times like `s+s+s`.
 
 Given 2 lists `list1[-2:] = list2` will resize `list1` to accommodate `list2` either by shrinking if `list2` is only 1 element or growing if `list2` is more than 2 elements.
+
+### File I/O
+
+Use the `with` idiom to automatically close the file
+
+```python
+with open('foo.txt','rwt') as file:
+    data = file.read()        # read the whole file
+    for line in file:         # line by line
+        use(line)
+    file.write('some text\n') # write a string
+    print('Howdy', file=file) # redirect print
+```
+
+Pandas is a great Python data analysis library providing CSV support
+
+### Iteration
+
+The Python `next` command advances an iterable by one. That's what is used in `for` loops.
