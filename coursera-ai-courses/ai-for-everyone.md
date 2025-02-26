@@ -402,6 +402,26 @@ There is some sort of an arms race in various areas of AI.
 
 ## Adverse uses of AI
 
+* DeepFakes synthesize video of people doing things they never did
+* Undermining democracy and privacy. Oppressive surveillance.
+* Generating fake comments
+* Spam vs. anti-spam and fraud vs. anti-fraud arms races
+
+Andrew thinks that because society is better with working anti-spam and anti-fraud that those have a good chance to win out.
+
+## AI and developing economies
+
+Early steps in economic development can be automated by AI stealing opportunities for people to advance into more beneficial steps.
+
+Andrew mentions an ability to leapfrog early steps to advance. E.g. adopting mobile phones without first having landlines, adopting mobile payments without having widespread credit cards, adopting online education without having broad public education.
+
+The suggestion is to leverage AI to strengthen a country's existing successful vertical industries. E.g. enhance your coffee industry. Public-private partnerships can help accelerate development.
+
+## AI and jobs
+
+The impact of AI will be broad in both creating and replacing jobs. McKinsey Global suggests 400-800 million jobs could be replaced with 555-890 million created. Goldman Sachs estimates 300 million lost. There is much uncertainty. Studies agree that the impact will be large.
+
+
 
 ## Glossary
 
