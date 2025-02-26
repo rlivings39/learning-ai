@@ -41,7 +41,7 @@ Strings work like character arrays with indexing. Other kinds of strings are raw
 
 The `format` method works the same way on strings using keyword arguments
 
-C-style formatting works with `'The value is %d' % 3`. That's the only formatting available on byte strings.
+C-style formatting works with `'The value is %d' % 3`. That's the only formatting available on byte strings. This supports passing a tuple for multiple holes `'First %s second %d' % ('string', 12)`
 
 ## Lists
 
@@ -77,6 +77,4 @@ The Python `next` command advances an iterable by one. That's what is used in `f
 * Tuples are collections of values grouped together `s = ('GOOG',100,490.1)`. Think: single row in a database table. Tuples are immutable unlike lists. Tuples are often used for a single item consisting of multiple parts whereas lists usually have homogeneous types
 * Dictionaries are key-value mappings `d = {'name': 'GOOG', 'shares': 100, 'price': 490.1}`. `for k,v in d.items():` is a good way to loop through entries. `d.keys()` returns a view into the keys which responds to modification of `d`. `in` checks for key membership. `d.get(key,default)` will return a default value if `key` is missing. Dictionary keys must be immutable.
 * Sets are unordered collections of unique items `s = {'IBM','AAPL','MSFT'}` or `s = set(['IBM','AAPL','MSFT'])`
-*
 
-<>
