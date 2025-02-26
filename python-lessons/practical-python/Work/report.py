@@ -17,6 +17,34 @@ def read_portfolio(filename):
 
     return portfolio
 
+def read_prices(filename):
+    prices = {}
+    with open(os.path.join(this_folder, filename), 'rt', encoding='utf-8') as file:
+        csvfile = csv.reader(file)
+        for line in csvfile:
+            if len(line) != 2:
+                continue
+            name = line[0].strip()
+            price = float(line[1])
+            prices[name] = price
+    return prices
+
+def make_report(portfolio, prices):
+    report = []
+    for holding in portfolio:
+        name = holding['name']
+        report.append((name, holding['shares'], prices[name], prices[name] - holding['price']))
+    return report
+
+def print_report(report):
+    headers = ('Name', 'Shares', 'Price', 'Change')
+    num_cols = len(headers)
+    report_str = ('{:>10s} ' * num_cols).format(*headers) + '\n'
+    report_str += ('-'*10 + ' ') * num_cols + "\n"
+    for holding in report:
+        report_str += f'{holding[0]:>10s} {holding[1]:>10d} {f'${holding[2]:.2f}':>10s} {holding[3]:>10.2f}\n'
+    print(report_str)
+
 if __name__ == "__main__":
     # Read this value here rather than in the function
     # so that it works in interactive mode too
