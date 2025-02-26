@@ -421,7 +421,15 @@ The suggestion is to leverage AI to strengthen a country's existing successful v
 
 The impact of AI will be broad in both creating and replacing jobs. McKinsey Global suggests 400-800 million jobs could be replaced with 555-890 million created. Goldman Sachs estimates 300 million lost. There is much uncertainty. Studies agree that the impact will be large.
 
+Typical ways that such studies are carried out are done by looking at tasks comprising a job and considering if those tasks can be automated with AI.
 
+Ideas to help job loss
+
+* Conditional basic income: provide a safety net but incentivize learning
+* Lifelong learning societies
+* Political solutions
+
+Consider finding ways to incorporate AI into your existing career rather than scrapping it totally.
 
 ## Glossary
 
