@@ -1,7 +1,9 @@
 # report.py
 #
 # Exercise 2.4
-import os, csv, sys
+import os
+import csv
+import sys
 def read_portfolio(filename):
     portfolio = []
     total_price = 0.0
