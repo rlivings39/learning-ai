@@ -193,4 +193,12 @@ There are a few `import` variations `import math as m` to rename a module in you
 
 Modules are loaded once. Subsequent `import` statements just return a reference to the existing module. `sys.modules` shows currently loaded modules. `sys.path` shows the Python path used to locate modules
 
+## Main module
 
+Python has no main function but has a main module. This is the first source file that runs. Use the idiom `if __name__ == '__main__': stuff` to only run things if your file is the main module.
+
+Command line args can be found in `sys.argv`
+
+You can use `sys.exit` or `raise SystemExit(NothingOrCodeOrString)` to terminate
+
+Use the shebang `#!/usr/bin/env python3` to make an executable script
