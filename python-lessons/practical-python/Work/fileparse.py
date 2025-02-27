@@ -3,7 +3,7 @@
 # Exercise 3.3
 import csv
 
-def parse_csv(filename: str, select: list = None, types: list = None):
+def parse_csv(filename: str, select: list = None, types: list = None, has_headers: bool = True):
     '''
     Parse a CSV file into a list of records passing an optional column filter
     '''
@@ -11,9 +11,9 @@ def parse_csv(filename: str, select: list = None, types: list = None):
         rows = csv.reader(f)
 
         # Read headers
-        headers = next(rows)
+        headers = next(rows) if has_headers else []
         indices = []
-        if select:
+        if select and has_headers:
             indices = [headers.index(s) for s in select]
             headers = select
         records = []
@@ -24,7 +24,7 @@ def parse_csv(filename: str, select: list = None, types: list = None):
                 row = [row[i] for i in indices]
             if types:
                 row = [f(val) for f,val in zip(types, row)]
-            record = dict(zip(headers, row))
+            record = dict(zip(headers, row)) if has_headers else tuple(row)
             records.append(record)
     return records
 
