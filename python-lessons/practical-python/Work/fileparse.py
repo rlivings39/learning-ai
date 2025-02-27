@@ -3,7 +3,6 @@
 # Exercise 3.3
 import csv
 
-# TODO overly complicated and doesn't respect order of select list in output/types
 def parse_csv(filename: str, select: list = None, types: list = None):
     '''
     Parse a CSV file into a list of records passing an optional column filter
