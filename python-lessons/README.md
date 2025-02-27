@@ -215,7 +215,7 @@ The `class` statement defines a class. When calling methods `a.method(b,c)` the 
 
 The `__init__` method implements the constructor
 
-## Inheritance
+### Inheritance
 
 Python represents inheritance as `class Child(parent):`. Use `super()` to get a parent class instance `super().method()`
 
@@ -223,4 +223,24 @@ If you redefine `__init__` make sure to initialize the parent `super().__init__(
 
 If no base class is specified, `object` is the implicit base class. Python 2 required this to be explicit.
 
-Multiple inheritance works `class Child(Mother, Father)`
+Multiple inheritance works `class Child(Mother, Father)`. As usual, there are some pitfalls.
+
+### Special methods
+
+Special methods are preceded and followed by `__` in names like `__init__`. There are dozens of such methods.
+
+There are 2 methods for string conversion `str` for printable output and `repr` for a lower-level detailed representation which **may** be evalable by convention.
+
+Implement `__str__()` and `__repr__()` resp. to override these behaviors
+
+There are various methods mapping to operators like `__add__(), __floordiv__(), etc`
+
+The methods `__len__(), __getitem__(), __setitem__(), __delitem__()` implement container behavior
+
+Method invocation has 2 steps: lookup and call. A **bound method** is bound to an object instance like `func = s.some_method`. This can cause issues when `()` is unintentionally omitted.
+
+An alternative way to manage attributes `getattr(obj, 'name'), setattr(obj, 'name', val), delattr(obj, 'name'), hasattr(obj, 'name')`. `getattr` has a useful default arg
+
+
+
+

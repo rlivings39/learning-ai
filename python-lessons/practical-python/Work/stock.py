@@ -16,3 +16,11 @@ class Stock:
 
     def sell(self,shares):
         self.shares = max(0, self.shares - shares)
+
+    def __str__(self):
+        out = f'Stock({self.name}, {self.shares}, {self.price})'
+        return out
+
+    def __repr__(self):
+        out = f'Stock({repr(self.name)}, {self.shares}, {self.price})'
+        return out
