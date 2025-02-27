@@ -167,4 +167,16 @@ If you want to modify a global in a function, declare it `global x` in the funct
 
 Arguments are passed by value just like assignments. Functions don't take copies.
 
+## Error checking
 
+Python has no type checks. If a passed type works with the statements in the function, it runs. If not, it errors at runtime.
+
+`raise` throws and `try-except-finally` handles exceptions. There are over 20 [built-in exceptions](https://docs.python.org/3/library/exceptions.html).
+
+Exceptions often work as strings `try: pass; except RuntimeError as e: print('Failed: ', e)`
+
+Multiple `except` blocks allow catching multiple exception types or you can group `try: pass; except(IOError,LookupError,RuntimeError) as e:`
+
+Advice is to only catch exceptions if you can properly handle them. Otherwise fail fast and loudly.
+
+`with` is used in place of `finally` to clean up resources for objects programmed to support it.
