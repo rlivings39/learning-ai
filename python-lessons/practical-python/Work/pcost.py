@@ -1,21 +1,13 @@
 # pcost.py
 #
 # Exercise 1.27
-import os, csv, sys
+import os
+import csv
+import sys
+import report
 def main(filename):
-    total_price = 0.0
-    with open(os.path.join(this_folder, filename), 'rt', encoding='utf-8') as file:
-        csvfile = csv.reader(file)
-        header = next(csvfile)
-        for linenum, line in enumerate(csvfile, start=1):
-            record = dict(zip(header, line))
-            try:
-                name = record['name'].strip()
-                shares = int(record['shares'])
-                price = float(record['price'])
-                total_price += shares*price
-            except ValueError:
-                print(f'Row {linenum}: Couldn\'t convert {line}')
+    portfolio = report.read_portfolio(filename)
+    total_price = sum([s['shares']*s['price'] for s in portfolio])
 
     print(f'Total cost {total_price:0.2f}')
 
