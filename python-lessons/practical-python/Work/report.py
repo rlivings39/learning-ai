@@ -3,32 +3,16 @@
 # Exercise 2.4
 import os
 import csv
+import fileparse
 import sys
 def read_portfolio(filename):
-    portfolio = []
-    total_price = 0.0
-    with open(os.path.join(this_folder, filename), 'rt', encoding='utf-8') as file:
-        csvfile = csv.reader(file)
-        # Skip header
-        next(csvfile)
-        for line in csvfile:
-            name = line[0].strip()
-            shares = int(line[1])
-            price = float(line[2])
-            portfolio.append({'name': name, 'shares': shares, 'price': price})
+    portfolio = fileparse.parse_csv(filename,types=[str,int,float])
 
     return portfolio
 
 def read_prices(filename):
-    prices = {}
-    with open(os.path.join(this_folder, filename), 'rt', encoding='utf-8') as file:
-        csvfile = csv.reader(file)
-        for line in csvfile:
-            if len(line) != 2:
-                continue
-            name = line[0].strip()
-            price = float(line[1])
-            prices[name] = price
+    pricelist = fileparse.parse_csv(filename, types=[str,float], has_headers=False)
+    prices = dict(pricelist)
     return prices
 
 def make_report(portfolio, prices):
