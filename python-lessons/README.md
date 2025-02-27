@@ -286,3 +286,15 @@ for cls in obj.__class__.__mro__:
         break
 method = cls.__dict__['method_name']
 ```
+
+## Encapsulation
+
+Python has no way of enforcing strong encapsulation. Instead it's up to convention and everyone being adults.
+
+Prefixing a name with a leading `_` signifies it's meant to be internal. If you're using such a thing, look harder for higher-level functionality.
+
+You can define properties and access using the `@property` and `@prop.setter` decorators in your class definition for getter and setter methods resp.
+
+Setting the `__slots__` attribute on your class restricts the set of attribute names stopping others from adding to them. This helps with performance and makes Python use memory more efficiently (allegedly).
+
+The lesson says `__slots__` is usually an optimization used on classes serving as data structures. Doing so will save significant memory and run a bit faster. Likely overkill otherwise.
