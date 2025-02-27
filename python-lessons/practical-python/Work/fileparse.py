@@ -43,3 +43,11 @@ def parse_csv(data_rows,
         records.append(record)
     return records
 
+def filematch(filename, substr):
+    '''
+    Iterate over lines of filename matching substr
+    '''
+    with open(filename, 'rt', encoding='utf-8') as f:
+        for line in f:
+            if substr in line:
+                yield line

@@ -312,3 +312,7 @@ while True:
     except StopIteration:     # No more items
         break
 ```
+
+### Customizing iteration with generator functions
+
+A generator function is any function that uses `yield`. Calling a generator creates an object rather than executing the function
