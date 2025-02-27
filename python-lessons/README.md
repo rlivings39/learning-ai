@@ -245,4 +245,44 @@ An alternative way to manage attributes `getattr(obj, 'name'), setattr(obj, 'nam
 
 User-defined exceptions inherit from `Exception`. They're usually empty using `pass` for the body and can exist in hierarchies
 
+## Python object model and inner workings
 
+Dictionaries are used for critical parts of the Python interpreter and might be the most important data type in Python.
+
+A module has a dictionary tracking its symbols `the_module.__dict__` or `globals()` shows this
+
+User defined objects also use dictionaries for instance data and classes and has a `obj.__dict__` for instance data
+
+Methods are in `ClassName.__dict__`. For an object `obj.__class__` is the related class
+
+The underlying instance dictionary is updated as you use the object. Updating the dictionary updates the instance
+
+Name resolution for `a.b` first looks in `a.__dict__` and eventually in `a.__class__` (after MRO??)
+
+`ClassName.__bases__` stores base class tuple
+
+Python computes a method resolution order (MRO) used to resolve names `ClassName.__mro__` which is consulted.
+
+For single inheritance this is simple
+
+Python uses cooperative multiple inheritance. For multiple inheritance the rules are
+
+* Children are checked before parents
+* Parents are checked in the order listed
+
+The algorithm is the C3 linearization algorithm
+
+Mixins are a common usage of multiple inheritance in Python
+
+Python supports class variables defined in the class body outside of a function
+
+Bound methods `f = obj.method_name` have `f.__func__` which is the same as found on `f.__class__` and `f.__self__` which is the instance
+
+Methods are effectively looked up like
+
+```python
+for cls in obj.__class__.__mro__:
+    if 'method_name' in cls.__dict__:
+        break
+method = cls.__dict__['method_name']
+```
