@@ -127,3 +127,24 @@ Combine this with a reduction to make a map-reduce operation `sum([x**3 for x in
 Using `{<expression> for <variable_name> in <sequence> if <condition>}` gives a set comprehension instead.
 
 Using `{<expression>: <expression> for <variable_name> in <sequence> if <condition>}` gives a dictionary comprehension instead.
+
+## Object model
+
+Assignments, storing values, appending, etc. never make a copy. They're by reference. So
+
+```python
+a = [1,2,3]
+b = a
+c = [a,b]
+```
+causes everything to be updated if you do `a[1] = 6`.
+
+Use `is` to do identity comparison, namely "are these the same object instance" or do their `id()` match.
+
+Lists and dicts can be shallow copied `a = [2,3,[100,101],4]; b = list(a)` but it's only one layer deep. `a[2] is b[2]` is true.
+
+Sometimes you need a deep copy. The `copy` module does this `import copy; copy.deepcopy(a)`.
+
+`type(a)` will tell you the type of the value in `a`. `isinstance(a,list)` checks if `a` is a list. You can pass a tuple to check for one of many types.
+
+Everything is an object. You can make lists of functions or other things.
