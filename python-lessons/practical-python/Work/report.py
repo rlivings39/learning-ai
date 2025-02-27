@@ -30,26 +30,25 @@ def make_report(portfolio, prices):
 def print_report(report, formatter: tableformat.TableFormatter):
     formatter.headings(('Name', 'Shares', 'Price', 'Change'))
 
-    headers = ('Name', 'Shares', 'Price', 'Change')
     for name, shares, price, change in report:
         row_data = (name, str(shares), f'${price:.2f}', f'${change:.2f}')
         formatter.row(row_data)
 
     print(formatter)
 
-def portfolio_format(argv, fmt='txt'):
-    if len(argv) < 3:
-        raise SystemExit(f'Usage {argv[0]}: portfolio_file prices_file')
-    portfolio = read_portfolio(argv[1])
-    prices = read_prices(argv[2])
+def portfolio_format(portfolio_file, prices_file, fmt='txt'):
+    portfolio = read_portfolio(portfolio_file)
+    prices = read_prices(prices_file)
     report = make_report(portfolio, prices)
     formatter = tableformat.create_formatter(fmt)
     print_report(report, formatter)
 
+def main(argv):
+    if len(argv) != 4:
+        raise SystemExit(f'Usage {argv[0]}: portfolio_file prices_file format')
+    portfolio_format(*argv[1:])
+
 this_folder = os.path.dirname(os.path.realpath(__file__))
 
 if __name__ == "__main__":
-    if len(sys.argv) >= 4:
-        portfolio_format(sys.argv, sys.argv[3])
-    else:
-        portfolio_format(sys.argv)
+    main(sys.argv)
