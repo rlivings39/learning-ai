@@ -245,7 +245,7 @@ An alternative way to manage attributes `getattr(obj, 'name'), setattr(obj, 'nam
 
 User-defined exceptions inherit from `Exception`. They're usually empty using `pass` for the body and can exist in hierarchies
 
-## Python object model and inner workings
+### Python object model and inner workings
 
 Dictionaries are used for critical parts of the Python interpreter and might be the most important data type in Python.
 
@@ -287,7 +287,7 @@ for cls in obj.__class__.__mro__:
 method = cls.__dict__['method_name']
 ```
 
-## Encapsulation
+### Encapsulation
 
 Python has no way of enforcing strong encapsulation. Instead it's up to convention and everyone being adults.
 
@@ -298,3 +298,17 @@ You can define properties and access using the `@property` and `@prop.setter` de
 Setting the `__slots__` attribute on your class restricts the set of attribute names stopping others from adding to them. This helps with performance and makes Python use memory more efficiently (allegedly).
 
 The lesson says `__slots__` is usually an optimization used on classes serving as data structures. Doing so will save significant memory and run a bit faster. Likely overkill otherwise.
+
+## Generators
+
+The iteration protocol for `for x in obj:` looks like
+
+```python
+_iter = obj.__iter__()        # Get iterator object
+while True:
+    try:
+        x = _iter.__next__()  # Get next item
+        # statements ...
+    except StopIteration:     # No more items
+        break
+```

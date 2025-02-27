@@ -7,7 +7,7 @@ import sys
 import report
 def main(filename):
     portfolio = report.read_portfolio(filename)
-    total_price = sum([s.cost for s in portfolio])
+    total_price = portfolio.total_cost
 
     print(f'Total cost {total_price:0.2f}')
 
