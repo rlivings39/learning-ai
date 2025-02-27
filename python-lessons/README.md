@@ -208,3 +208,9 @@ Use the shebang `#!/usr/bin/env python3` to make an executable script
 Python leverages duck typing a good deal. If it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck.
 
 Consider taking more general API arguments to make your APIs more useful. E.g. take an iterable of data rows rather than a file name.
+
+## Classes
+
+The `class` statement defines a class. When calling methods `a.method(b,c)` the object is passed as the first argument `def method(self,b,c)` and is called `self` by convention.
+
+The `__init__` method implements the constructor
