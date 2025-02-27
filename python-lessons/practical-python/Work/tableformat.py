@@ -65,6 +65,12 @@ class HTMLTableFormatter(TableFormatter):
     def row(self, rowdata):
         self._format_row(rowdata, is_header=False)
 
+class FormatError(Exception):
+    '''
+    Raised when an invalid format is specified
+    '''
+    pass
+
 def create_formatter(fmt: str):
     '''
     Create a formatter of the right type based on format arg which can be "txt", "csv", "html"
@@ -77,7 +83,7 @@ def create_formatter(fmt: str):
     elif fmt == "html":
         formatter = HTMLTableFormatter()
     else:
-        raise ValueError(f'Unknown format value {fmt}')
+        raise FormatError(f'Unknown format value {fmt}')
     return formatter
 
 def print_table(data, attrs, formatter: TableFormatter):
