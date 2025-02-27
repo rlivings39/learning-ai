@@ -20,7 +20,8 @@ def parse_csv(filename: str, select: list = None, types: list = None):
         for row in rows:
             if not row: # skip empty rows
                 continue
-            row = [row[i] for i in indices]
+            if indices:
+                row = [row[i] for i in indices]
             if types:
                 row = [f(val) for f,val in zip(types, row)]
             record = dict(zip(headers, row))
