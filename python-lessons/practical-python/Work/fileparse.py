@@ -11,6 +11,10 @@ def parse_csv(data_rows,
     '''
     Parse a CSV file into a list of records passing an optional column filter
     '''
+    # Prevent common error case
+    if isinstance(data_rows, str):
+        raise TypeError('data_rows should be an iterable of rows not a string')
+
     if not has_headers and select:
         raise RuntimeError('Select argument requires column headers but has_headers was specified as False')
 
