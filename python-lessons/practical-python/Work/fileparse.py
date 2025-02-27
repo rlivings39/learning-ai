@@ -3,7 +3,10 @@
 # Exercise 3.3
 import csv
 
-def parse_csv(filename: str, select: list = None, types: list = None, has_headers: bool = True):
+def parse_csv(filename: str,
+              select: list = None,
+              types: list = None,
+              has_headers: bool = True):
     '''
     Parse a CSV file into a list of records passing an optional column filter
     '''
