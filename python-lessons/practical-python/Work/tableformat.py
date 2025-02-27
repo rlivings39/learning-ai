@@ -79,3 +79,12 @@ def create_formatter(fmt: str):
     else:
         raise ValueError(f'Unknown format value {fmt}')
     return formatter
+
+def print_table(data, attrs, formatter: TableFormatter):
+    '''
+    Print out the fields of data specified by attrs using the provided formatter
+    '''
+    formatter.headings(attrs)
+    for row in data:
+        formatter.row([str(getattr(row, attr)) for attr in attrs])
+    print(formatter)
