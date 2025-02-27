@@ -64,7 +64,35 @@ with open('foo.txt','rwt') as file:
 
 Pandas is a great Python data analysis library providing CSV support
 
-## Iteration
+## Sequences and iteration
+
+There are 3 sequence data types: strings, lists, tuples. They're ordered, indexed by integers, and have a `len`.
+
+They can be replicated with `*` like `s*3` and concatenated with `+`.
+
+They all work with slicing. Slice reassignment can grow or shrink the LHS. You can delete slices with `del a[2:4]`.
+
+Common reductions `sum, min, max` exist.
+
+`for x in sequence:` iterates through all elements of `sequence`.
+
+Use `for i in range(100)` to loop over `[0,100)`.
+
+Use `for i, name in enumerate(['Bob','Steve'])` to loop over a sequence with indices.
+
+Multiple iteration variables work if the elements are tuples `for x,y in points:`. `zip` ties n sequences together allowing you to iterate all as a list of tuples.
+
+`d = dict(zip(columns, values))` is common. When reading a data file with a header you can do something like
+
+```python
+header = next(csvfile)
+for linenum, line in enumerate(csvfile, start=1):
+    record = dict(zip(header, line))
+```
+
+to make a dictionary from the line and not hardcode column indices.
+
+Tuples are compared element-by-element so you can sort a list of tuples `(price, label)` by price using `sorted`.
 
 The Python `next` command advances an iterable by one. That's what is used in `for` loops.
 
