@@ -49,6 +49,16 @@ Lists are Python's type for ordered collections of values `names = ['Elwood','Ja
 
 Given 2 lists `list1[-2:] = list2` will resize `list1` to accommodate `list2` either by shrinking if `list2` is only 1 element or growing if `list2` is more than 2 elements.
 
+## Data types
+
+* Integers
+* Floating point
+* Strings
+* None type which is Falsy
+* Tuples are collections of values grouped together `s = ('GOOG',100,490.1)`. Think: single row in a database table. Tuples are immutable unlike lists. Tuples are often used for a single item consisting of multiple parts whereas lists usually have homogeneous types
+* Dictionaries are key-value mappings `d = {'name': 'GOOG', 'shares': 100, 'price': 490.1}`. `for k,v in d.items():` is a good way to loop through entries. `d.keys()` returns a view into the keys which responds to modification of `d`. `in` checks for key membership. `d.get(key,default)` will return a default value if `key` is missing. Dictionary keys must be immutable.
+* Sets are unordered collections of unique items `s = {'IBM','AAPL','MSFT'}` or `s = set(['IBM','AAPL','MSFT'])`
+
 ## File I/O
 
 Use the `with` idiom to automatically close the file
@@ -96,13 +106,11 @@ Tuples are compared element-by-element so you can sort a list of tuples `(price,
 
 The Python `next` command advances an iterable by one. That's what is used in `for` loops.
 
-## Data types
+## Collections
 
-* Integers
-* Floating point
-* Strings
-* None type which is Falsy
-* Tuples are collections of values grouped together `s = ('GOOG',100,490.1)`. Think: single row in a database table. Tuples are immutable unlike lists. Tuples are often used for a single item consisting of multiple parts whereas lists usually have homogeneous types
-* Dictionaries are key-value mappings `d = {'name': 'GOOG', 'shares': 100, 'price': 490.1}`. `for k,v in d.items():` is a good way to loop through entries. `d.keys()` returns a view into the keys which responds to modification of `d`. `in` checks for key membership. `d.get(key,default)` will return a default value if `key` is missing. Dictionary keys must be immutable.
-* Sets are unordered collections of unique items `s = {'IBM','AAPL','MSFT'}` or `s = set(['IBM','AAPL','MSFT'])`
+The `collections` module has useful objects for data.
+
+`Counter` is like a dictionary mapping `T -> int` but lookups of non-existent keys all return 0. Adding 2 counters creates a new counter containing the union of all keys. Intersecting keys have their values added.
+
+`defaultdict` is a generalization where any time you look up a key you get a default value like `x = defaultdict(list); x['boo']` returns `[]`
 
