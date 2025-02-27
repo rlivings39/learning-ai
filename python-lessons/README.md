@@ -214,3 +214,13 @@ Consider taking more general API arguments to make your APIs more useful. E.g. t
 The `class` statement defines a class. When calling methods `a.method(b,c)` the object is passed as the first argument `def method(self,b,c)` and is called `self` by convention.
 
 The `__init__` method implements the constructor
+
+## Inheritance
+
+Python represents inheritance as `class Child(parent):`. Use `super()` to get a parent class instance `super().method()`
+
+If you redefine `__init__` make sure to initialize the parent `super().__init__(...)`.
+
+If no base class is specified, `object` is the implicit base class. Python 2 required this to be explicit.
+
+Multiple inheritance works `class Child(Mother, Father)`

@@ -6,6 +6,7 @@ import csv
 import fileparse
 import stock
 import sys
+import tableformat
 
 def read_portfolio(filename):
     with open(filename, 'rt', encoding='utf-8') as f:
@@ -26,24 +27,29 @@ def make_report(portfolio, prices):
         report.append((name, holding.shares, prices[name], prices[name] - holding.price))
     return report
 
-def print_report(report):
-    headers = ('Name', 'Shares', 'Price', 'Change')
-    num_cols = len(headers)
-    report_str = ('{:>10s} ' * num_cols).format(*headers) + '\n'
-    report_str += ('-'*10 + ' ') * num_cols + "\n"
-    for holding in report:
-        report_str += f'{holding[0]:>10s} {holding[1]:>10d} {f'${holding[2]:.2f}':>10s} {holding[3]:>10.2f}\n'
-    print(report_str)
+def print_report(report, formatter: tableformat.TableFormatter):
+    formatter.headings(('Name', 'Shares', 'Price', 'Change'))
 
-def main(argv):
-    if len(argv) != 3:
+    headers = ('Name', 'Shares', 'Price', 'Change')
+    for name, shares, price, change in report:
+        row_data = (name, str(shares), f'${price:.2f}', f'${change:.2f}')
+        formatter.row(row_data)
+
+    print(formatter)
+
+def portfolio_format(argv, fmt='txt'):
+    if len(argv) < 3:
         raise SystemExit(f'Usage {argv[0]}: portfolio_file prices_file')
     portfolio = read_portfolio(argv[1])
     prices = read_prices(argv[2])
     report = make_report(portfolio, prices)
-    print_report(report)
+    formatter = tableformat.create_formatter(fmt)
+    print_report(report, formatter)
 
 this_folder = os.path.dirname(os.path.realpath(__file__))
 
 if __name__ == "__main__":
-    main(sys.argv)
+    if len(sys.argv) >= 4:
+        portfolio_format(sys.argv, sys.argv[3])
+    else:
+        portfolio_format(sys.argv)
