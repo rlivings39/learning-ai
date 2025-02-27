@@ -180,3 +180,17 @@ Multiple `except` blocks allow catching multiple exception types or you can grou
 Advice is to only catch exceptions if you can properly handle them. Otherwise fail fast and loudly.
 
 `with` is used in place of `finally` to clean up resources for objects programmed to support it.
+
+## Modules
+
+Any Python source file is a module. The `import` statement loads and **executes** a module.
+
+Modules are collections of named values, functions, etc. and are sometimes called namespaces.
+
+Modules are isolated so that they can have conflicting names.
+
+There are a few `import` variations `import math as m` to rename a module in your code. `from math import sin, cos` to import module components to your global namespace.
+
+Modules are loaded once. Subsequent `import` statements just return a reference to the existing module. `sys.modules` shows currently loaded modules. `sys.path` shows the Python path used to locate modules
+
+
