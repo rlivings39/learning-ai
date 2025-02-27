@@ -5,13 +5,16 @@ import os
 import csv
 import fileparse
 import sys
+
 def read_portfolio(filename):
-    portfolio = fileparse.parse_csv(filename,types=[str,int,float])
+    with open(filename, 'rt', encoding='utf-8') as f:
+        portfolio = fileparse.parse_csv(f,types=[str,int,float])
 
     return portfolio
 
 def read_prices(filename):
-    pricelist = fileparse.parse_csv(filename, types=[str,float], has_headers=False)
+    with open(filename, 'rt', encoding='utf-8') as f:
+        pricelist = fileparse.parse_csv(f, types=[str,float], has_headers=False)
     prices = dict(pricelist)
     return prices
 
