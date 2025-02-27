@@ -114,3 +114,16 @@ The `collections` module has useful objects for data.
 
 `defaultdict` is a generalization where any time you look up a key you get a default value like `x = defaultdict(list); x['boo']` returns `[]`
 
+## List comprehensions
+
+List comprehensions create new lists by applying operations to each element of a sequence. `a = [1,2,3,4,5]; b = [2*x for x in a]`
+
+You can also filter in comprehensions `a = [1, -5, 4, 2, -2, 10]; b = [2*x for x in a if x > 0]`
+
+The general syntax is `[ <expression> for <variable_name> in <sequence> if <condition>]`. Think of it like math set builder notation `a = { x^2 | x ∈ s, x > 0 }`
+
+Combine this with a reduction to make a map-reduce operation `sum([x**3 for x in s if x >0])`
+
+Using `{<expression> for <variable_name> in <sequence> if <condition>}` gives a set comprehension instead.
+
+Using `{<expression>: <expression> for <variable_name> in <sequence> if <condition>}` gives a dictionary comprehension instead.
