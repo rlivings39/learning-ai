@@ -7,12 +7,13 @@ import fileparse
 import stock
 import sys
 import tableformat
+import portfolio as pf
 
 def read_portfolio(filename):
     with open(filename, 'rt', encoding='utf-8') as f:
         portfolio_list = fileparse.parse_csv(f,types=[str,int,float])
-    portfolio = [stock.Stock(s['name'], s['shares'], s['price']) for s in portfolio_list]
-    return portfolio
+    holdings = [stock.Stock(s['name'], s['shares'], s['price']) for s in portfolio_list]
+    return pf.Portfolio(holdings)
 
 def read_prices(filename):
     with open(filename, 'rt', encoding='utf-8') as f:
