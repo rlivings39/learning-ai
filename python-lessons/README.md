@@ -148,3 +148,23 @@ Sometimes you need a deep copy. The `copy` module does this `import copy; copy.d
 `type(a)` will tell you the type of the value in `a`. `isinstance(a,list)` checks if `a` is a list. You can pass a tuple to check for one of many types.
 
 Everything is an object. You can make lists of functions or other things.
+
+## Program organization
+
+Functions and scripts can be mixed in 1 file. Functions used in the top-level code must be defined before that code.
+
+You can use type annotations in function definitions `def read_prices(filename: str) -> dict:` to help IDEs. They have no runtime impact.
+
+Functions support positional or keyword arguments by default.
+
+Default arguments work like `def read_prices(filename, debug=False)`
+
+Functions can return 0 or 1 values. More than 1 can be returned in a tuple `return a,b` returns a tuple.
+
+**All assignments in functions are local** Writing a global inside of a function doesn't persist after the function.
+
+If you want to modify a global in a function, declare it `global x` in the function.
+
+Arguments are passed by value just like assignments. Functions don't take copies.
+
+

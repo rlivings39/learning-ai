@@ -47,8 +47,9 @@ def print_report(report):
         report_str += f'{holding[0]:>10s} {holding[1]:>10d} {f'${holding[2]:.2f}':>10s} {holding[3]:>10.2f}\n'
     print(report_str)
 
+this_folder = os.path.dirname(os.path.realpath(__file__))
+
 if __name__ == "__main__":
     # Read this value here rather than in the function
     # so that it works in interactive mode too
-    this_folder = os.path.dirname(os.path.realpath(__file__))
     read_portfolio(sys.argv[1] if len(sys.argv) == 2 else os.path.join('Data', 'portfolio.csv'))
