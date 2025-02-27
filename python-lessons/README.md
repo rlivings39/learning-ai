@@ -241,6 +241,8 @@ Method invocation has 2 steps: lookup and call. A **bound method** is bound to a
 
 An alternative way to manage attributes `getattr(obj, 'name'), setattr(obj, 'name', val), delattr(obj, 'name'), hasattr(obj, 'name')`. `getattr` has a useful default arg
 
+### Exceptions
 
+User-defined exceptions inherit from `Exception`. They're usually empty using `pass` for the body and can exist in hierarchies
 
 
