@@ -18,6 +18,14 @@ def follow(filename):
                 continue
             yield line
 
+def filematch(lines, substr):
+    '''
+    Yields lines matching substr from the input lines
+    '''
+    for line in lines:
+        if substr in line:
+            yield line
+
 def main():
     'follow.py main'
     pf = report.read_portfolio('Data/portfolio.csv')

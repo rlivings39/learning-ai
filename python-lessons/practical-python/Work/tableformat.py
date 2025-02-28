@@ -20,6 +20,13 @@ class TableFormatter:
         '''
         raise NotImplementedError()
 
+    def emit(self):
+        '''
+        Print out accumulated output and flush buffer
+        '''
+        print(self._report_str, end='')
+        self._report_str = ''
+
     def __str__(self):
         return self._report_str
 

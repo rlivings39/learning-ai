@@ -315,4 +315,6 @@ while True:
 
 ### Customizing iteration with generator functions
 
-A generator function is any function that uses `yield`. Calling a generator creates an object rather than executing the function
+A generator function is any function that uses `yield`. Calling a generator creates an object rather than executing the function.
+
+Generators are great for solving problems of producer-consumer variety: `producer->processing->processing->consumer`. See [practical-python/Work/ticker.py](practical-python/Work/ticker.py) for an example.
