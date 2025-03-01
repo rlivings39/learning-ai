@@ -9,10 +9,10 @@ import sys
 import tableformat
 import portfolio as pf
 
-def read_portfolio(filename):
+def read_portfolio(filename, **opts):
     with open(filename, 'rt', encoding='utf-8') as f:
-        portfolio_list = fileparse.parse_csv(f,types=[str,int,float])
-    holdings = [stock.Stock(s['name'], s['shares'], s['price']) for s in portfolio_list]
+        portfolio_list = fileparse.parse_csv(f,types=[str,int,float], **opts)
+    holdings = [stock.Stock(**s) for s in portfolio_list]
     return pf.Portfolio(holdings)
 
 def read_prices(filename):
