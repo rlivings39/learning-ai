@@ -380,3 +380,8 @@ wrapped_func = decorator(wrapped_func)
 ```
 There are subtleties like using them in classes, multiple decorators, etc.
 
+### Method decorators
+
+There are a few standard decorators for classes `@staticmethod, @classmethod, @property`
+
+Static methods are the usual. Class methods are methods on the class object that take the class object as the first argument. Calls to them look like calls to static methods.
