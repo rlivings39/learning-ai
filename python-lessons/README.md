@@ -338,3 +338,13 @@ Variadic keyword arguments `def f(x,y,**kwargs)` with `kwargs` passed as a dict
 These can be combined `def f(*args, **kwargs)`
 
 Tuples and dicts can be expanded into multiple arguments / keyword arguments `f(data, *the_tuple, **the_dict)`
+
+## lambdas
+
+Lambdas allow you to define functions in an expression `lambda x,y,...: expr(x,y,...)`
+
+## Nesting functions and closures
+
+Nesting a function definition inside another and returning it results in a closure as dependent variables are captured and kept alive for the returned function. This also happens for lambdas. The capture appears to be by reference.
+
+Closures are useful for callbacks, delayed evaluation, and decorators
