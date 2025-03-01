@@ -318,3 +318,13 @@ while True:
 A generator function is any function that uses `yield`. Calling a generator creates an object rather than executing the function.
 
 Generators are great for solving problems of producer-consumer variety: `producer->processing->processing->consumer`. See [practical-python/Work/ticker.py](practical-python/Work/ticker.py) for an example.
+
+Generator expressions `(<expression> for i in s if <conditional>)` are the generator version of a list comprehension. They can be chained and passed as function arguments.
+
+Generator benefits
+
+* Natural problem expression, pipelines, streaming, iterating, filtering, etc.
+* Better memory efficiency
+* Generators encourage code reuse
+
+`itertools` is a library module with tools useful for iterators and generators
