@@ -10,17 +10,21 @@ import tableformat
 _COLUMN_HEADERS = ('name', 'price', 'change')
 
 def filter_symbols(rows, names):
-    for row in rows:
-        if row['name'] in names:
-            yield row
+    rows = (row for row in rows if row['name'] in names)
+    return rows
 
 def convert_types(rows, types):
+    # rlivings39: Could use nested generator expressions like
+    # the following. But I think that's far less clear than
+    # just using yield
+    # rows = ((func(val) for val,func in zip(row,types)) for row in rows)
+    # return rows
     for row in rows:
-        yield [func(val) for val,func in zip(row,types)]
+        yield (func(val) for val,func in zip(row,types))
 
 def make_dicts(rows, headers):
-    for row in rows:
-        yield dict(zip(headers,row))
+    out = (dict(zip(headers,row)) for row in rows)
+    return out
 
 def parse_stock_data(lines):
     rows = csv.reader(lines)
@@ -30,8 +34,13 @@ def parse_stock_data(lines):
     return rows
 
 def select_columns(rows, indices):
+    # rlivings39: Could use nested generator expressions like
+    # the following. But I think that's far less clear than
+    # just using yield
+    # rows = ((row[index] for index in indices) for row in rows)
+    # return rows
     for row in rows:
-        yield [row[index] for index in indices]
+        yield (row[index] for index in indices)
 
 def ticker(portfolio_file, log_file, fmt):
     lines = follow(log_file)

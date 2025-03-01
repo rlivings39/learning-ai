@@ -9,7 +9,7 @@ class Portfolio:
 
     @property
     def total_cost(self):
-        return sum([s.cost for s in self._holdings])
+        return sum(s.cost for s in self._holdings)
 
     def tabulate_shares(self):
         total_shares = Counter()
@@ -30,7 +30,7 @@ class Portfolio:
         self._holdings[index] = val
 
     def __contains__(self, name):
-        return any([s.name == name for s in self._holdings])
+        return any(s.name == name for s in self._holdings)
 
     def __repr__(self):
         return f'Portfolio({repr(self._holdings)})'
