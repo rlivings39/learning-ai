@@ -348,3 +348,35 @@ Lambdas allow you to define functions in an expression `lambda x,y,...: expr(x,y
 Nesting a function definition inside another and returning it results in a closure as dependent variables are captured and kept alive for the returned function. This also happens for lambdas. The capture appears to be by reference.
 
 Closures are useful for callbacks, delayed evaluation, and decorators
+
+## Decorators
+
+Decorators are syntactic sugar to create wrapper functions. They are used like
+
+```python
+@decorator
+def wrapped_func(): pass
+```
+
+and can be defined like
+
+```python
+def decorator(func):
+    def wrapper(*args, **kwargs):
+        return func(*args, **kwargs)
+    return wrapper
+```
+
+A usage of a decorator is syntactic sugar
+
+```python
+# What you write
+@decorator
+def wrapped_func(): pass
+
+# What effectively happens
+def wrapped_func(): pass
+wrapped_func = decorator(wrapped_func)
+```
+There are subtleties like using them in classes, multiple decorators, etc.
+
