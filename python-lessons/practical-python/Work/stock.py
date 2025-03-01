@@ -1,7 +1,7 @@
 '''
 Representing stocks and stock ownership
 '''
-
+from typedproperty import typedproperty
 class Stock:
     '''
     A single holding of a stock with symbol, shares, and price
@@ -16,15 +16,7 @@ class Stock:
     def cost(self):
         return self.shares*self.price
 
-    @property
-    def shares(self):
-        return self._shares
-
-    @shares.setter
-    def shares(self, value):
-        if not isinstance(value, int):
-            raise TypeError(f'Number of shares must be an int received a: {type(value)}')
-        self._shares = value
+    shares = typedproperty('shares', int)
 
     def sell(self,shares):
         self.shares = max(0, self.shares - shares)
