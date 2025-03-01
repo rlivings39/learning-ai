@@ -328,3 +328,13 @@ Generator benefits
 * Generators encourage code reuse
 
 `itertools` is a library module with tools useful for iterators and generators
+
+## Variable arguments
+
+Variadic functions look like `def f(x, *args)`. `args` will be a tuple of the extra arguments.
+
+Variadic keyword arguments `def f(x,y,**kwargs)` with `kwargs` passed as a dict
+
+These can be combined `def f(*args, **kwargs)`
+
+Tuples and dicts can be expanded into multiple arguments / keyword arguments `f(data, *the_tuple, **the_dict)`

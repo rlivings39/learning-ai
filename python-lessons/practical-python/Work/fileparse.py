@@ -35,7 +35,7 @@ def parse_csv(data_rows,
                 row = [row[i] for i in indices]
             if types:
                 row = [f(val) for f,val in zip(types, row)]
-        except ValueError as e:
+        except (TypeError, ValueError) as e:
             if not silence_errors:
                 print(f'Row {rownum}: Couldn\'t convert {row}')
                 print(f'Row {rownum}: Reason: {e}')
