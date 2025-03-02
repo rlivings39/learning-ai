@@ -400,3 +400,15 @@ class NewDate(Date):
 
 d = NewDate.today()
 ```
+
+## Testing
+
+The Python `assert` statement can be used to enforce invariants `assert expression, "Diagnostic message"`
+
+The `unittest` module can be used to write unit tests. Write a class inheriting from `unittest.TestCase` and define methods on it using the various `self.assert*` methods to check for things. The method names must start with `test`.
+
+`pytest` is another module that uses less code for testing.
+
+
+
+
