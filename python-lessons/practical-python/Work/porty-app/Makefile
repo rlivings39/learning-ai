@@ -3,3 +3,6 @@ test:
 
 package:
 	python setup.py sdist
+
+format:
+	isort .; black .
