@@ -10,5 +10,5 @@
     "python.testing.unittestEnabled": true,
     "python.testing.cwd": "${workspaceFolder}",
     "python.envFile": "${workspaceFolder}/.env",
-    "python.analysis.extraPaths": ["${workspaceFolder}/python-lessons/practical-python/Work/"]
+//    "python.analysis.extraPaths": ["${workspaceFolder}/python-lessons/practical-python/Work/"]
 }
