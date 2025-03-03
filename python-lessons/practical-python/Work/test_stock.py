@@ -10,7 +10,7 @@ class TestStock(unittest.TestCase):
         s = stock.Stock('GOOG',100,490.1)
         self.assertEqual(s.name, 'GOOG')
         self.assertEqual(s.shares, 100)
-        self.assertEqual(s.price, 490)
+        self.assertEqual(s.price, 490.1)
         self.assertEqual(s.cost, 100*490.1)
 
 if __name__ == "__main__":
