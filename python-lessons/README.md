@@ -12,6 +12,8 @@ Python supports chained comparisons `a < b < c` means `a < b and b < c`
 
 `pprint` module is useful to pretty print objects
 
+Code in strings is not executed so triple quoted strings can be used like pseudo block comments
+
 ## Interpreter notes
 
 `_` refers to last output value
