@@ -2,6 +2,9 @@
 #
 # Exercise 3.3
 import csv
+import logging
+
+log = logging.getLogger(__name__)
 
 def parse_csv(data_rows,
               select: list = None,
@@ -37,8 +40,8 @@ def parse_csv(data_rows,
                 row = [f(val) for f,val in zip(types, row)]
         except (TypeError, ValueError) as e:
             if not silence_errors:
-                print(f'Row {rownum}: Couldn\'t convert {row}')
-                print(f'Row {rownum}: Reason: {e}')
+                log.warning('Row %d: Couldn\'t convert %s', rownum, row)
+                log.debug('Row %d: Reason: %s', rownum, e)
         record = dict(zip(headers, row)) if has_headers else tuple(row)
         records.append(record)
     return records
