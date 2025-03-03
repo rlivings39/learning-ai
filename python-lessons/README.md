@@ -464,3 +464,36 @@ main-app/
 └── tests               # Tests in separate folder
     └── test_foo.py
 ```
+
+## Third party modules and packages
+
+`sys.path` is the module search path consulted by `import`.
+
+Simply printing a module will show you where it loaded from
+
+```python
+>>> import re
+>>> re
+<module 're' from '/usr/lib/python3.12/re/__init__.py'>
+```
+Third party modules are often in a `site-packages` folder.
+
+Using a virtual environment like `venv` allows you to locally set up interpreters, install packages, etc. without making central system changes.
+
+## Distribution
+
+The [Python packaging user guide](https://packaging.python.org/en/latest/) is an up to date resource on dealing with packaging, sharing, etc.
+
+### A very simple packaging walkthrough
+
+Create `setup.py` at the root of your project to define your package using `setuptools`
+
+Create `MANIFEST.in` next to `setup.py` to include additional files
+
+Make a source distribution
+
+`python setup.py sdist` to create `dist/pkg-version.tar.gz` which can be handed out
+
+To install `python -m pip install pkg-version.tar.gz`
+
+Things get more complicated if you have third-party dependencies, foreign code like C/C++, etc.

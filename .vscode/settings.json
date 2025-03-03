@@ -2,13 +2,12 @@
     "python.testing.unittestArgs": [
         "-v",
         "-s",
-        "./python-lessons/practical-python/Work/",
+        "./python-lessons/practical-python/Work/porty-app",
         "-p",
         "test_*.py"
     ],
     "python.testing.pytestEnabled": false,
     "python.testing.unittestEnabled": true,
     "python.testing.cwd": "${workspaceFolder}",
-    "python.envFile": "${workspaceFolder}/.env",
-//    "python.analysis.extraPaths": ["${workspaceFolder}/python-lessons/practical-python/Work/"]
+    "python.envFile": "${workspaceFolder}/.env"
 }
