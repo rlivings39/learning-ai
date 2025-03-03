@@ -421,3 +421,46 @@ The idea is to get a named logger `log = logging.getLogger(__name__)`, then call
 Launching with `python -i` keeps the interpreter open after an error so you can poke at state. Using `print(repr(x))` is useful to determine what something actually is versus the prettier output in `print(x)`.
 
 You can launch the debugger with `python -m pdb foo.py ...`. It has similar operations to gdb.
+
+## Packages
+
+Any Python source file is a module that can be loaded and executed using `import`.
+
+To organize many files into a single importable unit, put them all in a folder, add a file `__init__.py` to that folder, and then you can import the package. You do `import folder.file.thing`.
+
+This breaks imports between files in the same package and main scripts in the same package.
+
+You can use `.` to refer to the current package in your files: `from . import fileparse`. Once you do that you need to use `python -m package.module` to run a main inside `package/module.py`. Some say mains in modules is an antipattern.
+
+The other solution is to make your main script a sibling of your package folder.
+
+The main purpose of `__init__.py` files is to stitch packages together like consolidating functions
+
+```python
+# package/__init__.py
+from .pcost import portfolio_cost
+from .report import portfolio_report
+
+# Usage
+from package import portfolio_cost
+portfolio_cost(..)
+
+# Versus the multi-level
+from package import pcost
+pcost.portfolio_cost(..)
+```
+A common structure looks like
+
+```
+main-app/
+├── README.md
+├── pkg
+│   ├── __init__.py
+│   ├── module1.py
+│   ├── module2.py
+│   ├── module3.py
+│   └── test_module1.py # Tests in source folder
+├── script.py
+└── tests               # Tests in separate folder
+    └── test_foo.py
+```

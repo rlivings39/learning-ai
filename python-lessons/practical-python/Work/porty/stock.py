@@ -1,7 +1,7 @@
 '''
 Representing stocks and stock ownership
 '''
-from typedproperty import typedproperty
+from .typedproperty import typedproperty
 class Stock:
     '''
     A single holding of a stock with symbol, shares, and price

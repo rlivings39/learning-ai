@@ -2,9 +2,11 @@
 #
 # Exercise 1.27
 import os
-import csv
 import sys
-import report
+
+from . import report
+
+
 def main(filename):
     portfolio = report.read_portfolio(filename)
     total_price = portfolio.total_cost

@@ -3,7 +3,7 @@ Unit tests for stock.py
 '''
 
 import unittest
-import stock
+from porty import stock
 
 class TestStock(unittest.TestCase):
     def test_create(self):
