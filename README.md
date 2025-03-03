@@ -8,6 +8,7 @@ https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-202
 
 * [./python-lessons](./python-lessons/) - Various Python classes and lessons. The [README](./python-lessons/README.md) contains accumulated info. Subdirectories are separate courses
 * [./python-lessons/practical-python](./python-lessons/practical-python/) - Code and exercises from the excellent [Practical Python by David Beazley](https://dabeaz-course.github.io/practical-python/Notes/Contents.html)
+* [./python-lessons/python-mastery](./python-lessons/python-mastery) - Code, course material, exercises for [Advanced Python Mastery](https://github.com/dabeaz-course/python-mastery?tab=readme-ov-file) by David Beazley
 * [./pytorch-intro](./pytorch-intro/) - Intro material on using PyTorch. See the [README](./pytorch-intro/README.md) for the details there.
 
 ## PyTorch tutorials on YouTube
@@ -27,7 +28,7 @@ https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-202
 ## Resources
 
 * ✅ https://dabeaz-course.github.io/practical-python/Notes/Contents.html
-* https://github.com/dabeaz-course/python-mastery?tab=readme-ov-file
+* ➡️ https://github.com/dabeaz-course/python-mastery?tab=readme-ov-file
 * https://python-patterns.guide/
 * https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-2024-cc30c6aa6e16
 * https://www.swyx.io/learn-in-public
