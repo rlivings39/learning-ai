@@ -414,3 +414,10 @@ The `unittest` module can be used to write unit tests. Write a class inheriting 
 The `logging` module is a huge logging module for diagnostic info.
 
 The idea is to get a named logger `log = logging.getLogger(__name__)`, then call one of `log.critical(message [,args ]), log.error, log.warning, log.info, log.debug` (messages are formatted with `%`), and finally configure logging using `logging.baseConfig`
+
+
+## Debugging
+
+Launching with `python -i` keeps the interpreter open after an error so you can poke at state. Using `print(repr(x))` is useful to determine what something actually is versus the prettier output in `print(x)`.
+
+You can launch the debugger with `python -m pdb foo.py ...`. It has similar operations to gdb.
