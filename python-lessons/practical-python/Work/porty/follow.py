@@ -3,7 +3,7 @@ Use generators to monitor stock simulator output
 '''
 import os
 import time
-import report
+from . import report
 
 def follow(filename):
     '''

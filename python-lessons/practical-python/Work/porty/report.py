@@ -4,11 +4,10 @@
 import os
 import sys
 
-import fileparse
-import portfolio as pf
-import stock
-import tableformat
-
+from . import fileparse
+from . import portfolio as pf
+from . import stock
+from . import tableformat
 
 def read_portfolio(filename, **opts):
     with open(filename, "rt", encoding="utf-8") as f:
