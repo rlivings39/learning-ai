@@ -96,6 +96,10 @@ Use `for i, name in enumerate(['Bob','Steve'])` to loop over a sequence with ind
 
 Multiple iteration variables work if the elements are tuples `for x,y in points:`. `zip` ties n sequences together allowing you to iterate all as a list of tuples.
 
+Python 3 supports wildcard unpacking `for name, *values in prices: print(name, values)` where `values` is a list of varying size depending on the number of elements remaining.
+
+You can expand/unpack iterables `a = (1,2,3); b = [4,5]; c = [*a, *b]; d = (*a, *b)`
+
 `d = dict(zip(columns, values))` is common. When reading a data file with a header you can do something like
 
 ```python
