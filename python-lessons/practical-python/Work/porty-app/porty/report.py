@@ -6,8 +6,8 @@ import sys
 
 from . import fileparse
 from . import portfolio as pf
-from . import stock
-from . import tableformat
+from . import stock, tableformat
+
 
 def read_portfolio(filename, **opts):
     with open(filename, "rt", encoding="utf-8") as f:

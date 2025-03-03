@@ -1,7 +1,9 @@
-'''
+"""
 A portfolio data structure for holding stocks
-'''
+"""
+
 from collections import Counter
+
 
 class Portfolio:
     def __init__(self, holdings: list):
@@ -33,4 +35,4 @@ class Portfolio:
         return any(s.name == name for s in self._holdings)
 
     def __repr__(self):
-        return f'Portfolio({repr(self._holdings)})'
+        return f"Portfolio({repr(self._holdings)})"
