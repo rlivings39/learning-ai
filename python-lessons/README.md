@@ -55,10 +55,12 @@ Given 2 lists `list1[-2:] = list2` will resize `list1` to accommodate `list2` ei
 
 * Integers
 * Floating point
+    * Numbers have newly added methods like `as_integer_ratio, is_integer, etc`
 * Strings
 * None type which is Falsy
 * Tuples are collections of values grouped together `s = ('GOOG',100,490.1)`. Think: single row in a database table. Tuples are immutable unlike lists. Tuples are often used for a single item consisting of multiple parts whereas lists usually have homogeneous types
 * Dictionaries are key-value mappings `d = {'name': 'GOOG', 'shares': 100, 'price': 490.1}`. `for k,v in d.items():` is a good way to loop through entries. `d.keys()` returns a view into the keys which responds to modification of `d`. `in` checks for key membership. `d.get(key,default)` will return a default value if `key` is missing. Dictionary keys must be immutable.
+    * Use tuples for multi-part dictionary keys
 * Sets are unordered collections of unique items `s = {'IBM','AAPL','MSFT'}` or `s = set(['IBM','AAPL','MSFT'])`
 
 ## File I/O
@@ -114,7 +116,9 @@ The `collections` module has useful objects for data.
 
 `Counter` is like a dictionary mapping `T -> int` but lookups of non-existent keys all return 0. Adding 2 counters creates a new counter containing the union of all keys. Intersecting keys have their values added.
 
-`defaultdict` is a generalization where any time you look up a key you get a default value like `x = defaultdict(list); x['boo']` returns `[]`
+`defaultdict` is a generalization where any time you look up a key you get a default value like `x = defaultdict(list); x['boo']` returns `[]` and allows things like `x['y'].append(42)` without concern over if `'y'` is an existing key.
+
+`ChainMap` links together multiple maps so that lookups go through all of them
 
 ## List comprehensions
 
@@ -300,6 +304,14 @@ You can define properties and access using the `@property` and `@prop.setter` de
 Setting the `__slots__` attribute on your class restricts the set of attribute names stopping others from adding to them. This helps with performance and makes Python use memory more efficiently (allegedly).
 
 The lesson says `__slots__` is usually an optimization used on classes serving as data structures. Doing so will save significant memory and run a bit faster. Likely overkill otherwise.
+
+### Slots, dataclasses, named tuples
+
+Slots covered above are useful for optimizing objects
+
+Using the `@dataclass` decorator from `dataclass` on a class allows you to just define properties and types. Useful methods are generated. Types are **not** enforced.
+
+Named tuples are like if tuples and classes had a baby. Property access like objects and immutability.
 
 ## Generators
 
@@ -499,3 +511,9 @@ Make a source distribution
 To install `python -m pip install pkg-version.tar.gz`
 
 Things get more complicated if you have third-party dependencies, foreign code like C/C++, etc.
+
+## Useful tools
+
+`tracemalloc` provides a way to trace memory usage `import tracemalloc; tracemalloc.start(); current, peak = tracemalloc.get_traced_memory()`
+
+
