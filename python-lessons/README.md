@@ -98,7 +98,11 @@ Multiple iteration variables work if the elements are tuples `for x,y in points:
 
 Python 3 supports wildcard unpacking `for name, *values in prices: print(name, values)` where `values` is a list of varying size depending on the number of elements remaining.
 
-You can expand/unpack iterables `a = (1,2,3); b = [4,5]; c = [*a, *b]; d = (*a, *b)`
+You can expand/unpack iterables `a = (1,2,3); b = [4,5]; c = [*a, *b]; d = (*a, *b)` and dictionaries `a = {'a':1,'b':2}; b = {'c':3,'d':4}; c = {**a, **b}`.
+
+Both can be unpacked into function calls for positional and keyword args resp. `f('first arg', *a, name=1, **b)`
+
+Unpacking combines with `enumerate` like `for rowno, (name, shares, price) in enumerate(rows):`
 
 `d = dict(zip(columns, values))` is common. When reading a data file with a header you can do something like
 
@@ -342,7 +346,7 @@ Generator expressions `(<expression> for i in s if <conditional>)` are the gener
 Generator benefits
 
 * Natural problem expression, pipelines, streaming, iterating, filtering, etc.
-* Better memory efficiency
+* Better memory efficiency. See [python-mastery/Exercises/ex2_3.md](./python-mastery/Exercises/ex2_3.md) for an extreme example of this.
 * Generators encourage code reuse
 
 `itertools` is a library module with tools useful for iterators and generators
