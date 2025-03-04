@@ -2,14 +2,15 @@
 
 import csv
 
+
 def read_rides_as_tuples(filename):
-    '''
+    """
     Read the bus ride data as a list of tuples
-    '''
+    """
     records = []
-    with open(filename, encoding='utf-8') as f:
+    with open(filename, encoding="utf-8") as f:
         rows = csv.reader(f)
-        _ = next(rows)     # Skip headers
+        _ = next(rows)  # Skip headers
         for row in rows:
             route = row[0]
             date = row[1]
@@ -19,27 +20,29 @@ def read_rides_as_tuples(filename):
             records.append(record)
     return records
 
+
 def read_rides_as_dicts(filename):
-    '''
+    """
     Read the bus ride data as a list of dicts
-    '''
+    """
     records = []
-    with open(filename, encoding='utf-8') as f:
+    with open(filename, encoding="utf-8") as f:
         rows = csv.reader(f)
-        _ = next(rows)     # Skip headers
+        _ = next(rows)  # Skip headers
         for row in rows:
             route = row[0]
             date = row[1]
             daytype = row[2]
             numrides = int(row[3])
             record = {
-                'route': route,
-                'date': date,
-                'daytype': daytype,
-                'rides' : numrides
-                }
+                "route": route,
+                "date": date,
+                "daytype": daytype,
+                "rides": numrides,
+            }
             records.append(record)
     return records
+
 
 class Row:
     # Uncomment to see effect of slots
@@ -50,18 +53,20 @@ class Row:
         self.daytype = daytype
         self.rides = rides
 
+
 # Uncomment to use a namedtuple instead
-#from collections import namedtuple
-#Row = namedtuple('Row',('route','date','daytype','rides'))
+# from collections import namedtuple
+# Row = namedtuple('Row',('route','date','daytype','rides'))
+
 
 def read_rides_as_instances(filename):
-    '''
+    """
     Read the bus ride data as a list of instances
-    '''
+    """
     records = []
-    with open(filename, encoding='utf-8') as f:
+    with open(filename, encoding="utf-8") as f:
         rows = csv.reader(f)
-        _ = next(rows)     # Skip headers
+        _ = next(rows)  # Skip headers
         for row in rows:
             route = row[0]
             date = row[1]
@@ -71,10 +76,12 @@ def read_rides_as_instances(filename):
             records.append(record)
     return records
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     import tracemalloc
+
     tracemalloc.start()
-    read_rides = read_rides_as_tuples # Change to as_dicts, as_instances, etc.
+    read_rides = read_rides_as_tuples  # Change to as_dicts, as_instances, etc.
     rides = read_rides("Data/ctabus.csv")
 
-    print('Memory Use: Current %d, Peak %d' % tracemalloc.get_traced_memory())
+    print("Memory Use: Current %d, Peak %d" % tracemalloc.get_traced_memory())

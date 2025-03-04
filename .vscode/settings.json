@@ -2,7 +2,7 @@
     "python.testing.unittestArgs": [
         "-v",
         "-s",
-        "./python-lessons/practical-python/Work/porty-app",
+        "./python-lessons/",
         "-p",
         "test_*.py"
     ],
