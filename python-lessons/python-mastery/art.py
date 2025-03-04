@@ -1,17 +1,19 @@
 # art.py
-'''
+"""
 Random art
-'''
-import sys
+"""
 import random
+import sys
 
-chars = r'\|/'
+chars = r"\|/"
+
 
 def draw(rows, columns):
     for r in range(rows):
-        print(''.join(random.choice(chars) for _ in range(columns)))
+        print("".join(random.choice(chars) for _ in range(columns)))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     if len(sys.argv) != 3:
         raise SystemExit("Usage: art.py rows columns")
     draw(int(sys.argv[1]), int(sys.argv[2]))

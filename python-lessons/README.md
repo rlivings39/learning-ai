@@ -63,6 +63,20 @@ Given 2 lists `list1[-2:] = list2` will resize `list1` to accommodate `list2` ei
     * Use tuples for multi-part dictionary keys
 * Sets are unordered collections of unique items `s = {'IBM','AAPL','MSFT'}` or `s = set(['IBM','AAPL','MSFT'])`
 
+### Builtin type specifics
+
+Builtin types are a part of the Python interpreter and usually implemented in C/C++. This is analogous to `mxArray` in MATLAB.
+
+Objects have an id (memory address), type, and reference count (for garbage collection)
+
+Various builtin types have varying representations and byte sizes. `sys.getsizeof()` shows memory usage of objects. The builtin representation has overhead beyond the underlying data storage for metadata, the type enum, refcount, and more.
+
+Builtin types operate according to predefined "protocols" (special methods) like `__add__(), __len__()`
+
+Protocols are baked into the interpreter at a low level (byte code). Inspect a function's code with `import dis; dis.dis(f)` to see things like `BINARY_ADD`
+
+Knowledge of protocols allows creation of new objects that behave like builtins such as `fractions.Fraction` and decimals
+
 ## File I/O
 
 Use the `with` idiom to automatically close the file
