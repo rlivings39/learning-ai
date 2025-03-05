@@ -53,6 +53,48 @@ class TestMutInt(unittest.TestCase):
         with self.assertRaises(TypeError):
             m1 += 1.2
 
+    def test_eq(self):
+        # Ensure quality works by value
+        m1 = MutInt(1)
+        m2 = MutInt(2)
+        m1Other = MutInt(1)
+
+        self.assertEqual(m1, m1)
+        self.assertNotEqual(m1, m2)
+        self.assertEqual(m1, m1Other)
+
+    def test_lt_le(self):
+        m1 = MutInt(1)
+        m2 = MutInt(2)
+        m1Other = MutInt(1)
+        self.assertLess(m1, m2)
+        self.assertLessEqual(m1, m1Other)
+        self.assertFalse(m2 < m1)
+        self.assertFalse(m2 <= m1)
+
+    def test_gt_ge(self):
+        m1 = MutInt(1)
+        m2 = MutInt(2)
+        m1Other = MutInt(1)
+        self.assertGreater(m2, m1)
+        self.assertGreaterEqual(m1, m1Other)
+        self.assertFalse(m1 > m2)
+        self.assertFalse(m1 >= m2)
+
+    def test_convert(self):
+        num = 42
+        mNum = MutInt(num)
+        outInt = int(mNum)
+        self.assertEqual(outInt, num)
+        outFloat = float(mNum)
+        self.assertEqual(outFloat, float(num))
+
+    def test_indexing(self):
+        data = [1, 2, 3]
+        m1 = MutInt(1)
+        out = data[m1]
+        self.assertEqual(out, data[1])
+
 
 if __name__ == "__main__":
     unittest.main()

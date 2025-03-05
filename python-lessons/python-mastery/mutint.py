@@ -2,8 +2,15 @@
 A mutable integer type
 """
 
+from functools import total_ordering
 
+
+@total_ordering
 class MutInt:
+    """
+    Object representing a mutable integer. The `value` property holds the underlying value.
+    """
+
     __slots__ = ["value"]
 
     def __init__(self, value):
@@ -40,4 +47,26 @@ class MutInt:
         else:
             return NotImplemented
 
-    # TODO continue with comparisons
+    def __eq__(self, other):
+        if isinstance(other, MutInt):
+            return self.value == other.value
+        elif isinstance(other, int):
+            return self.value == other
+        else:
+            return NotImplemented
+
+    def __lt__(self, other):
+        if isinstance(other, MutInt):
+            return self.value < other.value
+        elif isinstance(other, int):
+            return self.value < other
+        else:
+            return NotImplemented
+
+    def __int__(self):
+        return self.value
+
+    def __float__(self):
+        return float(self.value)
+
+    __index__ = __int__  # Allow use as an index
