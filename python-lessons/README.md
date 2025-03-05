@@ -75,7 +75,9 @@ Builtin types operate according to predefined "protocols" (special methods) like
 
 Protocols are baked into the interpreter at a low level (byte code). Inspect a function's code with `import dis; dis.dis(f)` to see things like `BINARY_ADD`
 
-Knowledge of protocols allows creation of new objects that behave like builtins such as `fractions.Fraction` and decimals
+Knowledge of protocols allows creation of new objects that behave like builtins such as `fractions.Fraction` and decimals.
+
+The course says that making new primitive types is one of the most complicated Python programming tasks. Look at working examples to get inspiration.
 
 ## File I/O
 
