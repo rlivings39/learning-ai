@@ -79,6 +79,16 @@ Knowledge of protocols allows creation of new objects that behave like builtins 
 
 The course says that making new primitive types is one of the most complicated Python programming tasks. Look at working examples to get inspiration.
 
+### Containers and memory handling
+
+Containers tend to overallocate to make appending and insertion faster. When growing containers grow proportionally. Lists grow by 12.5%, sets by 4x, dicts by 2x.
+
+`__hash__()` is called on objects to hash them
+
+You can make custom containers by implementing protocols like `__getitem__(), __contains__(), etc.`
+
+For new containers consider `collections.abc` and what you can subclass as these force you to implement required methods
+
 ## File I/O
 
 Use the `with` idiom to automatically close the file
