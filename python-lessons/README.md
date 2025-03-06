@@ -255,6 +255,10 @@ The `class` statement defines a class. When calling methods `a.method(b,c)` the 
 
 The `__init__` method implements the constructor
 
+**Attribute** is anything accessed by `.`
+
+Classes were implemented late in Python and were designed with no change in function scoping rules. So they're just functions taking the instance as the first argument.
+
 ### Inheritance
 
 Python represents inheritance as `class Child(parent):`. Use `super()` to get a parent class instance `super().method()`
