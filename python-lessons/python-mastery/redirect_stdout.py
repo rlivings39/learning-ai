@@ -10,8 +10,8 @@ class redirect_stdout:
     Use this in a `with redirect_stdout(new_target) as file:` context
     """
 
-    def __init__(self, out_file):
-        self.out_file = out_file
+    def __init__(self, temp_out_file):
+        self.out_file = temp_out_file
         self.stdout = None
 
     def __enter__(self):
