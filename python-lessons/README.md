@@ -293,6 +293,14 @@ Consider reyling on context managers instead of `__del__`. These implement `__en
 
 `weakref` supports creating weak references. A `weakref` is callable to dereference. When the pointee is deleted, dereference returns `None`
 
+### Abstract classes
+
+The Python module `abc` has facilities to make abstract base classes like `ABC, abstractmethod`. Inherit from `ABC` and use the `@abstractmethod` decorator to define abstract methods.
+
+### Handler classes
+
+Handler classes (aka strategy design pattern) are very common in Python. A function or method delegates to another object to perform subtasks like printing a row: `print_table(..., row_formatter)`
+
 ### Exceptions
 
 User-defined exceptions inherit from `Exception`. They're usually empty using `pass` for the body and can exist in hierarchies
@@ -565,3 +573,34 @@ Things get more complicated if you have third-party dependencies, foreign code l
 `tracemalloc` provides a way to trace memory usage `import tracemalloc; tracemalloc.start(); current, peak = tracemalloc.get_traced_memory()`
 
 
+## Actions
+
+- [x] Understand multiple inheritance dispatch more using the example
+    ```python
+    class Parent:
+        def spam(self):
+            print('Parent')
+
+    class A(Parent):
+        def spam(self):
+            print('A')
+            super().spam()
+
+    class B(Parent):
+        def spam(self):
+            print('B')
+            super().spam()
+
+    class Child(A,B): pass
+
+    c = Child()
+    c.spam()
+    # Yikes! This prints
+    A
+    B
+    Parent
+
+    # Answer is that super() resolves via mro
+    c.__class__.__mro__
+    (<class '__main__.Child'>, <class '__main__.A'>, <class '__main__.B'>, <class '__main__.Parent'>, <class 'object'>)
+    ```
