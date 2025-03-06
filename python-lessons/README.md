@@ -285,6 +285,14 @@ Method invocation has 2 steps: lookup and call. A **bound method** is bound to a
 
 An alternative way to manage attributes `getattr(obj, 'name'), setattr(obj, 'name', val), delattr(obj, 'name'), hasattr(obj, 'name')`. `getattr` has a useful default arg
 
+Objects are created in 2 steps. First `Class.__new__(Class, *args, **kwargs)` is called then `__init__(*args, **kwargs)` is called. You might call `__new__` directly to manually initialize. Defining `__new__` is needed in rare cases for things like caching and immutability.
+
+You can define a `__del__` method for a destructor. It is **not** related to the `del` operator.
+
+Consider reyling on context managers instead of `__del__`. These implement `__enter__` and `__exit__`.
+
+`weakref` supports creating weak references. A `weakref` is callable to dereference. When the pointee is deleted, dereference returns `None`
+
 ### Exceptions
 
 User-defined exceptions inherit from `Exception`. They're usually empty using `pass` for the body and can exist in hierarchies
@@ -318,7 +326,7 @@ The algorithm is the C3 linearization algorithm
 
 Mixins are a common usage of multiple inheritance in Python
 
-Python supports class variables defined in the class body outside of a function
+Python supports class variables defined in the class body outside of a function. They are often used for customization in inheritance.
 
 Bound methods `f = obj.method_name` have `f.__func__` which is the same as found on `f.__class__` and `f.__self__` which is the instance
 
@@ -336,6 +344,8 @@ method = cls.__dict__['method_name']
 Python has no way of enforcing strong encapsulation. Instead it's up to convention and everyone being adults.
 
 Prefixing a name with a leading `_` signifies it's meant to be internal. If you're using such a thing, look harder for higher-level functionality.
+
+Names prefixed with `__` are not available in base classes directly but exist via a mangled name.
 
 You can define properties and access using the `@property` and `@prop.setter` decorators in your class definition for getter and setter methods resp.
 
