@@ -9,6 +9,9 @@ https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-202
 * [./python-lessons](./python-lessons/) - Various Python classes and lessons. The [README](./python-lessons/README.md) contains accumulated info. Subdirectories are separate courses
 * [./python-lessons/practical-python](./python-lessons/practical-python/) - Code and exercises from the excellent [Practical Python by David Beazley](https://dabeaz-course.github.io/practical-python/Notes/Contents.html)
 * [./python-lessons/python-mastery](./python-lessons/python-mastery) - Code, course material, exercises for [Advanced Python Mastery](https://github.com/dabeaz-course/python-mastery?tab=readme-ov-file) by David Beazley
+* [./coursera-ai-courses](./coursera-ai-courses/) - AI/ML courses on Coursera. See subdirectories for each course
+* [./coursera-ai-courses/ai-for-everyone/](./coursera-ai-courses/ai-for-everyone/) - Andrew Ng's less technical intro to AI
+* [./coursera-ai-courses/machine-learning/](./coursera-ai-courses/machine-learning/) - Andrew Ng's updated technical ML course
 * [./pytorch-intro](./pytorch-intro/) - Intro material on using PyTorch. See the [README](./pytorch-intro/README.md) for the details there.
 
 ## PyTorch tutorials on YouTube
