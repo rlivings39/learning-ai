@@ -42,6 +42,18 @@ Linear regression is probably the most used machine learning algorithm in the wo
 
 Linear regression with one variable (a single feature) is called univariate linear regression
 
+In linear regression, we try to fit a linear function `f_w,b(x) = wx + b` where we need to determine the best values of the parameters `w, b`. All models will have these parameters which need to be determined. They are also called coefficients or weights.
+
+### Cost function
+
+We use a cost function to quantify how well a model/prediction fits training data. For linear regression we compute the squared error `sum((y_hat_i - y_i)^2 / 2m`. The extra division by 2 makes later calculations neater. It is usually denoted `J(w,b)` and called the squared error cost function.
+
+Many other cost functions are used for different applications. Squared error cost function is used for most regression.
+
+Once the cost function is defined, the goal of training/fitting is to find parameters that minimize the cost function. It can be useful to plot or visualize the cost function to see where it may be minimized. This likely won't be possible given sufficiently complex cost functions but optimization techniques can be applied.
+
+For linear regression you have 2 independent parameters so the cost function is a surface. Looking at contour plots of the cost function can give insight into where the minimum is .
+
 ## Training a supervised learning model
 
 1. Collect training set of features and targets
