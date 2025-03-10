@@ -104,6 +104,14 @@ Too large of a choice can cause training to fail by overshooting, failing to con
 
 With a fixed learning rate, steps decrease as you approach the minimum because derivatives generally decrease near the minimum.
 
+## Multiple linear regression
+
+Similar to linear regression but with multiple input variables. So each `xi` is a vector of the `n` features/variables. These are indexed as `x^i_j` where the superscript `i` is the training example index and the subscript `j` is the index of the feature.
+
+The formula is `fwb(x_vec) = w1*x1 + w2*x2 + ... + wn*xn + b = w_vec \dot x_vec + b`
+
+**Note** Use vectorized operations in NumPy rather than explicit loops for faster execution.
+
 ## Glossary and notation
 
 * **Training set / training data** Data used to train the model
