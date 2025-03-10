@@ -62,6 +62,48 @@ For linear regression you have 2 independent parameters so the cost function is 
 
 The prediction value function maps `x` to the prediction/estimated denoted `y-hat`
 
+### Training with gradient descent
+
+Gradient descent can be used to optimize general functions of multiple variables to minimize the cost function `J(w1, w2, ..., wn, b)`. It is used for many kinds of models including some neural networks.
+
+Process outline
+
+* Start with some initial guess. Sensitivity to this guess varies between models.
+* For linear regression, `w=0, b=0` is a fine choice
+* Note that there may be multiple minima
+* Start at the point and find the direction of steepest gradient
+* Step in that direction
+* Repeat
+
+Gradient descent has an interesting property where it may settle to a local minimum but not necessarily a global minimum
+
+Take steps looking like
+
+```
+w = w - a*d/dw*J(w,b)
+b = b - a*d/db*J(w,b)
+```
+
+until convergence happens. I.e. `w` and `b` change very little on each step.
+
+alpha is the "learning rate` between 0 and 1 controlling the size of the steps to take. The derivatives are the partial derivatives.
+
+The partial term is subtracted so that you descend for positive slope and ascend for negative slope.
+
+The cost function for linear regression is convex so there's only one local minimum which matches the global minimum.
+
+**Batch gradient descent** Uses all training samples in each step. There are other algorithms using subsets of the data.
+
+### Choice of the learning rate
+
+The choice of the learning rate impacts efficiency and effectiveness of training.
+
+Too small of a choice causes training to be slow.
+
+Too large of a choice can cause training to fail by overshooting, failing to converge, and/or diverging.
+
+With a fixed learning rate, steps decrease as you approach the minimum because derivatives generally decrease near the minimum.
+
 ## Glossary and notation
 
 * **Training set / training data** Data used to train the model
