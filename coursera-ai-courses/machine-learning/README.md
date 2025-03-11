@@ -118,6 +118,46 @@ Using the normal equation and linear algebra you can solve for `w, b` without it
 
 Some ML libraries may use the normal equation in the backend to solve in the background.
 
+## Feature scaling to make gradient descent work better
+
+Suppose we model a house price in terms w/ parameters of size in sq ft and number of bedrooms. For typical houses the size ranges from 300-2000 or more and bedrooms ranges between 0 and 5.
+
+Having a situation where you have one large value and range feature and another small value and small range feature causes an imbalance. Small changes in the larger feature can result in large changes to the cost whereas larger changes to the smaller feature result in smaller cost changes. I.e. the contour plot will have ellipses with fairly high eccentricity.
+
+With this, gradient descent may bounce around before finding a global minimum because of the extra sensitivity along the large feature dimension.
+
+You can scale your features to have similar ranges to improve gradient descent.
+
+One way to scale features is to simply divide them by the maximum. You can also perform **mean normalization** to center them around zero. To perform this scaling and shifting you can compute `x_normal = (x - x_mean) / (x_max - x_min)`
+
+That'll put the data close to the range `[-1, 1]`.
+
+**z-score** normalization leverages the standard deviation to normalize `x_normal = (x - x_mean) / (x_stddev)` where `x_stddev` is the standard deviation of the feature `x`.
+
+A goal is to rescale so features are close to the range `[-1, 1]`. They don't have to be exact, close is good enough.
+
+There is rarely harm to using feature scaling, so erroring on the side of using it is preferable.
+
+### Checking for gradient descent convergence
+
+Plotting a **learning curve** with the number of iterations on the x axis and cost on the y axis can help you see how the computation is converging.
+
+In addition, you can use an automatic convergence test in your gradient descent algorithm by setting a small threshold. Andrew says that choosing the right threshold can be hard so he often uses learning curves.
+
+### Choosing an appropriate learning rate
+
+**Resource** The [feature scaling and learning rate lab](coursera-ai-courses/machine-learning/week2-labs/C1_W2_Lab03_Feature_Scaling_and_Learning_Rate_Soln.ipynb) does an excellent job of demonstrating the ideas discussed here.
+
+If the cost is oscillating between increasing and decreasing this could mean you've got a bug in your implementation or that the learning rate is too large. If the learning rate is far too large the cost may just increase forever leading to divergence.
+
+With a small enough learning rate the cost should decrease on every iteration. As a debugging step, just set the learning rate to a tiny number and ensure that the cost decreases. If that fails, you've likely got a bug.
+
+Using a learning rate that's too small can cause slow convergence. Trying a range of values like 0.001, 0.01, 0.1, 1, etc, running gradient descent for a few steps, plot the cost, and see what's reasonable.
+
+Andrew tries successively tripling the learning rate to find values that are too small and too large. Then pick a learning rate that's close to the largest sane value.
+
+When implementing feature scaling, you must store the scaling parameters (e.g. min, max, mean, stddev) so that they can be used during prediction.
+
 ## Glossary and notation
 
 * **Training set / training data** Data used to train the model
