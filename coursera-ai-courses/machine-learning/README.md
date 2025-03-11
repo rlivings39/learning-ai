@@ -158,6 +158,20 @@ Andrew tries successively tripling the learning rate to find values that are too
 
 When implementing feature scaling, you must store the scaling parameters (e.g. min, max, mean, stddev) so that they can be used during prediction.
 
+## Feature engineering
+
+Choosing or engineering the right features is critical to the success of your algorithm. An an example you might have features describing the width and depth of a plot of land to predict price. You might instead compute a new feature that is the area.
+
+Feature engineering is using intuition to design new features by transforming or combining original features.
+
+## Polynomial regression
+
+You can compute something like `f_wb(x) = w1*x + w2*x^2 + w3*x^3 + ... + b`. You can also use fractional powers to compute roots.
+
+**Note** When using polynomials, feature scaling is increasingly important.
+
+**Question** How do you choose which features to use? In the second course they cover how to select features and models and to evaluate their fit.
+
 ## Glossary and notation
 
 * **Training set / training data** Data used to train the model
