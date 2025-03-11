@@ -112,6 +112,12 @@ The formula is `fwb(x_vec) = w1*x1 + w2*x2 + ... + wn*xn + b = w_vec \dot x_vec 
 
 **Note** Use vectorized operations in NumPy rather than explicit loops for faster execution.
 
+## Alternative: normal equation
+
+Using the normal equation and linear algebra you can solve for `w, b` without iterating. This doesn't generalize to other algorithms and can be slow when the number of features is large.
+
+Some ML libraries may use the normal equation in the backend to solve in the background.
+
 ## Glossary and notation
 
 * **Training set / training data** Data used to train the model
