@@ -359,6 +359,40 @@ method = cls.__dict__['method_name']
 2. Method chains must terminate. You can't use `super()` forever otherwise you hit an error when bottoming out on `object`. Usually an abstract base class does this.
 3. Use `super()` everywhere and never direct parent calls
 
+### Descriptors
+
+A class that implements at least one of `__get__, __set__, __delete__`. They are used as members of other classes and are the glue that holds the object system together. The `__init__` is passed the name of the attribute it describes
+
+If a member is a descriptor in an attribute `b` then `a.b` actually calls the descriptor's `__get__(self, instance, cls)`. For example
+
+```python
+class Descriptor:
+    def __init__(self, name):
+        self.name = name
+    def __get__(self, instance, cls):
+        print('%s:__get__' % self.name)
+    def __set__(self, instance, value):
+        print('%s:__set__ %s' % (self.name, value))
+    def __delete__(self, instance):
+        print('%s:__delete__' % self.name)
+```
+
+`self` is the descriptor itself, `instance` is the instance it's operating on, `cls`
+
+Every major feature of classes is implemented using descriptors: instance methods, static methods, class methods, properties, `__slots__`
+
+In method lookup where `a.method` returns a bound method, a descriptor does this because it has access to `a`, `'method'`, and `a.__class__`. Properties are also descriptors.
+
+Descriptors are one of Python's most powerful customizations. They allow changing object system low-level details and are used in advanced frameworks or as encapsulation tools.
+
+They can be used in describing data, e.g. in object relational mapping (ORM)
+
+`__get__` can be called either bound or unbound: `obj.a` or `ClassName.a`. You should check if `instance == None` and `return self` in that case for your `__get__` implementation.
+
+If a descriptor only implements `__get__` it is only triggered if `obj.__dict__` doesn't match. Assigning a value to that attribute will hide the descriptor.
+
+In Python 3.6+ descriptors can also define `__set_name__(self,cls,name)` that receives the name of the attribute being used
+
 ### Encapsulation
 
 Python has no way of enforcing strong encapsulation. Instead it's up to convention and everyone being adults.

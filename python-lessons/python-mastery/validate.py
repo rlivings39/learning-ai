@@ -3,10 +3,20 @@ Validation and type checking
 '''
 
 class Validator:
+    def __init__(self, name=None):
+        self.name = name
+
     @classmethod
     def check(cls, value):
         return value
 
+    # __get__ is automatically handled because the name matches the one in __dict__
+
+    def __set__(self, instance, value):
+        instance.__dict__[self.name] = self.check(value)
+
+    def __set_name__(self, cls, name):
+        self.name = name
 class Typed(Validator):
     expected_type = object
     @classmethod
@@ -48,3 +58,9 @@ class PositiveFloat(Float, Positive):
 
 class NonEmptyString(String, NonEmpty):
     pass
+
+class UsesDescriptor:
+    a = PositiveInteger('a')
+
+    def __init__(self, val):
+        self.a = val
