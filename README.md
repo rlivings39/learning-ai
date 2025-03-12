@@ -12,6 +12,7 @@ https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-202
 * [./coursera-ai-courses](./coursera-ai-courses/) - AI/ML courses on Coursera. See subdirectories for each course
 * [./coursera-ai-courses/ai-for-everyone/](./coursera-ai-courses/ai-for-everyone/) - Andrew Ng's less technical intro to AI
 * [./coursera-ai-courses/machine-learning/](./coursera-ai-courses/machine-learning/) - Andrew Ng's updated technical ML course
+* [./coursera-ai-courses/advanced-learning-algorithms/](./coursera-ai-courses/advanced-learning-algorithms/) - Advanced learning algorithms like k-means, PCA, decision trees, etc.
 * [./pytorch-intro](./pytorch-intro/) - Intro material on using PyTorch. See the [README](./pytorch-intro/README.md) for the details there.
 
 ## PyTorch tutorials on YouTube
@@ -38,8 +39,11 @@ https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-202
 * https://pytorch.org/tutorials/beginner/basics/intro.html
 * Andrew Ng on Coursera
     * ✅ https://www.coursera.org/learn/ai-for-everyone
-    * ➡️ https://www.coursera.org/learn/machine-learning
+    * ✅ https://www.coursera.org/learn/machine-learning
+    * ➡️ https://www.coursera.org/learn/advanced-learning-algorithms/
+    * https://www.coursera.org/learn/unsupervised-learning-recommenders-reinforcement-learning
     * https://www.coursera.org/learn/neural-networks-deep-learning
+    * https://www.coursera.org/specializations/deep-learning#courses
     * https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU
     * https://www.coursera.org/learn/unsupervised-learning-recommenders-reinforcement-learning
     * https://github.com/dibgerge/ml-coursera-python-assignments
