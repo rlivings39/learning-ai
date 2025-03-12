@@ -317,7 +317,9 @@ Methods are in `ClassName.__dict__`. For an object `obj.__class__` is the relate
 
 The underlying instance dictionary is updated as you use the object. Updating the dictionary updates the instance
 
-Name resolution for `a.b` first looks in `a.__dict__` and eventually in `a.__class__` (after MRO??)
+Name resolution for `a.b` first looks in `a.__dict__`, eventually in `a.__class__`, then in base classes. This allows class members (not instance data) to be shared by all instances.
+
+A method call `a.f` can be done `a.__class__.__dict__['f'](a)`
 
 `ClassName.__bases__` stores base class tuple
 
@@ -330,7 +332,11 @@ Python uses cooperative multiple inheritance. For multiple inheritance the rules
 * Children are checked before parents
 * Parents are checked in the order listed
 
+The second rule means that a child class's declaration of base classes impacts MRO!
+
 The algorithm is the C3 linearization algorithm
+
+A call to `super()` delegates to the next class on the MRO, **not** necessarily the immediate parent.
 
 Mixins are a common usage of multiple inheritance in Python
 
@@ -346,6 +352,12 @@ for cls in obj.__class__.__mro__:
         break
 method = cls.__dict__['method_name']
 ```
+
+### Designing for inheritance
+
+1. Use compatible method signatures throughout the hierarchy. If you need varying signatures use keyword arguments.
+2. Method chains must terminate. You can't use `super()` forever otherwise you hit an error when bottoming out on `object`. Usually an abstract base class does this.
+3. Use `super()` everywhere and never direct parent calls
 
 ### Encapsulation
 
