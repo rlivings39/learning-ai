@@ -393,6 +393,16 @@ If a descriptor only implements `__get__` it is only triggered if `obj.__dict__`
 
 In Python 3.6+ descriptors can also define `__set_name__(self,cls,name)` that receives the name of the attribute being used
 
+### Customizing attribute access
+
+* `__getattribute__(x,'b')` is called by `x.b` for classes. The default behavior checks the instance and class dictionaries, base classes, etc. If those fail, `__getattr__(x,'b')` is called.
+* `__getattr__(self, name)` is the failsafe accessor. `AttributeError` is raised if not found. Sometimes customized.
+* `__setattr__(self,name,value)` is called for attributes being set
+* `__delattr__(self,name)` is called whenever an attribute is deleted
+
+Customizing these methods allows for creating wrapper objects, proxies, etc. Note that `__getattr__` doesn't apply to special methods like `__len__,__getitem__,etc.` those must be manually overridden.
+
+Overriding `__setattr__` can allow you to limit the permitted attributes without resorting to `__slots__` which should be more for optimization.
 ### Encapsulation
 
 Python has no way of enforcing strong encapsulation. Instead it's up to convention and everyone being adults.
