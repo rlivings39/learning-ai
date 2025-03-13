@@ -249,6 +249,108 @@ Python leverages duck typing a good deal. If it looks like a duck, swims like a 
 
 Consider taking more general API arguments to make your APIs more useful. E.g. take an iterable of data rows rather than a file name.
 
+## Functions
+
+Functions and scripts can be mixed in 1 file. Functions used in the top-level code must be defined before that code.
+
+You can use type annotations in function definitions `def read_prices(filename: str) -> dict:` to help IDEs. They have no runtime impact.
+
+The `typing` module has classes for expressing more complex types.
+
+Functions support positional or keyword arguments by default.
+
+Default arguments work like `def read_prices(filename, debug=False)`. To force the use of a keyword do `def read_prices(filename, *, debug=False)`. Everything after `*` must be given as keyword.
+
+**Don't** Use mutable values as default values. Their value is created once per program.
+
+Functions can return 0 or 1 values. More than 1 can be returned in a tuple `return a,b` returns a tuple.
+
+**All assignments in functions are local** Writing a global inside of a function doesn't persist after the function.
+
+### Variable arguments
+
+Variadic functions look like `def f(x, *args)`. `args` will be a tuple of the extra arguments.
+
+Variadic keyword arguments `def f(x,y,**kwargs)` with `kwargs` passed as a dict
+
+These can be combined `def f(*args, **kwargs)`
+
+Tuples and dicts can be expanded into multiple arguments / keyword arguments `f(data, *the_tuple, **the_dict)`
+
+### lambdas
+
+Lambdas allow you to define functions in an expression `lambda x,y,...: expr(x,y,...)`
+
+### Nesting functions and closures
+
+Nesting a function definition inside another and returning it results in a closure as dependent variables are captured and kept alive for the returned function. This also happens for lambdas. The capture appears to be by reference.
+
+Closures are useful for callbacks, delayed evaluation, and decorators
+
+You can view the closure of a function `f.__closure__[0].cell_contents`. Closures only capture used variables.
+
+### Decorators
+
+Decorators are syntactic sugar to create wrapper functions. They are used like
+
+```python
+@decorator
+def wrapped_func(): pass
+```
+
+and can be defined like
+
+```python
+def decorator(func):
+    def wrapper(*args, **kwargs):
+        return func(*args, **kwargs)
+    return wrapper
+```
+
+A usage of a decorator is syntactic sugar
+
+```python
+# What you write
+@decorator
+def wrapped_func(): pass
+
+# What effectively happens
+def wrapped_func(): pass
+wrapped_func = decorator(wrapped_func)
+```
+There are subtleties like using them in classes, multiple decorators, etc.
+
+#### Method decorators
+
+There are a few standard decorators for classes `@staticmethod, @classmethod, @property`
+
+Static methods are the usual. Class methods are methods on the class object that take the class object as the first argument. Calls to them look like calls to static methods.
+
+They can be useful for cases of inheritance for things like:
+
+```python
+class Date:
+    @classmethod
+    def today(cls):
+        # Constructs an instance of the right class
+        return cls(compute_today)
+
+class NewDate(Date):
+    pass
+
+d = NewDate.today()
+```
+
+### Functional programming and higher-order functions
+
+Functional programming is characterized by functions, no side effects/mutability, higher order functions.
+
+Higher order functions accept and return functions
+
+Lambdas are often used. `functools.partial` allows binding some arguments
+
+The builtin `map` is useful as well. It produces an iterator rather than a list.
+
 ## Classes
 
 The `class` statement defines a class. When calling methods `a.method(b,c)` the object is passed as the first argument `def method(self,b,c)` and is called `self` by convention.
@@ -304,6 +406,10 @@ Handler classes (aka strategy design pattern) are very common in Python. A funct
 ### Exceptions
 
 User-defined exceptions inherit from `Exception`. They're usually empty using `pass` for the body and can exist in hierarchies
+
+You can reraise a propagating exception by just calling `raise` in the `except:` block.
+
+To wrap an exception with another use `from` like `except: raise TaskError('It failed') from e`. The original exception will be stored in `e.__cause__`.
 
 ### Python object model and inner workings
 
@@ -455,76 +561,35 @@ Generator benefits
 
 `itertools` is a library module with tools useful for iterators and generators
 
-## Variable arguments
+## Concurrency and Futures
 
-Variadic functions look like `def f(x, *args)`. `args` will be a tuple of the extra arguments.
+The `threading` module allows for threading with shared state in a single interpreter. Use `t = Thread(target=foo); t.start()`
 
-Variadic keyword arguments `def f(x,y,**kwargs)` with `kwargs` passed as a dict
-
-These can be combined `def f(*args, **kwargs)`
-
-Tuples and dicts can be expanded into multiple arguments / keyword arguments `f(data, *the_tuple, **the_dict)`
-
-## lambdas
-
-Lambdas allow you to define functions in an expression `lambda x,y,...: expr(x,y,...)`
-
-## Nesting functions and closures
-
-Nesting a function definition inside another and returning it results in a closure as dependent variables are captured and kept alive for the returned function. This also happens for lambdas. The capture appears to be by reference.
-
-Closures are useful for callbacks, delayed evaluation, and decorators
-
-## Decorators
-
-Decorators are syntactic sugar to create wrapper functions. They are used like
+Futures represent a future result to be computed. For example
 
 ```python
-@decorator
-def wrapped_func(): pass
+from concurrent.futures import Future
+def func(x, y, fut):
+    time.sleep(20)
+    fut.set_result(x+y)
+
+def caller():
+    fut = Future()
+    threading.Thread(target=func, args=(2, 3, fut)).start()
+    result = fut.result()
+    print('Got:', result)
 ```
 
-and can be defined like
+Another simpler way to handle this example is
 
 ```python
-def decorator(func):
-    def wrapper(*args, **kwargs):
-        return func(*args, **kwargs)
-    return wrapper
-```
+from concurrent.futures import ThreadPoolExecutor
+def worker(a,b):
+    return a+b
 
-A usage of a decorator is syntactic sugar
-
-```python
-# What you write
-@decorator
-def wrapped_func(): pass
-
-# What effectively happens
-def wrapped_func(): pass
-wrapped_func = decorator(wrapped_func)
-```
-There are subtleties like using them in classes, multiple decorators, etc.
-
-### Method decorators
-
-There are a few standard decorators for classes `@staticmethod, @classmethod, @property`
-
-Static methods are the usual. Class methods are methods on the class object that take the class object as the first argument. Calls to them look like calls to static methods.
-
-They can be useful for cases of inheritance for things like:
-
-```python
-class Date:
-    @classmethod
-    def today(cls):
-        # Constructs an instance of the right class
-        return cls(compute_today)
-
-class NewDate(Date):
-    pass
-
-d = NewDate.today()
+pool = ThreadPoolExecutor()
+fut = pool.submit(worker, 2, 3)
+fut.result()
 ```
 
 ## Testing
