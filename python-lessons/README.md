@@ -20,7 +20,12 @@ Code in strings is not executed so triple quoted strings can be used like pseudo
 
 `python -i afile.py` runs the script and enters interactive mode. You can then call functions defined in the script.
 
+`python -O prog.py` runs without assertions
+
 `dir(s)` returns the set of methods on `s`. So does `s.<TAB>` usually
+
+Use the inspect module to get function signatures and more `inspect.signature(func)`
+
 ## Python indexing and slicing
 
 ```python
@@ -204,6 +209,8 @@ Functions can return 0 or 1 values. More than 1 can be returned in a tuple `retu
 **All assignments in functions are local** Writing a global inside of a function doesn't persist after the function.
 
 If you want to modify a global in a function, declare it `global x` in the function.
+
+`globals()` returns a dict of the global scope `locals()` returns a dict of the local scope. There's also `import builtins` with things like `abs, pi, etc`. It can be modified but that's not a great idea.
 
 Arguments are passed by value just like assignments. Functions don't take copies.
 
