@@ -172,6 +172,24 @@ You can compute something like `f_wb(x) = w1*x + w2*x^2 + w3*x^3 + ... + b`. You
 
 **Question** How do you choose which features to use? In the second course they cover how to select features and models and to evaluate their fit.
 
+## Classification problems
+
+Maps an input to one of a finite set of outputs. E.g. Is this email spam -> yes or no, is this transaction fraud -> yes or no, what is this image -> (horse, violin, car)
+
+Linear regression is terrible for this kind of problem. Adding outlier values can drag a decision boundary far out of place.
+
+Binary classification means there are 2 categories.
+
+### Logistic regression
+
+Logistic regression is probably the most widely used classification algorithm in the world.
+
+The sigmoid function (aka logistic function) is used: `g(z) = 1/(1+e^(-z))` where `0 < g(z) < 1`.
+
+The logistic regression function is `f_wb(x) = g(w \dot x + b) = 1/(1 + e^-(w \dot x + b))
+
+Think that the output of logistic regression is the probability that the output class is 1.
+
 ## Glossary and notation
 
 * **Training set / training data** Data used to train the model
