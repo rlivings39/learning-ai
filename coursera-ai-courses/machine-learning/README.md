@@ -225,6 +225,15 @@ Using this loss function and factoring out the negatives we then arrive at a cos
 
 This cost function also interacts with a stats property called maximum likelihood estimation.
 
+The same gradient descent updates as linear regression can be used here
+
+```
+wj = wj - a*1/m*sum((f_wb(xi) - yi)*xij)
+b = b - a*1/m*sum(f_wb(xi) - yi)
+```
+
+The [logistic regression gradient descent lab](./week3-labs/C1_W3_Lab06_Gradient_Descent_Soln.ipynb). The [scikit-learn lab](./week3-labs/C1_W3_Lab07_Scikit_Learn_Soln.ipynb) shows how simple this is with scikit-learn.
+
 ## Glossary and notation
 
 * **Training set / training data** Data used to train the model
