@@ -190,6 +190,41 @@ The logistic regression function is `f_wb(x) = g(w \dot x + b) = 1/(1 + e^-(w \d
 
 Think that the output of logistic regression is the probability that the output class is 1.
 
+### Decision boundary
+
+The sigmoid function is continuous and predicts a probability so we need to decide when to map it to 0 or 1. Using a threshold of 0.5 could make sense. This decision point is when `z = w \dot x + b = 0`. This line is called the **decision boundary**.
+
+Choosing a value larger or smaller than 0.5 can help you bias your results to avoid false positives or false negatives as desired. For example, for tumor detection, you likely want to avoid missing malignant tumors so a low value like 0.2 would make more sense.
+
+By using more complex polynomials for `z` you can use more complex decision boundaries like ellipses, circles, and more. With only linear terms, the decision boundary will be linear in the features given (i.e. line, plane, hyperplane, etc.)
+
+### Cost function for logistic regression
+
+The squared error cost for logistic results in a non-convex function that plays poorly with gradient descent because it can get stuck in the many local minima.
+
+The loss function used for logistic regression is
+
+```
+L(f_wb(xi), yi) = -log(f_wb(xi)) if yi = 1
+L(f_wb(xi), yi) = -(1 - log(f_wb(xi))) if yi = 0
+```
+
+When `yi = 1` the value of the loss or of `-log(f)` is 0 and the slope of the function is pretty low. As the value of `f` approaches 0, the value of `log(f)` increases to signify higher error and the slope increases so gradient descent will take larger steps.
+
+The cost function is then `J(w,b) = 1/m * sum(L(f_wb(xi), yi))`
+
+Given that `y` is either 0 or 1 we can rewrite the loss function as
+
+```
+L(f_wb(xi), yi) = -yi * log(f_wb(xi)) - (1 - yi) * (1 - log(f_wb(xi)))
+```
+
+Hint: Just consider how this function reduces when `y` is 0 and 1
+
+Using this loss function and factoring out the negatives we then arrive at a cost function `J(w,b) = -1/m * sum(yi * log(f_wb(xi)) + (1 - yi) * (1 - log(f_wb(xi))))`
+
+This cost function also interacts with a stats property called maximum likelihood estimation.
+
 ## Glossary and notation
 
 * **Training set / training data** Data used to train the model
