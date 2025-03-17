@@ -176,11 +176,11 @@ class plt_one_addpt_onclick:
         #print(f"bb     : {bcid.rectangles[0].get_bbox()}")
         #print(f"points : {bcid.rectangles[0].get_bbox().get_points()}")  #[[xmin,ymin],[xmax,ymax]]
 
-        h = bcid.rectangles[0].get_height()
-        bcid.rectangles[0].set_height(3*h)
+        # h = bcid.rectangles[0].get_height()
+        # bcid.rectangles[0].set_height(3*h)
 
-        ymax = bcid.rectangles[0].get_bbox().y1
-        ymin = bcid.rectangles[0].get_bbox().y0
+        # ymax = bcid.rectangles[0].get_bbox().y1
+        # ymin = bcid.rectangles[0].get_bbox().y0
 
-        bcid.lines[0][0].set_ydata([ymax,ymin])
-        bcid.lines[0][1].set_ydata([ymin,ymax])
+        # bcid.lines[0][0].set_ydata([ymax,ymin])
+        # bcid.lines[0][1].set_ydata([ymin,ymax])
