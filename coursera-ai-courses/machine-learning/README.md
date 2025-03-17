@@ -234,6 +234,75 @@ b = b - a*1/m*sum(f_wb(xi) - yi)
 
 The [logistic regression gradient descent lab](./week3-labs/C1_W3_Lab06_Gradient_Descent_Soln.ipynb). The [scikit-learn lab](./week3-labs/C1_W3_Lab07_Scikit_Learn_Soln.ipynb) shows how simple this is with scikit-learn.
 
+## Overfitting and regularization
+
+A model that doesn't fit the data well (e.g. linear function for data with a quadratic shape) is said to **underfit** the data or to have **high bias**.
+
+If a model fits well and should also do a good job predicting values outside of the training set it is said to **generalize** well.
+
+In other cases, you can create a model that exactly passes through all training examples but fails to generalize well. This is called **overfitting the data**. This is sometimes called having **high variance** because minor perturbations to the training set result in vastly different fits.
+
+The same ideas apply to classification and logistic regression. You can use high-order polynomials to fit complicated decision boundaries but wind up overfitting.
+
+### Addressing overfitting
+
+1. You can collect more training data to smooth out the fit. Seems to be the preferred strategy.
+2. Using fewer features can help to avoid overfitting. E.g. stop using polynomial features, just eliminate other linear features. There are algorithms to choose useful features.
+3. Regularization is shrinking the values of the features to avoid large variance. It is common to only regularize the `wj` and not `b`.
+
+The main idea is to add large penalties for features
+
+### Regularization for linear regression
+
+```
+J(w,b) = 1/(2*m) * sum(f_wb(xi) - yi)^2 + l/(2*m)*sum(wj^2)
+```
+
+The second term in the cost function is used to force the `wj` to be small.
+
+`l` or lambda is the **regularization** parameter. You can penalize the `b` term but it is often omitted.
+
+Choosing `l` too large results in underfitting. Choosing `l` too small results in overfitting.
+
+Adapting gradient descent for regularization is pretty simple
+
+```
+wj = wj - a*(1/m*sum((f_wb(xi) - yi)*xij) + l/m * wj)
+b = b - a*1/m*sum(f_wb(xi) - yi)
+```
+
+simplifying this we see that regularization adds a scaling factor to the usual linear regression update
+
+```
+wj = wj*(1-a*l/m) - a*1/m*sum((f_wb(xi) - yi)*xij)
+b = b - a*1/m*sum(f_wb(xi) - yi)
+```
+
+Looking at the coefficient for `wj` we see that we wind up scaling `wj` by a number slightly less than 1 which shrinks the value of `wj` by a little bit on each step, helping to deflate it.
+
+### Regularization for logistic regression
+
+Applying the regularization idea to logistic regression we see something like
+
+```
+J(w,b) = -1/m * sum(yi * log(f_wb(xi)) + (1 - yi) * (1 - log(f_wb(xi)))) + l/(2*m) * sum(wj^2)
+```
+
+to again penalize the `wj`.
+
+The gradient descent update for logistic regression now looks like:
+
+```
+wj = wj - a*1/m*sum((f_wb(xi) - yi)*xij) + l/m*wj
+b = b - a*1/m*sum(f_wb(xi) - yi)
+```
+
+## Final course notes
+
+Using linear and logistic regression can allow you to add much value to your work. Understanding the how and why to reduce overfitting/underfitting are almost more important than the specific model being used.
+
+There are schemes to extend logistic regression beyond simple binary classification. These include one vs. rest or cross-entropy loss. These show up in various toolkits like `scikit-learn`.
+
 ## Glossary and notation
 
 * **Training set / training data** Data used to train the model
