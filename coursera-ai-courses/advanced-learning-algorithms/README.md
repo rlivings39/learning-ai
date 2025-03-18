@@ -4,4 +4,58 @@ Course link: https://www.coursera.org/learn/advanced-learning-algorithms/
 
 Neural networks began as an attempt to mimic the way that the brain works. They mimic the brain in being an input/output system that has many interconnections with pieces that process.
 
+Modern neural networks made great strides in speech recognition, then images and computer vision, and finally text (NLP)
 
+Neural networks have taken off recently for a few reasons. The amount of digital data we have is massive. Traditional learning algorithms like linear and logistic regression. The performance of NNs is better and sometimes scales up by increasing the size of the network.
+
+## How neural networks operate: demand prediction example
+
+Consider you're planning to sell a shirt and you want to predict if it will be a top seller.
+
+Suppose you have a system that takes the price and outputs if the shirt will be a top seller. If you use the sigmoid algorithm you can view a neuron as a computer that takes in the price and spits out the output probability (a.k.a. activation)
+
+Consider the same problem with features (price, shipping cost, marketing, material). We may think that variables are (affordability, awareness, perceived quality). We make a neuron for each of those 3 variables. Each of those uses one or more input features. Their outputs are wired to a final neuron.
+
+The three neurons are a **layer** which is a grouping of neurons taking the same or similar inputs and outputting values. The final layer is called the **output** layer. The output values of the affordability, awareness, perceived quality are called the **activations** or **activation values**.
+
+The first layer of input numbers is called the **input layer**
+
+In this example we manually wired up the inputs and neurons. In practice every neuron will have access to every input from the prior layer. Training will then downplay the useless inputs rather than a human needing to do so manually.
+
+The input layer will be written as a vector that's fed to the next layer. The middle layers output activation vectors which then become inputs to the subsequent layer.
+
+Layers in the middle are often called **hidden layers** because the correct values for those are not present in the training set.
+
+**Important** In our example, the hidden layer is just 3D logistic regression mapping (affordability, awareness, perceived quality) -> probability of being a top seller. However, the learning algorithm helps us learn what features are important and useful.
+
+Neural networks can learn its own features without manual feature engineering.
+
+Choosing the number of hidden layers and neurons per layer is called network architecture. A network with multiple layers is sometimes called a **multilayer perceptron** in literature.
+
+### Image recognition example
+
+The input will be an image, say 1000x1000 px. So the input layer will take 1M numbers (the pixels) and pass them on.
+
+What might happen is that neurons in early layers detect small line segments in various orientations. Subsequent layers then might detect higher-order features like eyes, noses, etc. And this continues with subsequent layers detecting more complete face information.
+
+This process happens without human programming or input.
+
+## Neural network model
+
+Layers are the fundamental building blocks of NNs. Suppose you have a layer with 3 neurons that takes 4 input features. Each neuron computes a logistic function. So each neuron has parameters that we denote ((w1,b1),(w2,b2),(w3,b3)). These each compute an activation value (a1,a2,a3).
+
+We often index the layers with the input layer starting at 0. A square bracket superscript is often used to denote a layer index. This superscript is used on weights and activations.
+
+When we say a network has N layers, it has N-1 hidden layers and 1 output layer. The input layer is not included.
+
+For an arbitrary layer `l` and unit `j` the equation is `a_jl = g(w_jl \dot a_lm1) + b_jl`. `g` is the **activation function**. We've used sigmoid but there are others.
+
+## Making inferences with neural networks (forward propagation)
+
+Consider the example of handwritten digit recognition. We use an 8x8 image of 64 pixel values of grayscale values [0,255]. We use a 3 layer network with 25, 15, and 1 unit(s) resp.
+
+We apply the rules above to compute the activation for each layer. Each layer's activation has N elements where N is the number of units in the layer. Sometimes `f(x)` is used to denote the overall output of the model.
+
+This is called **forward propagation**
+
+It is common to have a large number of units in early hidden layers with the number of units decreasing in subsequent layers.
