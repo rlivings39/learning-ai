@@ -1,5 +1,7 @@
 # stock.py
 
+from validate import PositiveInteger, validated
+
 
 class Stock:
     __slots__ = ("name", "_shares", "_price")
@@ -53,5 +55,6 @@ class Stock:
     def cost(self):
         return self.shares * self.price
 
-    def sell(self, nshares):
+    @validated
+    def sell(self, nshares: PositiveInteger):
         self.shares -= nshares

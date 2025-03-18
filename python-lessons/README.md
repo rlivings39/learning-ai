@@ -410,6 +410,9 @@ The Python module `abc` has facilities to make abstract base classes like `ABC, 
 
 Handler classes (aka strategy design pattern) are very common in Python. A function or method delegates to another object to perform subtasks like printing a row: `print_table(..., row_formatter)`
 
+### Callable objects
+
+You can define objects that are callable with `()` by implementing the method `__call__()`.
 ### Exceptions
 
 User-defined exceptions inherit from `Exception`. They're usually empty using `pass` for the body and can exist in hierarchies
