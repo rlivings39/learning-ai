@@ -2,6 +2,7 @@
 Validation and type checking
 """
 
+from functools import wraps
 import typing
 from inspect import Signature
 
@@ -115,7 +116,7 @@ def validated(func: typing.Callable):
     """
     Use as a decorator to apply input validation from type annotations from the validate module
     """
-
+    @wraps(func)
     def wrapper(*args, **kwargs):
         sig = Signature.from_callable(func)
         bound_sig = sig.bind(*args, **kwargs)

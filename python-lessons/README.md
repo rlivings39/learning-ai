@@ -327,6 +327,12 @@ wrapped_func = decorator(wrapped_func)
 ```
 There are subtleties like using them in classes, multiple decorators, etc.
 
+Multiple decorators work just the way you think they would by nesting the wrappers.
+
+Decorators by default don't copy metadata. Use `@wraps` from `functools` instead
+
+Decorators can take arguments. The outer function accepts the arguments then returns a function that returns a function.
+
 #### Method decorators
 
 There are a few standard decorators for classes `@staticmethod, @classmethod, @property`
