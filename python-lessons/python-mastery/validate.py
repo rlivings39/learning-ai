@@ -2,6 +2,9 @@
 Validation and type checking
 """
 
+import typing
+from inspect import Signature
+
 
 class Validator:
     def __init__(self, name=None):
@@ -77,3 +80,18 @@ class UsesDescriptor:
 
     def __init__(self, val):
         self.a = val
+
+
+class ValidatedFunction:
+    def __init__(self, func: typing.Callable):
+        self.func = func
+
+    def __call__(self, *args, **kwargs):
+        sig = Signature.from_callable(self.func)
+        bound_sig = sig.bind(*args, **kwargs)
+        for argname, argval in bound_sig.arguments.items():
+            attr = self.func.__annotations__[argname]
+            attr.check(argval)
+
+        res = self.func(*args, **kwargs)
+        return res
