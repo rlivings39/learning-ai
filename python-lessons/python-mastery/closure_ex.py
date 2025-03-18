@@ -8,7 +8,9 @@ def counter(val):
         nonlocal val
         val -= 1
         return val
+
     return incr, decr
+
 
 def main():
     up, down = counter(0)
@@ -18,6 +20,7 @@ def main():
     print(down())
     print(down())
     print(down())
+
 
 if __name__ == "__main__":
     main()

@@ -1,30 +1,30 @@
 # Advanced Python Mastery
 
-A course by David Beazley (https://www.dabeaz.com)  
-Copyright (C) 2007-2024  
+A course by David Beazley (https://www.dabeaz.com)
+Copyright (C) 2007-2024
 
 ## Synopsis
 
 An exercise-driven course on Advanced Python Programming that was
 battle-tested several hundred times on the corporate-training circuit
 for more than a decade.  Written by David Beazley, author of the
-[Python Cookbook, 3rd Edition](https://www.dabeaz.com/cookbook.html) (O'Reilly) and 
+[Python Cookbook, 3rd Edition](https://www.dabeaz.com/cookbook.html) (O'Reilly) and
 [Python Distilled](https://www.dabeaz.com/python-distilled/index.html)
 (Addison-Wesley).  Released under a Creative Commons license.  Free of
 ads, tracking, pop-ups, newsletters, and AI.
 
 Everything in this course should work with the latest version of
 Python, but be aware that the course primarily targets the feature set
-of Python 3.6.  As such, certain modern features don't get coverage. 
+of Python 3.6.  As such, certain modern features don't get coverage.
 Honestly, this shouldn't affect you much unless you're trying to write code
 that's freakishly clever.
 
-## Target Audience 
+## Target Audience
 
-This course is for Python programmers who want to move beyond 
+This course is for Python programmers who want to move beyond
 short scripts to writing more sophisticated programs.    To do that,
 it helps to better understand the programming techniques used
-in popular libraries and frameworks. Thus, this course is mainly 
+in popular libraries and frameworks. Thus, this course is mainly
 for programmers who want to build a more complete mental model of the
 Python language itself and how it works.  Ultimately, the goal
 is to be able to apply this knowledge to your own projects.
@@ -49,10 +49,10 @@ module imports, the use of Notebooks is not recommended.
 The [`PythonMastery.pdf`](PythonMastery.pdf) file contains detailed
 presentation slides. Course exercises and suggested timings are
 clearly indicated. You'll want to keep this by your side (I recommend
-downloading and viewing it with a local PDF viewer). Start here! 
+downloading and viewing it with a local PDF viewer). Start here!
 
 The [Exercises/](Exercises/index.md) directory has all of the
-course exercises. 
+course exercises.
 
 The [Solutions/](Solutions/) directory has fully worked out solution code.
 
@@ -130,7 +130,7 @@ promises.
 
 **A:** This course was extensively taught pre-pandemic. Post-pandemic,
 my teaching has shifted towards projects and CS fundamentals.
-However, why let a good course just languish on my computer? 
+However, why let a good course just languish on my computer?
 
 **Q: How can I help?**
 
@@ -138,9 +138,9 @@ However, why let a good course just languish on my computer?
 other people about it.
 
 ----
-`>>>` Advanced Python Mastery  
-`...` A course by [dabeaz](https://www.dabeaz.com)  
-`...` Copyright 2007-2023  
+`>>>` Advanced Python Mastery
+`...` A course by [dabeaz](https://www.dabeaz.com)
+`...` Copyright 2007-2023
 
 ![](https://i.creativecommons.org/l/by-sa/4.0/88x31.png). This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/)
 
