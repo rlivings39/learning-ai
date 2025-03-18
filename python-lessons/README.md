@@ -333,6 +333,17 @@ Decorators by default don't copy metadata. Use `@wraps` from `functools` instead
 
 Decorators can take arguments. The outer function accepts the arguments then returns a function that returns a function.
 
+#### Class decorators
+
+Decorators can be applied to class definitions too. They're the same as doing `MyClass = decorator(MyClass)`.
+
+Class decorators typically inspect or do something with the class definition and return the original class. Maybe they replace or wrap one method of the class like logging all `__getattr__` calls.
+
+Base classes can observe inheritance by implementing `@classmethod def __init_subclass__(cls, **kwargs)`.
+
+[Exercise 7.3](./python-mastery/Exercises/ex7_3.md) has a great usage of class decorators and descriptors to do validation.
+
+
 #### Method decorators
 
 There are a few standard decorators for classes `@staticmethod, @classmethod, @property`
@@ -481,6 +492,20 @@ method = cls.__dict__['method_name']
 2. Method chains must terminate. You can't use `super()` forever otherwise you hit an error when bottoming out on `object`. Usually an abstract base class does this.
 3. Use `super()` everywhere and never direct parent calls
 
+### Type creation
+
+The `type` class is a class that is callable to create more types. It is invoked when you define a class so you can directly interact with it to programatically define classes. Though the code is hard to read. See [Example 7.4](./python-mastery/Exercises/ex7_4.md)
+
+A class that creates classes is called a **metaclass**. You can change the desired metaclass for your class via `class Spam(metaclass=foobar)`
+
+To make such a class inherit from `type` and override `__new__, __prepare__, etc` then define a new root object using your metaclass as the metaclass and inherit from that.
+
+Metaclasses allow inspection and alteration of the class definition process.
+
+There are 4 interception points in order `type.__prepare__(name, bases), type.__new__(type, name, bases, dict), type.__init__(cls, name, bases, dict), type__call__(cls, *args, **kwargs)`. The first 3 are for the class definition and the 4th is for instance creation.
+
+[Exercise 7.6](./python-mastery/Exercises/ex7_6.md) shows how to use these.
+
 ### Descriptors
 
 A class that implements at least one of `__get__, __set__, __delete__`. They are used as members of other classes and are the glue that holds the object system together. The `__init__` is passed the name of the attribute it describes
@@ -567,6 +592,10 @@ A generator function is any function that uses `yield`. Calling a generator crea
 
 Generators are great for solving problems of producer-consumer variety: `producer->processing->processing->consumer`. See [practical-python/Work/ticker.py](practical-python/Work/ticker.py) for an example.
 
+Generators a single use. If you want to use them again, you must recreate them. For multi-use make a class with an `__iter__(self)` method that is a generator.
+
+Adding an `__iter__` method that's a generator makes your class a generator. With that you can then do all sorts of nice iterable things like converting to lists/tuples, unpacking, etc.
+
 Generator expressions `(<expression> for i in s if <conditional>)` are the generator version of a list comprehension. They can be chained and passed as function arguments.
 
 Generator benefits
@@ -576,6 +605,18 @@ Generator benefits
 * Generators encourage code reuse
 
 `itertools` is a library module with tools useful for iterators and generators
+
+### Coroutines
+
+`yield` can also be used as an expression like `line = yield`. A function doing that is a **coroutine**. You feed values to `yield` by calling `cr.send(val)` on the coroutine.
+
+Call `cr.send(None)` first to prime the coroutine. Coroutines also allow pipelines and allow you to have the chain fan out with multiple consumers on a single step.
+
+### Closing generators and coroutines
+
+`.close()` terminates `.throw()` raises an exception. When `.close()` is called the next call to `yield` raises `GeneratorExit` so you can perform any necessary cleanup.
+
+Using `.throw()` throws at the next yield.
 
 ## Concurrency and Futures
 
