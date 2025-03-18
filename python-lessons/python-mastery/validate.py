@@ -89,9 +89,57 @@ class ValidatedFunction:
     def __call__(self, *args, **kwargs):
         sig = Signature.from_callable(self.func)
         bound_sig = sig.bind(*args, **kwargs)
+        bad_args = {}
         for argname, argval in bound_sig.arguments.items():
             attr = self.func.__annotations__[argname]
-            attr.check(argval)
+            try:
+                attr.check(argval)
+            except TypeError as e:
+                bad_args[argname] = e
+        if len(bad_args) > 0:
+            msg = "Bad arguments\n"
+            for name, e in bad_args.items():
+                msg += f"{name}: {e}\n"
+            raise TypeError(msg)
 
         res = self.func(*args, **kwargs)
+        try:
+            self.func.__annotations__["return"].check(res)
+        except TypeError as e:
+            msg = f"Bad return: {e}"
+            raise TypeError(msg) from e
         return res
+
+
+def validated(func: typing.Callable):
+    """
+    Use as a decorator to apply input validation from type annotations from the validate module
+    """
+
+    def wrapper(*args, **kwargs):
+        sig = Signature.from_callable(func)
+        bound_sig = sig.bind(*args, **kwargs)
+        return_annotation = func.__annotations__.pop("return", None)
+        bad_args = {}
+        for argname, checker in func.__annotations__.items():
+            argval = bound_sig.arguments[argname]
+            try:
+                checker.check(argval)
+            except TypeError as e:
+                bad_args[argname] = e
+        if len(bad_args) > 0:
+            msg = "Bad arguments\n"
+            for name, e in bad_args.items():
+                msg += f"{name}: {e}\n"
+            raise TypeError(msg)
+
+        res = func(*args, **kwargs)
+        if return_annotation:
+            try:
+                return_annotation.check(res)
+            except TypeError as e:
+                msg = f"Bad return: {e}"
+                raise TypeError(msg) from e
+        return res
+
+    return wrapper
