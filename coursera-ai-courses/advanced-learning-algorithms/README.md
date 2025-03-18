@@ -59,3 +59,35 @@ We apply the rules above to compute the activation for each layer. Each layer's 
 This is called **forward propagation**
 
 It is common to have a large number of units in early hidden layers with the number of units decreasing in subsequent layers.
+
+## Inference in TensorFlow
+
+When using TensorFlow you can make layers like `Dense` and specifying the units and activation functions. Then you call that layer like a function to apply it to the input and compute the activation.
+
+At some point you've got to set the parameters, usually obtained from learning.
+
+### Data representation in NumPy and TensorFlow
+
+There are inconsistencies between NumPy and TensorFlow. TensorFlow tends to represent everything as 2D. So just make sure to use a 1xN vector instead of an N vector: `x = np.array([[2.0, 17.0]])`. TensorFlow uses `Tensors` to represent data.
+
+## Building a neural network in TensorFlow
+
+You can use the `Sequential` class to create a sequential neural network that can be worked with.
+
+```python
+model = Sequential([
+    Dense(units=3, activation='sigmoid')
+    Dense(units=1, activation='sigmoid')
+    ])
+
+x = np.array([[200,0, 17.0],
+             [120.0, 5.0],
+             [425.0, 20.0]
+             [212.0, 18.0]])
+y = np.array([y,0,0,1])
+model.compile(...) # inputs TBD
+model.fit(x,y)     # train
+xnew = np.array(...)
+y_predict = model.predict(xnew) # forward propagation / inference
+```
+
