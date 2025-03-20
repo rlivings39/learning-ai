@@ -90,4 +90,10 @@ model.fit(x,y)     # train
 xnew = np.array(...)
 y_predict = model.predict(xnew) # forward propagation / inference
 ```
+## Neural network implementation in Python
 
+Here's an idea of how you'd implement forward propagation for a single layer. The idea is that each layer takes in the previous layer's activation and the current layer's weights and biases.
+
+To do this, create a matrix from the weight vectors with each neruon's weights as a column (matrix is num input features x num units/neurons)
+
+create `b` as a vector of the biases and the input activation as another vector.
