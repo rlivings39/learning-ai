@@ -100,7 +100,7 @@ create `b` as a vector of the biases and the input activation as another vector.
 
 ## Efficient implementation of NNs w/ vectorization and matrix multiplication
 
-Vectorization and matrix multiplication are very efficient in hardware, parallel hardware, and GPUs. You can implement a step of forward prop like `Z = np.matmul(A_in,W) + B; A_out = g(Z)` where `A_in` is a `1 x num_features` vector, `W` is a `num_features x num_units` matrix, and `B` is a `1 x num_units` vector.
+Vectorization and matrix multiplication are very efficient in hardware, parallel hardware, and GPUs. You can implement a step of forward prop like `Z = np.matmul(A_in,W) + B; A_out = g(Z)` where `A_in` is a `1 x num_features` vector, `W` is a `num_features x num_units` matrix, `B` is a `1 x num_units` vector, and `A_out` will be a `1 x num_units` vector.
 
 ## Comments on AGI
 
