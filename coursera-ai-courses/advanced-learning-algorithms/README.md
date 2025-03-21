@@ -97,3 +97,19 @@ Here's an idea of how you'd implement forward propagation for a single layer. Th
 To do this, create a matrix from the weight vectors with each neruon's weights as a column (matrix is num input features x num units/neurons)
 
 create `b` as a vector of the biases and the input activation as another vector.
+
+## Efficient implementation of NNs w/ vectorization and matrix multiplication
+
+Vectorization and matrix multiplication are very efficient in hardware, parallel hardware, and GPUs. You can implement a step of forward prop like `Z = np.matmul(A_in,W) + B; A_out = g(Z)` where `A_in` is a `1 x num_features` vector, `W` is a `num_features x num_units` matrix, and `B` is a `1 x num_units` vector.
+
+## Comments on AGI
+
+The course made a few comments on AGI. Namely that Andrew believes it is still far out and he doesn't see a direct path to get there yet.
+
+They mentioned the "one learning algorithm hypothesis". It is backed up by evidence like if you rewire connections in one part of the brain to connect to other input sources, that part of the brain adapts to use the new inputs. For example rewiring the auditory cortex to receive sight info causes that part of the brain to process sight.
+
+Other interesting experiments were shown that do similar things to send various signals to simulate another sense. E.g. sending voltages to the tongue of greyscale images can cause sight, some humans can learn echolocation, a haptic (vibrating) belt can be used to induce directional (N, S, E, W) sense, implanting a third eye on a frog can result in the frog adapting and using it.
+
+Given this, a question is to determine what the general learning algorithm used by the brain is and to see if we can emulate that in computers.
+
+
