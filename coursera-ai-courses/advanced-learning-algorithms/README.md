@@ -102,6 +102,63 @@ create `b` as a vector of the biases and the input activation as another vector.
 
 Vectorization and matrix multiplication are very efficient in hardware, parallel hardware, and GPUs. You can implement a step of forward prop like `Z = np.matmul(A_in,W) + B; A_out = g(Z)` where `A_in` is a `1 x num_features` vector, `W` is a `num_features x num_units` matrix, `B` is a `1 x num_units` vector, and `A_out` will be a `1 x num_units` vector.
 
+## Training the NN
+
+After you configure the network, call `compile` specifying a loss function, then call `fit` with the training data and number of epochs to use.
+
+The general framework for training a model is:
+
+1. Specify how to compute the output given an input
+2. Specify loss function and cost function,
+3. Minimize the cost function using gradient descent with `w = w - alpha * dj_dw, b = b - alpha * dj_db`
+
+Neural networks work with the same 3 steps. The loss function is `L(f(x),y) = -y*log(f(x)) - (1-y)*log(1-f(x))`, the same as the loss function for logistic regression. This is called **logistic loss** or **binary cross entropy**.
+
+To solve a regression problem, use another loss function such as `tensorflow.kers.losses.MeanSquaredError`.
+
+**Backpropagation** is used to compute derivatives for gradient descent. TensorFlow can use algorithms other than gradient descent to maximize.
+
+## Activation functions and alternatives to sigmoid activation
+
+Commonly used activations are
+
+1. The sigmoid activation function for modeling binary features `g(z) = 1/(1+exp(-z))`
+2. Another common activation function is ReLU (rectified linear unit) `g(z) = max(0,z)`
+3. A linear activation function is `g(z) = z` is sometimes said to be using "no activation function"
+4. Softmax TODO
+
+### Choosing between activation functions
+
+To choose the output layer activation function
+
+1. If you're solving a binary classification problem, use sigmoid
+2. If `y` can be positive or negative, use linear
+3. If `y` can only be nonnegative, use ReLU
+
+For hidden layers ReLU is the most common choice. Originally, sigmoid was used much more frequently for hidden layers.
+
+ReLU is faster to compute. ReLU is only flat in 1 part of the graph meaning that gradient descent is only flat (i.e. slow) in one place. So, ReLU can help speed up learning.
+
+There are other activation functions like leaky ReLU and others which may yield some benefit in certain cases so just be aware of them
+
+### Why do we need activation functions at all?
+
+Can't we just use linear activations (aka no activations)? If you did that, the network effectively regresses to linear regression and yields no more power. This derives from the fact that the composition of N linear functions is again a linear function.
+
+If all hidden layers are linear and the output layer is sigmoid, then that is equivalent to logistic regression.
+
+Heuristic: don't use linear activations for hidden layers and just start with ReLU
+
+## Multiclass classification
+
+This is the set of problems with more than 2 output classes such as classifying all written digits or identifying which of 5 diseases a patient has or determining one of many types of defects.
+
+The output of logistic regression is thought of as the probability of `y` being 1. So it also computes the probability of `y` being equal to 0 which is `1 - P(y=1|x)`
+
+If you have N classes with weights and biases for them compute `z_i = w_i \dot + b_i` for `i=1,2,...,N`. Then compute the probabilities `a_i = exp(z_i) / sum(exp(z_k))`. Each `a_i` is the probability that `y` is equal to `i`. We always have `sum(a_i) == 1`.
+
+With N=2, the computation reduces to basically logistic regression.
+
 ## Comments on AGI
 
 The course made a few comments on AGI. Namely that Andrew believes it is still far out and he doesn't see a direct path to get there yet.
