@@ -116,7 +116,19 @@ Neural networks work with the same 3 steps. The loss function is `L(f(x),y) = -y
 
 To solve a regression problem, use another loss function such as `tensorflow.kers.losses.MeanSquaredError`.
 
-**Backpropagation** is used to compute derivatives for gradient descent. TensorFlow can use algorithms other than gradient descent to maximize.
+**Back propagation** is used to compute derivatives for gradient descent. TensorFlow can use algorithms other than gradient descent like Adam to optimize.
+
+### Back propagation
+
+Back propagation essentially decomposes the computation of a function's output into a computational graph showing the composition of different operations.
+
+Break down the calculation starting from `w` in the formula and build up the graph using the order of operations.
+
+That graph is computed left to right for forward propagation. To compute the derivative work right to left and apply the chain rule to compute the overall derivative. When used this way for a network with N units and P parameters, you can compute derivatives in O(N + P) time rather than O(N*P) as would happen if done naively.
+
+This enables a strategy called automatic differentiation which removes the older need to manually compute and specify derivatives.
+
+TODO How are the derivatives computed at each step of back prop?
 
 ## Activation functions and alternatives to sigmoid activation
 
@@ -125,7 +137,11 @@ Commonly used activations are
 1. The sigmoid activation function for modeling binary features `g(z) = 1/(1+exp(-z))`
 2. Another common activation function is ReLU (rectified linear unit) `g(z) = max(0,z)`
 3. A linear activation function is `g(z) = z` is sometimes said to be using "no activation function"
-4. Softmax TODO
+4. Softmax used to choose between several output categories
+
+Convolutional layers are another type of layer. They work by having each unit only analyze a subset of the input data. This allows for faster processing and can help avoid overfitting.
+
+Convolutional layers are parameterized by the window size and overlap of the windows. Effectively choosing these parameters allow you to optimize performance.
 
 ### Choosing between activation functions
 
@@ -182,6 +198,18 @@ What this means is that the intermediate terms passed to `log` are not directly 
 Here, the output is a vector of booleans for each label. You can build N networks to detect each label. You can also build 1 network to do all of them at once and have an output layer that uses N sigmoid activations.
 
 The [multiclass lab](./week2-labs/C2_W2_Multiclass_TF.ipynb) demonstrates this and has a nice breakdown of how each unit in the NN's layers segments the space in order to perform the classification.
+
+## Advanced optimization algorithms (gradient descent alternatives)
+
+Recall that the update step in gradient descent is `wj = wj - alpha * d/dwjJ(w,b)`
+
+An idea is to also vary the learning rate during optimization time. If you take many steps in one direction, increase the learning rate to accelerate convergence. If the steps being taken are all over the place, then decrease the learning rate.
+
+The Adam algorithm (ADAptive Moment algorithm) has a learning rate for each weight and bias and varies them during the optimization process.
+
+To use a different optimizer, pass the `optimizer=tf.keras.optimizers.Adam(learning_rate=val)` argument to `model.compile`. You can tune the initial learning rate to get more efficiency.
+
+Adam is the de facto standard for learning today. It's usually a great place to start.
 
 ## Comments on AGI
 
