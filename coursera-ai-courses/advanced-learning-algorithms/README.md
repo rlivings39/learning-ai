@@ -181,6 +181,8 @@ What this means is that the intermediate terms passed to `log` are not directly 
 
 Here, the output is a vector of booleans for each label. You can build N networks to detect each label. You can also build 1 network to do all of them at once and have an output layer that uses N sigmoid activations.
 
+The [multiclass lab](./week2-labs/C2_W2_Multiclass_TF.ipynb) demonstrates this and has a nice breakdown of how each unit in the NN's layers segments the space in order to perform the classification.
+
 ## Comments on AGI
 
 The course made a few comments on AGI. Namely that Andrew believes it is still far out and he doesn't see a direct path to get there yet.
