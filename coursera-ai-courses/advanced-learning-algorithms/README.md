@@ -221,4 +221,19 @@ Other interesting experiments were shown that do similar things to send various 
 
 Given this, a question is to determine what the general learning algorithm used by the brain is and to see if we can emulate that in computers.
 
+## Advice on how to build machine learning models
+
+### Evaluating a model's performance
+
+Evaluate the performance of your model by splitting your training set into 2 parts, say 70% as training data and 30% as a test set or use 80/20.
+
+For regression
+
+Do your usual fit. Then compute a test error, similar to the cost function used in fitting, say the mean squared error, without a regularization term. That will give yo ua sense for how well the model is doing.
+
+You can also compute the training error by checking the error on the training examples. This should be very close to 0 because that's what you trained on.
+
+For classification, you can also simply compute what fraction of the test/training sets have been misclassified.
+
+### Automatically choosing a good model
 
