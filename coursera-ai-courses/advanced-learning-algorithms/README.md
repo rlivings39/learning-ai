@@ -149,7 +149,7 @@ If all hidden layers are linear and the output layer is sigmoid, then that is eq
 
 Heuristic: don't use linear activations for hidden layers and just start with ReLU
 
-## Multiclass classification
+## Multiclass classification with softmax
 
 This is the set of problems with more than 2 output classes such as classifying all written digits or identifying which of 5 diseases a patient has or determining one of many types of defects.
 
@@ -158,6 +158,28 @@ The output of logistic regression is thought of as the probability of `y` being 
 If you have N classes with weights and biases for them compute `z_i = w_i \dot + b_i` for `i=1,2,...,N`. Then compute the probabilities `a_i = exp(z_i) / sum(exp(z_k))`. Each `a_i` is the probability that `y` is equal to `i`. We always have `sum(a_i) == 1`.
 
 With N=2, the computation reduces to basically logistic regression.
+
+The loss for softmax regression is `loss(a1,...,an,y) = -log(a_i) for y = i`
+
+To leverage this in a NN, use the same hidden layers and an output layer that uses softmax
+
+For TensorFlow you can use the 'softmax' activation for your output layer and the `SparseCategoricalCrossentropy` loss
+
+### More numerically stable computation of logistic and softmax loss
+
+For binary classification, instead of using a sigmoid output layer with `BinaryCrossEntropy` for the loss in `fit` use a `linear` output layer and use `loss=BinaryCrossEntropy(from_logits=True)` which allows for more numerical stability.
+
+For logistic regression, this isn't too big of a deal.
+
+Do the same thing for softmax where you use a linear output layer and `loss=SparseCategoricalCrossEntropy(from_logits=True)`
+
+What this means is that the intermediate terms passed to `log` are not directly precomputed but substituted in place.
+
+**Note** With this modification, you now have a linear layer as the output so you must pass the output through `tf.nn.sigmoid` or softmax to get the final prediction probability.
+
+### Multi-label classification
+
+Here, the output is a vector of booleans for each label. You can build N networks to detect each label. You can also build 1 network to do all of them at once and have an output layer that uses N sigmoid activations.
 
 ## Comments on AGI
 
