@@ -237,3 +237,12 @@ For classification, you can also simply compute what fraction of the test/traini
 
 ### Automatically choosing a good model
 
+Suppose you're trying linear regression. You can start by fitting a first order polynomial and compute test error, do the same for a second order polynomial and compute test error, etc. up through a higher order polynomial. Then decide which fits best. **Note** Andrew says this isn't best because you're implicitly fitting the polynomial degree with the test error and can still wind up overfitting.
+
+To address this split your data into 3 sets: training, cross validation or dev set, and test. Maybe 60%, 20%, 20%. You then evaluate the parameters on your cross validation set and look at the model with the lowest cross validation error. Then you can test the generalization on the chosen polynomial degree using the test set. This keeps the test set out of all fitting and makes it a fair evaluation of the model's generalization.
+
+You can do a similar thing for choosing a neural network architecture.
+
+You should make no decisions using your test set as doing so would mean you're implicitly including it in your training process.
+
+The [model evaluation and selection lab](coursera-ai-courses/advanced-learning-algorithms/week3-labs/C2W3_Lab_01_Model_Evaluation_and_Selection.ipynb) is an excellent demonstration of this.
