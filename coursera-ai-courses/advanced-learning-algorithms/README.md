@@ -245,4 +245,4 @@ You can do a similar thing for choosing a neural network architecture.
 
 You should make no decisions using your test set as doing so would mean you're implicitly including it in your training process.
 
-The [model evaluation and selection lab](coursera-ai-courses/advanced-learning-algorithms/week3-labs/C2W3_Lab_01_Model_Evaluation_and_Selection.ipynb) is an excellent demonstration of this.
+The [model evaluation and selection lab](./week3-labs/C2W3_Lab_01_Model_Evaluation_and_Selection.ipynb) is an excellent demonstration of this.
