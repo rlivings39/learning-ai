@@ -246,3 +246,74 @@ You can do a similar thing for choosing a neural network architecture.
 You should make no decisions using your test set as doing so would mean you're implicitly including it in your training process.
 
 The [model evaluation and selection lab](./week3-labs/C2W3_Lab_01_Model_Evaluation_and_Selection.ipynb) is an excellent demonstration of this.
+
+### What to do next to improve model performance? Diagnosing bias and variance
+
+Looking at the training and cross validation errors can give indicators of bias and variance (i.e. underfitting and overfitting).
+
+* High training error, high cross validation error - indicative of high bias or underfitting
+** If cross validation error is much higher than the training error in this case you may wind up with high bias **and** high variance
+* Low training error, high cross validation error - indicative of high variance or overfitting
+* Low training error, low cross validation error - could be a good fit
+
+When increasing the degree of the polynomial, the training error will tend to decrease. The cross validation error will be concave up with a minimum in the middle.
+
+When using regularization in the fitting process to fit a polynomial, you can compute the regularization parameter (i.e. lambda) using a similar strategy by comparing the training and cross validation errors for various values of lambda.
+
+As lambda increases, the training error will typically increase because training prioritizes minimizing the weights. Cross validation error tends to be concave up with a minimum somewhere in the middle.
+
+### Establishing a baseline level of performance
+
+A good way to evaluate your model's performance is to measure against a baseline performance. Ask yourself the question "What is the best performance I could reasonably expect?". For example you can compare against
+
+* Human level performance
+* Competitor performance
+* An informed guess
+
+The gap between the baseline performance and training error diagnoses bias. The gap between training error and cross validation error diagnoses variance.
+
+### Learning curves
+
+A learning curve plots error vs. training set size. You can plot both training and cross validation error. Cross validation error tends to decrease as training set size increases. Training error tends to increase as the training set size increases.
+
+This happens because it is harder to fit more data points as the training set increases. With 1 or 2 samples you can often fit perfectly with 0 error.
+
+Cross validation error is usually higher than the training error.
+
+In the case of high bias (underfitting), both the training and cross validation error start out steep and then flatten out after a while. Things flatten out because there are too few parameters to fit more data. Human level performance will tend to be much lower than the two errors.
+
+Throwing more training data at a model with high bias will offer no benefit.
+
+In the case of high variance (overfitting), you'll see a huge gap between the training error and cross validation error. Human level performance may actually be worse than the training error in the case of overfitting. Adding more training data may actually improve the model's performance.
+
+Plotting learning curves is expensive because you have to train the model for each training set size to plot the graph.
+
+### Concrete steps to improve performance
+
+Here are concrete strategies to fix issues.
+
+To address high bias (underfitting):
+
+* Try getting additional features
+* Try adding polynomial features
+* Try increasing lambda
+
+To address high variance (overfitting):
+
+* Get more training examples
+* Try decreasing lambda
+* Try smaller sets of features
+
+### Bias and variance in neural networks
+
+Large NNs are low bias machines
+
+If the model does poorly on the training set, try a bigger network (i.e. more hidden layers and/or more units). Repeat until you're happy.
+
+Then see if the model does well on the cross validation set. If not, get more data and go back to the beginning.
+
+This applies well to a limit. Huge networks are expensive to train. There are limits to how much data you can gather.
+
+With proper regularization, larger neural networks will perform no worse than a smaller network. So going bigger rarely hurts the model's performance.
+
+In TensorFlow you add regularization to the layers `Dense(units=25, activation='relu', kernel_regularizer=L2(0.1))`
