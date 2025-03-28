@@ -317,3 +317,34 @@ This applies well to a limit. Huge networks are expensive to train. There are li
 With proper regularization, larger neural networks will perform no worse than a smaller network. So going bigger rarely hurts the model's performance.
 
 In TensorFlow you add regularization to the layers `Dense(units=25, activation='relu', kernel_regularizer=L2(0.1))`
+
+## Machine learning development process
+
+The overall loop will look like
+
+1. Choose architecture, model, data, etc.
+2. Train model
+3. Diagnose (bias, variance, error analysis)
+4. Change decisions (regularization, learning, add/subtract features) GOTO 1
+
+Fun idea to get more spam email data is to create tons of fake email addresses and leak them to spammers. Then use those emails as input to train the system.
+
+### Error analysis
+
+Second most important thing to analyze after bias and variance.
+
+Manually analyze the failure examples from the cross-validation set and try to group them on common traits. For the spam email example maybe they're pharmaceutical emails, have deliberate misspellings, unusual email routing, stealing passwords, spam message in image. Bucket the emails into categories and see where to focus your effort
+
+Error analysis may not always be easy for humans, e.g. predicting when someone will click an ad. But when errors are analyzable it is quite useful.
+
+### Adding or creating more data for your ML problem
+
+Focus on adding more data of the types identified by error analysis.
+
+You can perform data augmentation / modification to create new training examples from your existing data by applying transformations, distortions, etc. FOr example you might rotate or warp images to produce several. For speech you might add various types of background noise.
+
+**Tip**: Changes or distortions made to the data should be representative of what you expect to happen in the test set or real life prediction data.
+
+Data synthesis is the idea of creating artificial data that could realistically show up in your test/prediction sets. E.g. creating images with text using various fonts and colors on your computer.
+
+Given that ML algorithms are fairly mature today, taking a data-centric approach can be an efficient way to improve your algorithm's performance.
