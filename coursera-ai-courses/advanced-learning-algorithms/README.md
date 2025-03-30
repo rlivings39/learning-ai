@@ -348,3 +348,50 @@ You can perform data augmentation / modification to create new training examples
 Data synthesis is the idea of creating artificial data that could realistically show up in your test/prediction sets. E.g. creating images with text using various fonts and colors on your computer.
 
 Given that ML algorithms are fairly mature today, taking a data-centric approach can be an efficient way to improve your algorithm's performance.
+
+### Transfer learning: using data from a different task
+
+Suppose you're trying to train a system to match digits 0,1,2,...,9. You do have data for classifying images into 1000 categories like cat, dog, car, person, .... You train that model and then remove the output layer and replace it with a different layer with 10 units outputting a match to your digits.
+
+The parameters from the old network can't transfer over for the new output layer. You can reuse the hidden layers and then do one of two things. Option 1: train only the output layers. Option 2: train all the parameters in the network initializing the parameters from the other model.
+
+The fine tuning training step can then often be effective with much smaller training sets.
+
+This algorithm is called transfer learning because one supposes that learning something related can transfer to a new task.
+
+There may be freely trained networks available for download that you can fine tune for your task without having to spend time on pretraining.
+
+An idea behind why transfer learning can help is that similar tasks of have similar basic steps. For example, with image recognition preliminary learning on how to identify edges, corners, curves, etc. will be useful to all similar tasks.
+
+### Full cycle of a machine learning project
+
+1. Define project scope
+2. Define and collect data
+3. Train model, error analysis, iterative improvement
+4. Deploy in production, monitor, maintain system, leverage live data for more error analysis and training improvements
+
+Deployment typically means having a server performing inference by running predictions with your model. This will be exposed to users in some way via say a mobile app or website. The app or website sends an API request to the inference server to carry out predictions and sends the results back.
+
+Software engineering may be needed to
+
+* Ensure reliable and efficient predictions
+* Scaling
+* Logging (privacy is important here)
+* System monitoring
+* Model updates after retraining, etc.
+
+### Fairness, bias, and ethics
+
+Failures exist in the past showing bias including a hiring tool that discriminated against women and a facial recognition system matching dark skinned people to criminal mug shots. Biased bank loan approvals happened. Models can also perpetuate toxic stereotypes. Such systems need to be avoided.
+
+There are also adverse use cases such as deep fakes showing a fake video of Barack Obama.
+
+Ideas to improve things:
+
+Get a diverse team to brainstorm things that might go wrong with emphasis on possible harm to vulnerable groups. Andrew mentions that diversity here can be important to identify potential issues.
+
+Carry out a literature search for standards and guidelines for your industry.
+
+Audit systems against possible harm prior to deployment. After you train but before deployment, measure the performance to see if any potential identified bias exists.
+
+Develop a mitigation plan (e.g. rollback to a less biased system) and monitor for possible harm.
