@@ -395,3 +395,25 @@ Carry out a literature search for standards and guidelines for your industry.
 Audit systems against possible harm prior to deployment. After you train but before deployment, measure the performance to see if any potential identified bias exists.
 
 Develop a mitigation plan (e.g. rollback to a less biased system) and monitor for possible harm.
+
+## Error metrics for skewed datasets
+
+Traditional error metrics can be very wrong when working with skewed datasets (i.e. where the vast majority of cases are in a single class). For example suppose you have a rare disease where only 0.5% of patients have it. Then a simple algorithm like `y = 0` will have 99.5% accuracy, 0.5% error but will be terrible.
+
+**Precision** and **recall** are often used as metrics. Suppose y = 1 is the rare class we want to detect. Compute the **confusion matrix** as pairs of the actual class and predicted class. In the case of actual class and predicted class being 1 we get a **true positive**. With both classes 0 we get a **true negative**. With actual 0 and predicted 1 we get a **false positive** and with actual 1 and predicted 0 we get a **false negative**.
+
+```
+Precision = # true positives / # predicted positives = true positives / (true positives + false positives)
+
+Recall = true positives / # actual positives = true positives / (true positives + false negatives)
+```
+
+There is often a trade off between precision and recall. Consider an example of using logistic regression. If you increase the threshold you increase the precision but decrease the recall because you minimize the number of false positives but increase your false negatives.
+
+Plotting precision vs. recall for different threshold values can help you choose a good point.
+
+The **F1 score** can help automatically choose a balance between precision and recall. The F1 combines precision and recall but penalizes small values more harshly (this is the **harmonic mean**)
+
+```
+F1 = 1/0.5*(1/P + 1/R) = 2*PR/(P+R)
+```
