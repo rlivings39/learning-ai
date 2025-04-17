@@ -417,3 +417,42 @@ The **F1 score** can help automatically choose a balance between precision and r
 ```
 F1 = 1/0.5*(1/P + 1/R) = 2*PR/(P+R)
 ```
+
+## Decision trees and tree ensembles
+
+Decision trees are widely used and often successful. Consider a cat classification example for an adoption center. We have features like ear shape, face shape, whiskers, and a boolean of whether the animal is a cat.
+
+The tree works by arranging the features as nodes in the tree with categorical values of each node as the outgoing edges. Eventually you can make an inference based on this. The **root node** is the top node. Internal nodes are **decision nodes**. The prediction nodes are **leaf nodes**.
+
+### Decision tree learning
+
+The general algorithm looks something like
+
+1. Decide which feature will be the root node. Training examples are split based on that.
+2. Then decide which feature to put on each outgoing edge of the root node.
+3. Continue until you hit a leaf node with all matching classifications.
+
+The **purity** of a collection of examples is used to determine the quality of a decision. The **entropy** is used to measure impurity. Taking `p1` to be the proportion of positivie examples labeled 1 is `H(p1)` which is something like an upside down parabola with vertex at 0.5 that intersects the x axis at 0 and 1. So we prefer values close to 0 or 1 and penalize values close to 0.5 as those are undesirable.
+
+For binary classification we have `p1, p0 = 1 - p1`. Then we define
+
+```
+H(p1) = -p1 * log2(p1) - p0 * log2(p0)
+      = -p1 * log2(p1) - (1-p1) * log2(1 - p1)
+```
+
+with the assumption that `H(0) = H(1) = 0` since `log(0)` is undefined.
+
+There are other criteria similar to this entropy criteria that can also be used.
+
+### Choosing features to split on: information gain
+
+When choosing which feature to split on, we seek reduced entropy or **information gain**. For each possible feature, compute the entropy for each branch and then compare across features with a weighted average based on the branch sample size and see how much we've reduced that entropy compared to the parent node.
+
+Compute
+
+```
+H(p1_parent) - m1/N * H(p1_left) + m2/N * H(p1_right)
+```
+
+for each feature. This computes the **information gain** of each decision. This information gain can also be used as a stopping criterion for the learning algorithm.
