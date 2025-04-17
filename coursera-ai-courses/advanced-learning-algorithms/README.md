@@ -458,3 +458,38 @@ H(p_1^{parent}) - \frac{m1}{N} * H(p_1^{left}) + \frac{m2}{N} * H(p_1^{right})
 $$
 
 for each feature. This computes the **information gain** of each decision. This information gain can also be used as a stopping criterion for the learning algorithm.
+
+### Decision tree learning
+
+1. Start with all examples at the root
+2. Calculate information gain for all possible features, choose the one with the highest information gain
+3. Split the dataset on the selected feature and branch the tree
+4. Repeat until stopping criteria is met
+   * When a node is 100% one class
+   * When splitting reaches tree max depth. This can help avoid overfitting.
+   * Information gain from splits is below threshold
+   * Number of examples in a node is below threshold
+
+### Handling features w/ more than 2 possible values: one-hot encoding
+
+Features with more than 2 values we can use multiple children in your tree.
+
+Alternatively this can be solved by splitting your N-ary feature in N binary features where 1 means that category is true and 0 otherwise. Exactly one of the N features will take the value 1.
+
+This transformation is called a **one hot encoding**. Such an encoding can be used for other learning algorithms which expect numbers as inputs.
+
+### Decision trees with continuous valued features
+
+Given a continuous feature, split based on a threshold. A good value for the threshold can be chosen by sorting the training examples on the feature value, then use the midpoints between consecutive samples as potential thresholds. Choose the one with the best information gain.
+
+### Regression trees
+
+Decision trees can be generalized to predict continuous features (i.e. regression rather than classification).
+
+The leaf nodes in the decision tree predict the average of the members of samples reaching that leaf node.
+
+When choosing a feature to split we try to minimize the variance of the output variable. Compute the weighted mean of the variance of each bucket and subtract from the variance of the parent. Choose the one which maximizes this reduction in variance:
+
+$$
+\sigma^2_{parent} - \left(\frac{m_1}{N} * \sigma^2 + \frac{m_2}{N} * \sigma^2\right)
+$$
