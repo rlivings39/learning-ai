@@ -1,4 +1,11 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
+
 # Advanced Learning Algorithms
+
+$\dfrac{x_2}{y}$
 
 Course link: https://www.coursera.org/learn/advanced-learning-algorithms/
 
@@ -432,16 +439,18 @@ The general algorithm looks something like
 2. Then decide which feature to put on each outgoing edge of the root node.
 3. Continue until you hit a leaf node with all matching classifications.
 
-The **purity** of a collection of examples is used to determine the quality of a decision. The **entropy** is used to measure impurity. Taking `p1` to be the proportion of positivie examples labeled 1 is `H(p1)` which is something like an upside down parabola with vertex at 0.5 that intersects the x axis at 0 and 1. So we prefer values close to 0 or 1 and penalize values close to 0.5 as those are undesirable.
+The **purity** of a collection of examples is used to determine the quality of a decision. The **entropy** is used to measure impurity. Taking `p1` to be the proportion of positive examples labeled 1 is `H(p1)` which is something like an upside down parabola with vertex at 0.5 that intersects the x axis at 0 and 1. So we prefer values close to 0 or 1 and penalize values close to 0.5 as those are undesirable.
 
 For binary classification we have `p1, p0 = 1 - p1`. Then we define
 
-```
-H(p1) = -p1 * log2(p1) - p0 * log2(p0)
-      = -p1 * log2(p1) - (1-p1) * log2(1 - p1)
-```
+$$
+\begin{align*}
+H(p_1) &= -p_1 * log_2(p_1) - p_0 * log_2(p_0) \\
+       &= -p_1 * log_2(p_1) - (1-p_1) * log_2(1 - p_1)
+\end{align*}
+$$
 
-with the assumption that `H(0) = H(1) = 0` since `log(0)` is undefined.
+with the assumption that $H(0) = H(1) = 0$ since $log(0)$ is undefined.
 
 There are other criteria similar to this entropy criteria that can also be used.
 
@@ -451,8 +460,8 @@ When choosing which feature to split on, we seek reduced entropy or **informatio
 
 Compute
 
-```
-H(p1_parent) - m1/N * H(p1_left) + m2/N * H(p1_right)
-```
+$$
+H(p_1^{parent}) - \frac{m1}{N} * H(p_1^{left}) + \frac{m2}{N} * H(p_1^{right})
+$$
 
 for each feature. This computes the **information gain** of each decision. This information gain can also be used as a stopping criterion for the learning algorithm.
