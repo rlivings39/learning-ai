@@ -493,3 +493,53 @@ When choosing a feature to split we try to minimize the variance of the output v
 $$
 \sigma^2_{parent} - \left(\frac{m_1}{N} * \sigma^2 + \frac{m_2}{N} * \sigma^2\right)
 $$
+
+### Tree ensembles
+
+A weakness of using a decision tree is that the single tree can be highly sensitive to small changes in the data. For example, changing a single training example changes the entire tree structure.
+
+More accurate predictions can result when you train multiple trees. With multiple trees, you use the majority vote to get the final prediction. Having multiple trees makes your algorithm more robust.
+
+To generate a tree ensemble given a training set of size `m`
+
+1. Use sampling with replacement to create `B` training sets of size `m`
+2. Train a decision tree on each of the `B` training sets
+
+Values of `B` are commonly like 32, 64, or 100. Andrew says that using more than 100 is not usually helpful. This is called a **bagged decision tree**
+
+Even with this sampling with replacement procedure, you may often wind up with the same root node splits and other nodes close to the root.
+
+Another modification is when choosing a feature to split on if you have `n` features to choose from, pick `k < n` features to split on with `k = sqrt(n)` and only split on a feature from that subset. This is the **random forest algorithm** that can help make your tree ensembles more robust because you've already baked in some perturbations.
+
+### Boosted trees and XGBoost
+
+To generate a tree ensemble given a training set of size `m`
+
+1. Use sampling with replacement to create `B` training sets of size `m`. When sampling make it more likely to choose examples that were previously miscategorized. This is the idea of *deliberate practice* where you practice things that you're bad at rather than things you're good at (e.g. learning an instrument).
+2. Train a decision tree on each of the `B` training sets
+3. Use the current ensemble to predict on each of the training examples and record the results to be used in the next iteration
+
+ The details on how to choose the weights when sampling are complicated. XGBoost (eXtreme Gradient Boost) is a common, fast, effective implementation. It has good default sampling criteria and stopping criteria as well as built-in regularization. It's highly competitive for ML competitions like Kaggle.
+
+ XGBoost and deep learning seem to win most of the competitions.
+
+ There are many libraries implementing XGBoost, like `xgboost` in Python. `XGBClassifier, XGBRegressor` in that library implement those algorithms.
+
+ ### When to use decision trees
+
+ Decision trees and neural networks are powerful with tradeoffs
+
+ Decision trees and tree ensembles
+
+ * Work well on tabular (structured) data. E.g. if your data looks like a big spreadsheet w/ categorical or continuous data
+ * Not recommended for unstructured data like images, audio, text
+ * Fast to train and evaluate
+ * Small decision trees are human interpretable. This falls off with larger trees or ensembles.
+ * XGBoost is recommended as a default strategy
+
+Neural networks
+
+* Work well on all types of data including tabular (structured) and unstructured data. They are preferred for unstructured data
+* May be slower than a decision tree, especially for learning
+* Works well with transfer learning to effectively train with smaller training sets
+* When building a system of multiple models working together, it can be easier to string together multiple neural networks by training them all together using gradient descent
