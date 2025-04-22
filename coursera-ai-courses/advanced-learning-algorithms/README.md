@@ -525,6 +525,12 @@ To generate a tree ensemble given a training set of size `m`
 
  There are many libraries implementing XGBoost, like `xgboost` in Python. `XGBClassifier, XGBRegressor` in that library implement those algorithms.
 
+ ### Practicalities around decision trees and tree ensembles
+
+ Tuning the hyperparameters for decision trees like minimum sample size to split, max tree depth, and number of trees in your ensemble can have massive impacts on your learning algorithm. [C2_W4_Lab_02_Tree_Ensemble.ipynb](coursera-ai-courses/advanced-learning-algorithms/week4-labs/C2_W4_Lab_02_Tree_Ensemble.ipynb) is a great example of this.
+
+ `sklearn` has `GridSearchCV` which can help do this search and finally fit and predict with the best example.
+
  ### When to use decision trees
 
  Decision trees and neural networks are powerful with tradeoffs
