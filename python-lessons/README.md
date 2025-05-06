@@ -240,6 +240,16 @@ There are a few `import` variations `import math as m` to rename a module in you
 
 Modules are loaded once. Subsequent `import` statements just return a reference to the existing module. `sys.modules` shows currently loaded modules. `sys.path` shows the Python path used to locate modules
 
+Module objects are a namespace for things inside and actually work as a layer on top of a dictionary `modulename.__dict__`. There are a few special variables like `__file__, __name__, __doc__` the source file, module name (which may be `__main__`), and doc resp.
+
+`from foo import blah` uses the same procedure but also hoists the definition into the importing module's namespace.
+
+`importlib.reload` can reload a module definition. Note that weird things can happen like having objects pointing at stale class definitions, etc. But this can be a useful debugging tool.
+
+### Module search path
+
+Modules are looked up on the search path in `sys.path`. That can be modified in code or using environment variables like `PYTHONPATH`
+
 ## Main module
 
 Python has no main function but has a main module. This is the first source file that runs. Use the idiom `if __name__ == '__main__': stuff` to only run things if your file is the main module.
@@ -617,6 +627,10 @@ Call `cr.send(None)` first to prime the coroutine. Coroutines also allow pipelin
 `.close()` terminates `.throw()` raises an exception. When `.close()` is called the next call to `yield` raises `GeneratorExit` so you can perform any necessary cleanup.
 
 Using `.throw()` throws at the next yield.
+
+### Async and await
+
+Python provides some async/await capabilities too
 
 ## Concurrency and Futures
 
