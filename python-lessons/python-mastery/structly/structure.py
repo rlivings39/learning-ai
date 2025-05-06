@@ -3,11 +3,13 @@
 from .validate import Validator, validated
 from collections import ChainMap
 
+__all__ = ['Structure']
+
 class StructureMeta(type):
     @classmethod
     def __prepare__(meta, clsname, bases):
         return ChainMap({}, Validator.validators)
-        
+
     @staticmethod
     def __new__(meta, name, bases, methods):
         methods = methods.maps[0]
@@ -83,7 +85,7 @@ def validate_attributes(cls):
     if cls._fields:
         cls.create_init()
 
-    
+
     return cls
 
 def typed_structure(clsname, **validators):

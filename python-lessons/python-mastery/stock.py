@@ -1,7 +1,7 @@
 # stock.py
 
-from structly.structure import Structure
-from structly.validate import PositiveInteger, PositiveFloat, String
+from structly import Structure
+from structly import PositiveInteger, PositiveFloat, String
 
 class Stock(Structure):
     name = String()
