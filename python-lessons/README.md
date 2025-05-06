@@ -246,6 +246,29 @@ Module objects are a namespace for things inside and actually work as a layer on
 
 `importlib.reload` can reload a module definition. Note that weird things can happen like having objects pointing at stale class definitions, etc. But this can be a useful debugging tool.
 
+### Organizing libraries
+
+Python libraries are organized as a hierarchical set of modules under a parent package.
+
+To make a package hierarchy make a corresponding folder hierarchy with a root folder for the package and an `__init__.py` in each folder. Doing this will break relative imports as all imports will be from the top level.
+
+To deal with relative imports you can
+
+```python
+from pkg import mod_name # 1. Use top-level package
+from . import foo        # 2. Use .
+from .foo import name    # 3. Load something specific from ./foo.py
+```
+
+Packages have a few useful variables like `__package__, __path__` which contain the parent package and the search path for subcomponents.
+
+### `__init__.py` usage
+
+The main usage of `__init__.py` files is to stitch together multiple sources into a unified top-level import even if the implementation is split across submodules.
+
+If a submodule defines `__all__` that controls wildcard import which allows easy combination in `__init__.py` via `__all__ = [ *foo.__all__, *bar.__all__]`
+
+This approach allows you to split a large module but still present a unified interface.
 ### Module search path
 
 Modules are looked up on the search path in `sys.path`. That can be modified in code or using environment variables like `PYTHONPATH`
