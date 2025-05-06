@@ -246,6 +246,8 @@ Module objects are a namespace for things inside and actually work as a layer on
 
 `importlib.reload` can reload a module definition. Note that weird things can happen like having objects pointing at stale class definitions, etc. But this can be a useful debugging tool.
 
+Dynamic imports can be done using `__import__(name)`
+
 ### Organizing libraries
 
 Python libraries are organized as a hierarchical set of modules under a parent package.
@@ -282,6 +284,10 @@ Command line args can be found in `sys.argv`
 You can use `sys.exit` or `raise SystemExit(NothingOrCodeOrString)` to terminate
 
 Use the shebang `#!/usr/bin/env python3` to make an executable script
+
+`python -m spam.foo` runs `spam.foo` as main. Can be used to enclose supporting scripts within a package.
+
+`__main__.py` designates an entry-point making a package directory executable via `python -m`. This works for subpackages too like `python -m foo.bar` so you can have a variety of tools/utilities embedded in a package.
 
 ## Function generality and duck typing
 
