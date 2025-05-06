@@ -1,6 +1,8 @@
 # tableformat.py
 from abc import ABC, abstractmethod
 
+__all__ = ['create_formatter', 'print_table']
+
 def print_table(records, fields, formatter):
     if not isinstance(formatter, TableFormatter):
         raise RuntimeError('Expected a TableFormatter')
@@ -24,7 +26,7 @@ class TextTableFormatter(TableFormatter):
     def headings(self, headers):
         print(' '.join('%10s' % h for h in headers))
         print(('-'*10 + ' ')*len(headers))
-    
+
     def row(self, rowdata):
         print(' '.join('%10s' % d for d in rowdata))
 

@@ -3,6 +3,8 @@
 import csv
 import logging
 
+__all__ = ['read_csv_as_dicts', 'read_csv_as_instances']
+
 log = logging.getLogger(__name__)
 
 def convert_csv(lines, converter, *, headers=None):
@@ -20,7 +22,7 @@ def convert_csv(lines, converter, *, headers=None):
     return records
 
 def csv_as_dicts(lines, types, *, headers=None):
-    return convert_csv(lines, 
+    return convert_csv(lines,
                        lambda headers, row: { name: func(val) for name, func, val in zip(headers, types, row) })
 
 def csv_as_instances(lines, cls, *, headers=None):
