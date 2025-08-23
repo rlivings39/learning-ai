@@ -1,14 +1,15 @@
 {
-    "python.testing.unittestArgs": [
-        "-v",
-        "-s",
-        "./python-lessons/",
-        "-p",
-        "test_*.py"
-    ],
-    "python.testing.pytestEnabled": false,
-    "python.testing.unittestEnabled": true,
-    "python.testing.cwd": "${workspaceFolder}",
-    "python.envFile": "${workspaceFolder}/.env",
-    "python.analysis.extraPaths": ["${workspaceFolder}/python-lessons/python-mastery/"]
+  "python.testing.unittestArgs": [
+    "-v",
+    "-s",
+    "./python-lessons/",
+    "-p",
+    "test_*.py"
+  ],
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestEnabled": true,
+  "python.testing.cwd": "${workspaceFolder}",
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/python-lessons/python-mastery/"
+  ]
 }
