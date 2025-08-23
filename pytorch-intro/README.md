@@ -45,3 +45,11 @@ You want to be able to compute the gradients of the loss functions with respect 
 * Activate the `venv`: `source .env/bin/activate` or `source .env/bin/activate.fish`
 * Install any needed packages `pip install -r requirements.txt`
 * Enjoy
+
+## Actions
+
+- [ ] Tensors and the stride vector. When are strides legal? I.e. what does contiguity mean?
+- [ ] Basic network construction
+- [ ] Invocation and tuning of backprop
+- [ ] Invocation and tuning of forward prop
+- [ ] DL compilers. Where does TensorRT fit in everything?

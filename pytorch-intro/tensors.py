@@ -2,13 +2,13 @@ r"""
 Intro to PyTorch tensors from https://pytorch.org/tutorials/beginner/basics/tensorqs_tutorial.html
 """
 
-import torch
 import numpy as np
+import torch
 
 # Initializing tensors
 
 # From data
-data = [[1, 2],[3, 4]]
+data = [[1, 2], [3, 4]]
 x_data = torch.tensor(data)
 print(f"Tensor: \n {x_data} \n")
 
@@ -17,10 +17,10 @@ np_array = np.array(data)
 x_np = torch.from_numpy(np_array)
 
 # From another tensor. Attributes are maintained unless specifically modified
-x_ones = torch.ones_like(x_data) # retains the properties of x_data
+x_ones = torch.ones_like(x_data)  # retains the properties of x_data
 print(f"Ones Tensor: \n {x_ones} \n")
 
-x_rand = torch.rand_like(x_data, dtype=torch.float) # overrides the datatype of x_data
+x_rand = torch.rand_like(x_data, dtype=torch.float)  # overrides the datatype of x_data
 print(f"Random Tensor: \n {x_rand} \n")
 
 # We move our tensor to the GPU if available
@@ -31,7 +31,7 @@ tensor = torch.ones(4, 4)
 print(f"First row: {tensor[0]}")
 print(f"First column: {tensor[:, 0]}")
 print(f"Last column: {tensor[..., -1]}")
-tensor[:,1] = 0
+tensor[:, 1] = 0
 print(tensor)
 
 # Concatenate along existing dimension
