@@ -105,7 +105,36 @@ Inside the training loop we:
 
 Model parameters can be saved with `torch.save(model.state_dict(), 'model_weights.pth')` and loaded with `model.load_state_dict(torch.load('model_weights.pth', weights_only=True))`
 
-## Usage
+## TensorRT
+
+[TensorRT](https://developer.nvidia.com/tensorrt) is a set of runtime libraries, tunable optimized kernels, optimizers, and compilers used for optimizing the inference performance of deep learning inference.
+
+TensorRT works on all major frameworks and supports targeting hyperscale data centers, workstations, laptops, and edge devices.
+
+Optimizations include quantization, layer and tensor fusion, and kernel tuning techniques. It supports both post-training quantization and quantization-aware training. Small sizes like FP8, FP4, INT8, INT4 and advanced things like AWQ are available.
+
+The flow typically looks like
+
+```
+Trained DNN -> ONNX conversion -> TensorRT optimizer -> TensorRT runtime
+```
+
+Some frameworks like PyTorch have framework online integrations
+
+```
+PyTorch trained DNN -> TensorRT optimizer (integration API) -> TensorRT runtime (integration API) -> PyTorch TorchScript in-framework inference
+```
+
+Features include
+
+* TensorRT-LLM - An open source library to accelerate/optimize inference of LLMs
+* TensorRT Cloud provides a cloud-based optimization service that optimizes based on given constraints and KPIs for LLMs.
+* TensorRT model optimizer does quantization, pruning, speculation, sparsity, and distillation for downstream inference.
+* TensorRT integrates with PyTorch and Hugging Face directly for claimed 6x inference speedups w/ a single line of code. An ONNX parser imports ONNX models from other frameworks. GPU Coder integrates MATLAB to generate engines for NVIDIA Jetson, DRIVE, and data center.
+* Dynamo Triton is inference serving software
+* Simplifies deployment and inference on RTX gpus
+
+## Using this repo
 
 * Activate the `venv`: `source .env/bin/activate` or `source .env/bin/activate.fish`
 * Install any needed packages `pip install -r requirements.txt`
@@ -119,3 +148,9 @@ Model parameters can be saved with `torch.save(model.state_dict(), 'model_weight
 - [ ] Invocation and tuning of backprop
 - [ ] Invocation and tuning of forward prop
 - [ ] DL compilers. Where does TensorRT fit in everything?
+- [ ] TensorRT getting started
+  * https://developer.nvidia.com/tensorrt-getting-started
+  * https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-guide.html
+  * https://developer.nvidia.com/blog/speeding-up-deep-learning-inference-using-tensorrt-updated/
+  * https://developer.nvidia.com/blog/optimizing-and-serving-models-with-nvidia-tensorrt-and-nvidia-triton/
+  * https://www.youtube.com/watch?v=SlUouzxBldU
