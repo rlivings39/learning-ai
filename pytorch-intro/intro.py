@@ -66,6 +66,8 @@ def make_model(device):
 
 def train_model(dataloader, model: NeuralNetwork, loss_fn, optimizer, device):
     size = len(dataloader.dataset)
+    # Set the model to training mode - important for batch normalization and dropout layers
+    # Unnecessary in this situation but added for best practices
     model.train()
     for batch, (X, y) in enumerate(dataloader):
         X, y = X.to(device), y.to(device)
@@ -87,8 +89,12 @@ def train_model(dataloader, model: NeuralNetwork, loss_fn, optimizer, device):
 def test_model(dataloader, model, loss_fn, device):
     size = len(dataloader.dataset)
     num_batches = len(dataloader)
+    # Set the model to evaluation mode - important for batch normalization and dropout layers
+    # Unnecessary in this situation but added for best practices
     model.eval()
     test_loss, correct = 0, 0
+    # Evaluating the model with torch.no_grad() ensures that no gradients are computed during test mode
+    # also serves to reduce unnecessary gradient computations and memory usage for tensors with requires_grad=True
     with torch.no_grad():
         for X, y in dataloader:
             X, y = X.to(device), y.to(device)

@@ -38,7 +38,72 @@ To use a model, call it with the input data.
 
 Back propagation is the most frequently used algorithm. Parameters are adjusted according to the gradient of the loss function. `torch.autograd` is the automatic differentiation engine used for this.
 
-You want to be able to compute the gradients of the loss functions with respect to the parameters. So mark those with `requires_grad=True` or `x.requires_grad_(True)`.
+## Automatic differentiation (aka autograd)
+
+[Autograd reference page](https://docs.pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html)
+
+You want to be able to compute the gradients of the loss functions with respect to the parameters. So mark those with `requires_grad=True` or `x.requires_grad_(True)` like
+
+```python
+import torch
+
+x = torch.ones(5)  # input tensor
+y = torch.zeros(3)  # expected output
+w = torch.randn(5, 3, requires_grad=True)
+b = torch.randn(3, requires_grad=True)
+z = torch.matmul(x, w)+b
+loss = torch.nn.functional.binary_cross_entropy_with_logits(z, y)
+
+```
+
+Doing so causes computations with those tensors to build up a computational DAG as you operate on them. That DAG is then used to be able to compute gradients using the chain rule.
+
+The above code produces `grad_fn` attributes on `z` and `loss`.
+
+To compute gradients call `loss.backward()` and access gradients via `w.grad, b.grad`
+
+The computational DAG is dynamically constructed from scratch after every call to `backward()` which allows things like control flow to work.
+
+Gradient tracking can be disabled with `torch.no_grad()`:
+
+```python
+with torch.no_grad():
+    z = torch.matmul(x, w)+b
+```
+
+for cases when you don't need gradients, e.g. forward prop, freezing parameters.
+
+Jacobian products $v^T \cdot J$ can be computed by passing $v$ as an argument to backward `out.backward(input_vec, retain_graph=True)`.
+
+## Optimizing model parameters
+
+The goal is to optimize the model parameters.
+
+There are some hyperparameters which can be tuned
+
+* Number of epochs - How many passes are done over the data
+* Batch size - the number of data samples propagated through the network before parameters are updated
+* Learning rate - tunes the step size of the gradient descent algorithm. Small values result in slower convergence with higher precision. Larger values may result in faster convergence at the cost of possible unpredictability.
+
+A loss function is also needed which serves as the objective function to optimize. Common loss functions include `nn.MSELoss` (Mean Square Error) for regression tasks, and `nn.NLLLoss` (Negative Log Likelihood) for classification. `nn.CrossEntropyLoss` combines `nn.LogSoftmax` and `nn.NLLLoss`.
+
+An **optimizer** handles actually doing the optimization. Stochastic gradient descent (SGD), ADAM, and RMSProp are common optimizers but there are many available which work better for different models and data.
+
+Setting up an optimizer involves providing model parameters and the learning rate
+
+```python
+optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+```
+
+Inside the training loop we:
+
+* Call `optimizer.zero_grad()` to reset gradients. Gradients accumulate.
+* Backpropagate the prediction loss with `loss.backpropagate()`. Gradients are stored in the parameters.
+* Call `optimizer.step()` to adjust the parameters with the gradients collected in the backward pass.
+
+## Saving and loading models
+
+Model parameters can be saved with `torch.save(model.state_dict(), 'model_weights.pth')` and loaded with `model.load_state_dict(torch.load('model_weights.pth', weights_only=True))`
 
 ## Usage
 
@@ -49,6 +114,7 @@ You want to be able to compute the gradients of the loss functions with respect 
 ## Actions
 
 - [ ] Tensors and the stride vector. When are strides legal? I.e. what does contiguity mean?
+  - [ ]https://discuss.pytorch.org/t/contigious-vs-non-contigious-tensor/30107/16, https://stackoverflow.com/questions/48915810/what-does-contiguous-do-in-pytorch, https://stackoverflow.com/questions/48915810/what-does-contiguous-do-in-pytorch/67021086#67021086
 - [ ] Basic network construction
 - [ ] Invocation and tuning of backprop
 - [ ] Invocation and tuning of forward prop
