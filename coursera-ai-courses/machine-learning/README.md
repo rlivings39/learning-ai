@@ -42,11 +42,11 @@ Linear regression is probably the most used machine learning algorithm in the wo
 
 Linear regression with one variable (a single feature) is called univariate linear regression
 
-In linear regression, we try to fit a linear function `f_w,b(x) = wx + b` where we need to determine the best values of the parameters `w, b`. All models will have these parameters which need to be determined. They are also called coefficients or weights.
+In linear regression, we try to fit a linear function $f_{w,b}(x) = wx + b$ where we need to determine the best values of the parameters $w, b$. All models will have these parameters which need to be determined. They are also called coefficients or weights.
 
 ### Cost function
 
-We use a cost function to quantify how well a model/prediction fits training data. For linear regression we compute the squared error `sum((y_hat_i - y_i)^2 / 2m`. The extra division by 2 makes later calculations neater. It is usually denoted `J(w,b)` and called the squared error cost function.
+We use a cost function to quantify how well a model/prediction fits training data. For linear regression we compute the squared error $$\sum_{i=0}^m(\hat{y}_i - y_i)^2 / 2m$$ The extra division by 2 makes later calculations neater. It is usually denoted $J(w,b)$ and called the squared error cost function.
 
 Many other cost functions are used for different applications. Squared error cost function is used for most regression.
 
@@ -79,14 +79,14 @@ Gradient descent has an interesting property where it may settle to a local mini
 
 Take steps looking like
 
-```
-w = w - a*d/dw*J(w,b)
-b = b - a*d/db*J(w,b)
-```
+$$
+w = w - \alpha*\frac{d}{dw}J(w,b)\\
+b = b - \alpha*\frac{d}{db}J(w,b)
+$$
 
 until convergence happens. I.e. `w` and `b` change very little on each step.
 
-alpha is the "learning rate` between 0 and 1 controlling the size of the steps to take. The derivatives are the partial derivatives.
+$\alpha$ is the "learning rate" between 0 and 1 controlling the size of the steps to take. The derivatives are the partial derivatives.
 
 The partial term is subtracted so that you descend for positive slope and ascend for negative slope.
 
@@ -106,9 +106,9 @@ With a fixed learning rate, steps decrease as you approach the minimum because d
 
 ## Multiple linear regression
 
-Similar to linear regression but with multiple input variables. So each `xi` is a vector of the `n` features/variables. These are indexed as `x^i_j` where the superscript `i` is the training example index and the subscript `j` is the index of the feature.
+Similar to linear regression but with multiple input variables. So each $x^i$ is a vector of the $n$ features/variables. These are indexed as $x^i_j$ where the superscript $i$ is the training example index and the subscript $j$ is the index of the feature.
 
-The formula is `fwb(x_vec) = w1*x1 + w2*x2 + ... + wn*xn + b = w_vec \dot x_vec + b`
+The formula is $$f_{w,b}(\vec{x}) = w_1x_1 + w_2x_2 + ... + w_nx_n + b = \vec{w} \cdot \vec{x} + b$$
 
 **Note** Use vectorized operations in NumPy rather than explicit loops for faster execution.
 
@@ -166,7 +166,7 @@ Feature engineering is using intuition to design new features by transforming or
 
 ## Polynomial regression
 
-You can compute something like `f_wb(x) = w1*x + w2*x^2 + w3*x^3 + ... + b`. You can also use fractional powers to compute roots.
+You can compute something like $f_{w,b}(x) = w_1x + w_2x^2 + w_3*x^3 + ... + b$. You can also use fractional powers to compute roots.
 
 **Note** When using polynomials, feature scaling is increasingly important.
 
@@ -184,9 +184,9 @@ Binary classification means there are 2 categories.
 
 Logistic regression is probably the most widely used classification algorithm in the world.
 
-The sigmoid function (aka logistic function) is used: `g(z) = 1/(1+e^(-z))` where `0 < g(z) < 1`.
+The sigmoid function (aka logistic function) is used: $g(z) = \dfrac{1}{1+e^{-z}}$ where $0 < g(z) < 1$.
 
-The logistic regression function is `f_wb(x) = g(w \dot x + b) = 1/(1 + e^-(w \dot x + b))
+The logistic regression function is $f_{w,b}(x) = g(w \cdot x + b) = \dfrac{1}{1 + e^{-w \cdot x - b}}$
 
 Think that the output of logistic regression is the probability that the output class is 1.
 
