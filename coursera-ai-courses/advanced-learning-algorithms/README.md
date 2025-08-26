@@ -252,7 +252,7 @@ The [model evaluation and selection lab](./week3-labs/C2W3_Lab_01_Model_Evaluati
 Looking at the training and cross validation errors can give indicators of bias and variance (i.e. underfitting and overfitting).
 
 * High training error, high cross validation error - indicative of high bias or underfitting
-** If cross validation error is much higher than the training error in this case you may wind up with high bias **and** high variance
+    * If cross validation error is much higher than the training error in this case you may wind up with high bias **and** high variance
 * Low training error, high cross validation error - indicative of high variance or overfitting
 * Low training error, low cross validation error - could be a good fit
 
