@@ -40,4 +40,10 @@ ChatGPT is likely a single agent that runs things sequentially.
 
 **Reliability** is a crucial trait. We use redundancy and failover mechanisms to ensure availability to deal with tool failures. Monitoring and tracking can be added on top of this.
 
+### Using CrewAI
 
+CrewAI defines several top-level classes like `Agent, Task, Crew`. These represent the obvious things where a `Crew` is what is used to assemble and launch (`kickoff`) the agents. Agents contain tools. Tasks might be assigned to agents, especially for sequential workflows.
+
+In hierarchical workflows tasks do not have agents assigned but a `manager_llm` is assigned, say `ChatOpenAI from langchain_openai`. This is used to decide which agent to delegate to.
+
+See [oreilly-ai-agents/notebooks/CrewAI_Hello_World.ipynb](oreilly-ai-agents/notebooks/CrewAI_Hello_World.ipynb) for examples.
