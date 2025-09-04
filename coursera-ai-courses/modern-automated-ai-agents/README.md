@@ -47,3 +47,9 @@ CrewAI defines several top-level classes like `Agent, Task, Crew`. These represe
 In hierarchical workflows tasks do not have agents assigned but a `manager_llm` is assigned, say `ChatOpenAI from langchain_openai`. This is used to decide which agent to delegate to.
 
 See [oreilly-ai-agents/notebooks/CrewAI_Hello_World.ipynb](oreilly-ai-agents/notebooks/CrewAI_Hello_World.ipynb) for examples.
+
+### LangGraph
+
+LangGraph allows you to have fine control over the processing of your query. You build up the tasks and compose them into an explicit flow chart, including conditions, that allows you to control how the system works. It can also visualize the graph.
+
+This approach tends to be much more verbose compared to something like CrewAI since the developer makes all of the decisions rather than delegating to the LLMs to make the decisions for you.
