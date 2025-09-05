@@ -84,6 +84,27 @@ Tools run with a set of inputs and return an output. To implement custom tools i
 
 Note that when allowing LLMs to make decisions and delegate, they can make wrong or seemingly nonsensical decisions.
 
+## Agents in more detail
+
+When an agent is given a question or task they go through
+
+* Thought - I should looks this up
+* Action - Use a tool like search for query
+* Observation - Output of tool + LLM analysis
+* Response - Response generated for user
+
+Agents should be aware of what tools are available to carry out actions.
+
+Agents are workflows with decision points
+
+* Did the AI identify the right tool?
+* Was the tool used correctly?
+* Did the tool work and return correct info?
+* Did the AI use the info properly?
+* And so on for the next tool...
+
+Most agents will combine multiple tools to achieve tasks.
+
 ## Actions
 
 - [ ] Vector database like Chroma

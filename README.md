@@ -36,7 +36,7 @@ https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-202
 * https://python-patterns.guide/
 * https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-2024-cc30c6aa6e16
 * https://www.swyx.io/learn-in-public
-* https://pytorch.org/tutorials/beginner/basics/intro.html
+* ➡️ https://pytorch.org/tutorials/beginner/basics/intro.html
 * Andrew Ng on Coursera
     * ✅ https://www.coursera.org/learn/ai-for-everyone
     * ✅ https://www.coursera.org/learn/machine-learning
@@ -47,6 +47,10 @@ https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-202
     * https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU
     * https://www.coursera.org/learn/unsupervised-learning-recommenders-reinforcement-learning
     * https://github.com/dibgerge/ml-coursera-python-assignments
+* AI books and courses
+    * Designing Machine Learning Systems By Chip Huyen
+    * AI Engineering By Chip Huyen
+    * ➡️ Modern Automated AI Agents: Building Agentic AI to Perform Complex Tasks By Sinan Ozdemir
 
 ## Actions
 
