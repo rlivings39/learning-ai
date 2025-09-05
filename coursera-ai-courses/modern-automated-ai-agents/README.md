@@ -105,6 +105,10 @@ Agents are workflows with decision points
 
 Most agents will combine multiple tools to achieve tasks.
 
+### Tools
+
+Tools are simply input-output machines written to achieve a task. They should have a good description that the LLM agent can use to understand the tool. They should have a standard interface so they can be used in similar places in your code.
+
 ## Actions
 
 - [ ] Vector database like Chroma
