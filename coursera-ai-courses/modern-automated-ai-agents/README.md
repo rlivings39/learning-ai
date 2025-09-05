@@ -74,7 +74,7 @@ Language models try to fill in the blank, effectively, by assigning a probabilit
 There are 2 types of LLMs
 
 * **Auto-encoding** - The readers. Learn sequences by predicting tokens given past and future context. Great for classification, embedding + retrieval tasks. E.g. BERT, XLNET, RoBERTa, sBERT
-* **Auto-regressive** - The writers. Predict a future token given either past or future context, but not both. Can generate text. Can read text but must be larger than auto-encoding for similar functionality. E.g. GPT, Llama, Anthroipic's Claude, most LLMs/"gen AI".
+* **Auto-regressive** - The writers. Predict a future token given either past or future context, but not both. Can generate text. Can read text but must be larger than auto-encoding for similar functionality. E.g. GPT, Llama, Anthropic's Claude, most LLMs/"gen AI".
 
 ## Agentic tools
 
