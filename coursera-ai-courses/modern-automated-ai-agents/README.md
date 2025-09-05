@@ -53,3 +53,39 @@ See [oreilly-ai-agents/notebooks/CrewAI_Hello_World.ipynb](oreilly-ai-agents/not
 LangGraph allows you to have fine control over the processing of your query. You build up the tasks and compose them into an explicit flow chart, including conditions, that allows you to control how the system works. It can also visualize the graph.
 
 This approach tends to be much more verbose compared to something like CrewAI since the developer makes all of the decisions rather than delegating to the LLMs to make the decisions for you.
+
+In the [oreilly-ai-agents/notebooks/LangGraph_Hello_World.ipynb](oreilly-ai-agents/notebooks/LangGraph_Hello_World.ipynb) notebook we see examples.
+
+## Understanding LLMs
+
+Modern AI engineers have been working on **sequence to sequence** modelling where you input a sequence of tokens and output a sequence of tokens.
+
+A modern history of NLP looks like
+
+* 2001 - Neural language models
+* 2013 - Encoding semantic meaning with Word2Vec
+* 2014-17 - Sequence to sequence + attention
+* 2017 - present - Transformers + LLMs
+
+"Attention is all you need" introduced the transformer architecture in 2017.
+
+Language models try to fill in the blank, effectively, by assigning a probability to optional tokens.
+
+There are 2 types of LLMs
+
+* **Auto-encoding** - The readers. Learn sequences by predicting tokens given past and future context. Great for classification, embedding + retrieval tasks. E.g. BERT, XLNET, RoBERTa, sBERT
+* **Auto-regressive** - The writers. Predict a future token given either past or future context, but not both. Can generate text. Can read text but must be larger than auto-encoding for similar functionality. E.g. GPT, Llama, Anthroipic's Claude, most LLMs/"gen AI".
+
+## Agentic tools
+
+Tools run with a set of inputs and return an output. To implement custom tools in CrewAI you can use the `@tool` decorator from `crewai_tools`. The tool function docstring is leveraged by the agent to decide when to use the tool. `BaseTool` can also be used instead of the decorator.
+
+[oreilly-ai-agents/notebooks/CrewAI_Hello_World.ipynb](oreilly-ai-agents/notebooks/CrewAI_Hello_World.ipynb) has an example of this in the "Buildig a Search Agent with a Custom Tool" section.
+
+Note that when allowing LLMs to make decisions and delegate, they can make wrong or seemingly nonsensical decisions.
+
+## Actions
+
+- [ ] Vector database like Chroma
+- [ ] Read about transformer architecture
+- [ ] Read about RAG
