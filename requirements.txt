@@ -37,6 +37,7 @@ h5py==3.13.0
 httpcore==1.0.7
 httpx==0.28.1
 idna==3.10
+iniconfig==2.1.0
 ipykernel==6.29.5
 ipympl==0.9.7
 ipython==9.0.1
@@ -110,6 +111,7 @@ pathspec==0.12.1
 pexpect==4.9.0
 pillow==11.1.0
 platformdirs==4.3.6
+pluggy==1.6.0
 prometheus_client==0.21.1
 prompt_toolkit==3.0.50
 protobuf==5.29.3
@@ -122,6 +124,7 @@ pydot==3.0.4
 pyflakes==3.2.0
 Pygments==2.19.1
 pyparsing==3.2.1
+pytest==8.4.2
 python-dateutil==2.9.0.post0
 python-json-logger==3.3.0
 pytz==2025.2
