@@ -6,12 +6,14 @@ This relies on the data from https://download.pytorch.org/tutorial/data.zip bein
 
 import glob
 import os
+import random
 import string
 import time
 import unicodedata
 from io import open
 from typing import List
 
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -116,6 +118,56 @@ class CharRNN(nn.Module):
         return output
 
 
+def train(
+    rnn: CharRNN,
+    training_data,
+    n_epoch=10,
+    n_batch_size=64,
+    report_every=50,
+    learning_rate=0.2,
+    criterion=nn.NLLLoss(),
+):
+    """
+    Train on a batch of training_data for a specified number of iterations and report periodically
+    """
+    # Log losses for plots
+    current_loss = 0
+    all_losses = []
+    rnn.train()
+    optimizer = torch.optim.SGD(rnn.parameters(), lr=learning_rate)
+    start = time.time()
+    print(f"Training on data set with n = {len(training_data)}")
+    for iter in range(1, n_epoch + 1):
+        # Clear gradients
+        rnn.zero_grad()
+        # Create minibatches. DataLoaders don't work as each name is a different length???
+        batches = list(range(len(training_data)))
+        random.shuffle(batches)
+        batches = np.array_split(batches, len(batches) // n_batch_size)
+
+        for idx, batch in enumerate(batches):
+            batch_loss = 0
+            for i in batch:
+                (label_tensor, text_tensor, label, text) = training_data[i]
+                output = rnn.forward(text_tensor)
+                loss = criterion(output, label_tensor)
+                batch_loss += loss
+            # Optimize parameters
+            batch_loss.backward()
+            nn.utils.clip_grad_norm_(rnn.parameters(), 3)
+            optimizer.step()
+            optimizer.zero_grad()
+
+            current_loss += batch_loss.item() / len(batch)
+        all_losses.append(current_loss / len(batches))
+        if iter % report_every == 0:
+            print(
+                f"{iter} ({iter / n_epoch:.0%}): \t average batch loss = {all_losses[-1]}"
+            )
+        current_loss = 0
+    return all_losses
+
+
 def main():
     ds = NamesDataset()
 
@@ -126,6 +178,7 @@ def main():
     n_hidden = 128
     rnn = CharRNN(n_letters, n_hidden, len(ds.labels_unique))
     print(rnn)
+    train(rnn, train_set)
 
 
 if __name__ == "__main__":
