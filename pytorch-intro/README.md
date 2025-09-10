@@ -134,6 +134,33 @@ Features include
 * Dynamo Triton is inference serving software
 * Simplifies deployment and inference on RTX gpus
 
+### Quantization
+
+[A White Paper on Neural Network Optimization](https://arxiv.org/pdf/2106.08295) discusses 2 types of quantization **post training quantization (PTQ)** and **quantization aware training (QAT)**. The former is a push-button solution that can be applied to pre-trained networks. The latter requires labeled data and fine tuning but can enable lower bit quantization with comparable results.
+
+The authors say that PTQ can result in floating-point-like accuracy with 8-bit quantization. When quantizing from 32 bits to 8 bits NN storage size is reduced by a factor of 4 and matrix multiplication is reduced by a factor of 16 for a matrix-vector product (i.e. quadratic).
+
+The paper describes decomposing a vector `x` into a float scalar and integer vector `s*x_int` for a single scalar for the whole vector. Doing this with weights and input vectors allows for most math to be done with integers/fixed point. Accumulators are kept as floating point and then flushed to smaller sizes before transmission as activations.
+
+The paper uses **uniform affine quantization** or **asymmetric quantization**. This is defined by 3 parameters `s` - the scale factor, `z` - the zero point, and `b` the bit width.
+
+Quantization maps a float to an integer value in `[0, 2^b-1]` via
+$$
+x_{int} = clamp \left (round \left (\frac{x}{s} \right ) + z, 0, 2^b-1 \right)
+$$
+
+The zero point ensures that 0 maps to 0 to maintain zero padding and proper functionality for things like ReLU.
+
+De-quantization is the inverse
+
+$$
+x \approx \hat{x} = q(s,z,b) = s(x_{int} - z)
+$$
+
+where $q()$ is the quantization function.
+
+The range of this quantized value is $(q_{min}, q_{max}) = (-sz, s(2^b - 1 - z))$. The range inducing a **clipping error**. The range can be increased by increasing $s$ at the expense of increasing the **rounding error** which is $[-\frac{1}{2}s, \frac{1}{2}s]$.
+
 ## Using this repo
 
 * Activate the `venv`: `source .env/bin/activate` or `source .env/bin/activate.fish`
