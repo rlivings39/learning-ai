@@ -76,6 +76,8 @@ There are 2 types of LLMs
 * **Auto-encoding** - The readers. Learn sequences by predicting tokens given past and future context. Great for classification, embedding + retrieval tasks. E.g. BERT, XLNET, RoBERTa, sBERT
 * **Auto-regressive** - The writers. Predict a future token given either past or future context, but not both. Can generate text. Can read text but must be larger than auto-encoding for similar functionality. E.g. GPT, Llama, Anthropic's Claude, most LLMs/"gen AI".
 
+LLMs are reasoning machines rather than thinking machines. They excel at tasks requiring reasoning - using context and info together to produce a nuanced answer. Thinking often results in hallucination.
+
 ## Agentic tools
 
 Tools run with a set of inputs and return an output. To implement custom tools in CrewAI you can use the `@tool` decorator from `crewai_tools`. The tool function docstring is leveraged by the agent to decide when to use the tool. `BaseTool` can also be used instead of the decorator.
@@ -108,6 +110,38 @@ Most agents will combine multiple tools to achieve tasks.
 ### Tools
 
 Tools are simply input-output machines written to achieve a task. They should have a good description that the LLM agent can use to understand the tool. They should have a standard interface so they can be used in similar places in your code.
+
+## Agent prompting
+
+**Few-shot learning/in-context learning** involves giving an LLM examples of a task being solved to teach it how to reason through the problem and format an answer. Examples can be as complex as desired at the cost of processing and money.
+
+**Chain of thought prompting** forces an LLM to generate reasoning for an answer before generating the answer. Ask the LLM for the reasoning.
+
+The course shows large improvements in accuracy when using few-shot learning and chain of thought prompting.
+
+A reasoning and action **ReAct** style agent integrates reasoning and action by combinig thought with actions.
+
+The loop looks like:
+
+Query -> Reasoning -> Act on a tool -> Observe the result -> Reasoning ...
+
+The example in the class shows an example of building a simple agent framework [First Steps with our own Agent](https://colab.research.google.com/drive/14jAlW2E7ya_aS1M6eUsuHciC1WvLfIif?usp=sharing).
+
+Simple tools like `SimplyAnswer` and `Inquire` can be added which allow the agent to directly answer things it's confident in and to ask users for more information.
+
+He also shows a case where asking for the sum of the price of a number of crypto results in
+
+* AI asks which crypto
+* User says Ethereum
+* AI googles ethereum price
+* AI runs Python code to do the math
+* AI returns the answer
+
+Having a PythonREPL tool is very useful so that the agent can do computations.
+
+Interestingly this shows a simple framework can use multiple tools. Having short-term memory by keeping track of responses (aka context window) is useful to give answers.
+
+The author has created a simple framework called [Squad Goals](https://github.com/sinanuozdemir/squad-goals) which can be used for more experimentation.
 
 ## Actions
 
