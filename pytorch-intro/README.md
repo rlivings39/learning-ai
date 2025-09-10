@@ -161,6 +161,16 @@ where $q()$ is the quantization function.
 
 The range of this quantized value is $(q_{min}, q_{max}) = (-sz, s(2^b - 1 - z))$. The range inducing a **clipping error**. The range can be increased by increasing $s$ at the expense of increasing the **rounding error** which is $[-\frac{1}{2}s, \frac{1}{2}s]$.
 
+**Symmetric uniform quantization** restricts `z` to 0 and requires choosing a signed or unsigned interpretation based on the necessary operations.
+
+There is a question of how many different quantizations should be done. Per-tensor quantization is common where each tensor (i.e. weights and activations). Finer granularity can be used to improve accuracy at the expense of more bookkeeping and computation.
+
+Quantized inference can be done on dedicated hardware or simulated on general-purpose hardware to test the effects.
+
+Quantization is ideally applied after non-linearities to avoid extra work but hardware may not always support this.
+
+Homogeneous bit-width is usually chosen. One can choose symmetric or asymmetric quantization and the appropriate granularity such as per-tensor or per-channel.
+
 ## Using this repo
 
 * Activate the `venv`: `source .env/bin/activate` or `source .env/bin/activate.fish`
@@ -181,3 +191,4 @@ The range of this quantized value is $(q_{min}, q_{max}) = (-sz, s(2^b - 1 - z))
   * https://developer.nvidia.com/blog/speeding-up-deep-learning-inference-using-tensorrt-updated/
   * https://developer.nvidia.com/blog/optimizing-and-serving-models-with-nvidia-tensorrt-and-nvidia-triton/
   * https://www.youtube.com/watch?v=SlUouzxBldU
+- [ ] Types of layers: ReLU, softmax, linear, logistic, convolution
