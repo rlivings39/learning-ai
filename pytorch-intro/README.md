@@ -144,7 +144,7 @@ The paper describes decomposing a vector `x` into a float scalar and integer vec
 
 The paper uses **uniform affine quantization** or **asymmetric quantization**. This is defined by 3 parameters `s` - the scale factor, `z` - the zero point, and `b` the bit width.
 
-Quantization maps a float to an integer value in `[0, 2^b-1]` via
+Quantization maps a float to an integer value in $[0, 2^b-1]$ via
 $$
 x_{int} = clamp \left (round \left (\frac{x}{s} \right ) + z, 0, 2^b-1 \right)
 $$
