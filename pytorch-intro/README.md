@@ -136,7 +136,7 @@ Features include
 
 ### Quantization
 
-[A White Paper on Neural Network Optimization](https://arxiv.org/pdf/2106.08295) discusses 2 types of quantization **post training quantization (PTQ)** and **quantization aware training (QAT)**. The former is a push-button solution that can be applied to pre-trained networks. The latter requires labeled data and fine tuning but can enable lower bit quantization with comparable results.
+[A White Paper on Neural Network Optimization](https://arxiv.org/pdf/2106.08295) discusses 2 types of quantization **post training quantization (PTQ)** and **quantization aware training (QAT)**. The former is a push-button solution that can be applied to pre-trained networks. The latter requires labeled data and fine tuning but can enable lower bit quantization with comparable results. QAT includes quantization noise effects in the training process.
 
 The authors say that PTQ can result in floating-point-like accuracy with 8-bit quantization. When quantizing from 32 bits to 8 bits NN storage size is reduced by a factor of 4 and matrix multiplication is reduced by a factor of 16 for a matrix-vector product (i.e. quadratic).
 
