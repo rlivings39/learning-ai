@@ -171,7 +171,7 @@ This is the set of problems with more than 2 output classes such as classifying 
 
 The output of logistic regression is thought of as the probability of `y` being 1. So it also computes the probability of `y` being equal to 0 which is `1 - P(y=1|x)`
 
-If you have N classes with weights and biases for them compute `z_i = w_i \dot + b_i` for `i=1,2,...,N`. Then compute the probabilities `a_i = exp(z_i) / sum(exp(z_k))`. Each `a_i` is the probability that `y` is equal to `i`. We always have `sum(a_i) == 1`.
+If you have N classes with weights and biases for them compute `z_i = w_i \dot + b_i` for `i=1,2,...,N`. Then compute the probabilities via softmax `a_i = exp(z_i) / sum(exp(z_k))`. Each `a_i` is the probability that `y` is equal to `i`. We always have `sum(a_i) == 1`.
 
 With N=2, the computation reduces to basically logistic regression.
 
@@ -217,7 +217,7 @@ The course made a few comments on AGI. Namely that Andrew believes it is still f
 
 They mentioned the "one learning algorithm hypothesis". It is backed up by evidence like if you rewire connections in one part of the brain to connect to other input sources, that part of the brain adapts to use the new inputs. For example rewiring the auditory cortex to receive sight info causes that part of the brain to process sight.
 
-Other interesting experiments were shown that do similar things to send various signals to simulate another sense. E.g. sending voltages to the tongue of greyscale images can cause sight, some humans can learn echolocation, a haptic (vibrating) belt can be used to induce directional (N, S, E, W) sense, implanting a third eye on a frog can result in the frog adapting and using it.
+Other interesting experiments were shown that do similar things to send various signals to simulate another sense. E.g. sending voltages to the tongue of grey scale images can cause sight, some humans can learn echolocation, a haptic (vibrating) belt can be used to induce directional (N, S, E, W) sense, implanting a third eye on a frog can result in the frog adapting and using it.
 
 Given this, a question is to determine what the general learning algorithm used by the brain is and to see if we can emulate that in computers.
 

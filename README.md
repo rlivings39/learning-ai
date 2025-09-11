@@ -51,6 +51,7 @@ https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-202
     * Designing Machine Learning Systems By Chip Huyen
     * AI Engineering By Chip Huyen
     * ➡️ Modern Automated AI Agents: Building Agentic AI to Perform Complex Tasks By Sinan Ozdemir
+* https://ml-cheatsheet.readthedocs.io/
 
 ## Actions
 
