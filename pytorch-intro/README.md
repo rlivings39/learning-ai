@@ -186,6 +186,17 @@ The quantization range needs to be chosen. That can be done with a few strategie
 
 Bias correction can be done with experimental correction or analytical correction.
 
+### Standard PTQ flow
+
+The authors recommend the following flow
+
+* **Cross-layer equalization** First apply cross-layer equalization (CLE), to help with depth-wise separable layers and more
+* **Add quantizers** Choose quantizers and add quantization operations in the network depending on hardware. Use symmetric for weights and asymmetric for activations. Per-channel help if the hardware supports them.
+* **Weight range setting** MSE based criteria is recommended. Min-max can be useful for per-channel.
+* **AdaRound** If a calibration data set exists apply AdaRound to optimize rounding. Crucial for low bit (e.g. 4-bit) quantization
+* **Bias correction** Without a calibration set but with batch normalization use analytical bias correction instead.
+* **Activation range setting** Determine the quantization ranges of all data dependent tensors in the network (i.e., activations). Use the MSE based criteria for most of the layers, which requires a small calibration set to find the minimum MSE loss. BN range setting doesn't require data.
+
 ## Using this repo
 
 * Activate the `venv`: `source .env/bin/activate` or `source .env/bin/activate.fish`
