@@ -171,6 +171,21 @@ Quantization is ideally applied after non-linearities to avoid extra work but ha
 
 Homogeneous bit-width is usually chosen. One can choose symmetric or asymmetric quantization and the appropriate granularity such as per-tensor or per-channel.
 
+### Choosing quantization parameters
+
+The quantization range needs to be chosen. That can be done with a few strategies
+
+* **Min-max** Choose the min and max of the tensor. This can be sensitive to outliers.
+* **Mean squared error (MSE)** Choose the min and max to minimize the Frobenius norm between the original value and quantized value. The optimization problem can be solved using some simple methods.
+* **Cross-entropy** Minimize the cross-entropy function to avoid over correcting for the many small insignificant values present in classification tasks.
+* **Batch-normalized range setting** Using batch normalized range setting can help with
+
+### Techniques to improve performance with quantization
+
+* **Cross layer equalization** is useful to help normalize when there are some layers with wildly differing ranges. **Absorbing biases** can be used to improve high bias and bias correction.
+
+Bias correction can be done with experimental correction or analytical correction.
+
 ## Using this repo
 
 * Activate the `venv`: `source .env/bin/activate` or `source .env/bin/activate.fish`
