@@ -143,6 +143,30 @@ Interestingly this shows a simple framework can use multiple tools. Having short
 
 The author has created a simple framework called [Squad Goals](https://github.com/sinanuozdemir/squad-goals) which can be used for more experimentation.
 
+## Evaluating and testing agents
+
+Some characteristics to consider
+
+* Response time
+* Accuracy
+* Task completion rate
+* Utility versus a human
+* Bias in decision-making. Training data can lead to biases. Monitoring and retraining are necessary.
+* Explainability. This is often traded against adaptability.
+
+LLMs have 4 general tasks
+
+* Generative tasks
+  * Multiple choice
+  * Free text response
+* Understanding
+  * Embeddings
+  * Classification
+
+Free text and embeddings retain and remix semantic info. Multiple choice and classification categorize data into known buckets.
+
+Picking tools is a multiple choice problem. Responding to humans is free text.
+
 ## Actions
 
 - [ ] Vector database like Chroma
