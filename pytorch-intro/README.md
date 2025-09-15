@@ -134,6 +134,24 @@ Features include
 * Dynamo Triton is inference serving software
 * Simplifies deployment and inference on RTX gpus
 
+### TensorRT optimizations
+
+https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-803/best-practices/index.html covers some basic optimization strategies with TensorRT.
+
+#### Batching
+
+Batching simply means evaluating multiple inputs simultaneously. This converts matrix-vector multiplies to matrix-matrix and allows for greater parallelism.
+
+#### Streams
+
+CUDA streams are independent streams of computations. The hardware can schedule these computations concurrently which can allow for more complete hardware utilization.
+
+#### Layer fusion
+
+Layer fusion combines subsequent layers into a single kernel to avoid multiple kernel launches and data loads. This is generally detected and done automatically by TensorRT.
+
+There are many [supported layer fusions](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-803/best-practices/index.html#layer-fusion).
+
 ### Quantization
 
 [A White Paper on Neural Network Optimization](https://arxiv.org/pdf/2106.08295) discusses 2 types of quantization **post training quantization (PTQ)** and **quantization aware training (QAT)**. The former is a push-button solution that can be applied to pre-trained networks. The latter requires labeled data and fine tuning but can enable lower bit quantization with comparable results. QAT includes quantization noise effects in the training process.
@@ -196,6 +214,30 @@ The authors recommend the following flow
 * **AdaRound** If a calibration data set exists apply AdaRound to optimize rounding. Crucial for low bit (e.g. 4-bit) quantization
 * **Bias correction** Without a calibration set but with batch normalization use analytical bias correction instead.
 * **Activation range setting** Determine the quantization ranges of all data dependent tensors in the network (i.e., activations). Use the MSE based criteria for most of the layers, which requires a small calibration set to find the minimum MSE loss. BN range setting doesn't require data.
+
+## Layer fusion for optimization
+
+[AussieAI](https://www.aussieai.com/research/layer-fusion) describes some info about fusion. As does [this paper](https://arxiv.org/pdf/2007.14917).
+
+## Convolution and convolutional layers
+
+In the context of deep learning convolution refers to cross-correlation (the filter is not time-reversed as in convolution).
+
+It involves an input and a filter. The filter is applied at each valid subtensor of the input computing the sum of the the element-wise products. This allows for incorporating data from small regions and compressing to a smaller size.
+
+Techniques like this are used in computer vision where one can create feature detector filters like
+
+```
+0 1 0
+0 1 0
+0 1 0
+```
+
+to detect vertical lines.
+
+A CNN learns the weights of such filters to be able to detect various features in images, videos, etc. This gives them their power.
+
+Convolution layers are then applied in sequence to be able to extract higher and higher level features from the prior layers. For example line detection, then shape detection, then face detection, and so on.
 
 ## Using this repo
 
