@@ -1,0 +1,3 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/ai-courses-and-books/modern-automated-ai-agents/.venv/bin/python"
+}

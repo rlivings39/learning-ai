@@ -146,7 +146,7 @@ In addition, you can use an automatic convergence test in your gradient descent 
 
 ### Choosing an appropriate learning rate
 
-**Resource** The [feature scaling and learning rate lab](coursera-ai-courses/machine-learning/week2-labs/C1_W2_Lab03_Feature_Scaling_and_Learning_Rate_Soln.ipynb) does an excellent job of demonstrating the ideas discussed here.
+**Resource** The [feature scaling and learning rate lab](ai-courses-and-books/machine-learning/week2-labs/C1_W2_Lab03_Feature_Scaling_and_Learning_Rate_Soln.ipynb) does an excellent job of demonstrating the ideas discussed here.
 
 If the cost is oscillating between increasing and decreasing this could mean you've got a bug in your implementation or that the learning rate is too large. If the learning rate is far too large the cost may just increase forever leading to divergence.
 
