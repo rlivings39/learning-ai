@@ -13,6 +13,7 @@ https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-202
 * [./ai-courses-and-books/ai-for-everyone/](./ai-courses-and-books/ai-for-everyone/) - Andrew Ng's less technical intro to AI
 * [./ai-courses-and-books/machine-learning/](./ai-courses-and-books/machine-learning/) - Andrew Ng's updated technical ML course
 * [./ai-courses-and-books/advanced-learning-algorithms/](./ai-courses-and-books/advanced-learning-algorithms/) - Advanced learning algorithms like k-means, PCA, decision trees, etc.
+* [./ai-courses-and-books/dive-into-deep-learning/](./ai-courses-and-books/dive-into-deep-learning/) - Notes from the book [Dive into Deep Learning](https://d2l.ai/)
 * [./pytorch-intro](./pytorch-intro/) - Intro material on using PyTorch. See the [README](./pytorch-intro/README.md) for the details there.
 
 ## PyTorch tutorials on YouTube

@@ -1,3 +1,6 @@
 [submodule "ai-courses-and-books/modern-automated-ai-agents/oreilly-ai-agents"]
 	path = ai-courses-and-books/modern-automated-ai-agents/oreilly-ai-agents
 	url = git@github.com:sinanuozdemir/oreilly-ai-agents.git
+[submodule "ai-courses-and-books/dive-into-deep-learning/notebooks"]
+	path = ai-courses-and-books/dive-into-deep-learning/notebooks
+	url = git@github.com:d2l-ai/d2l-en.git
