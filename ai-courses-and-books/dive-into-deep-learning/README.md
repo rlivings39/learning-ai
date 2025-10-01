@@ -4,7 +4,7 @@ Working through the book https://d2l.ai/
 
 ## Setup
 
-With Python 3.9 (the d2l package [uses old dependencies](https://d2l.ai/chapter_installation/index.html))
+With Python 3.9 from the root of this repo. The d2l package [uses old dependencies](https://d2l.ai/chapter_installation/index.html) so we use Python 3.9
 
 ```bash
 git submodule update --init --recursive
