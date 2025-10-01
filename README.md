@@ -9,10 +9,10 @@ https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-202
 * [./python-lessons](./python-lessons/) - Various Python classes and lessons. The [README](./python-lessons/README.md) contains accumulated info. Subdirectories are separate courses
 * [./python-lessons/practical-python](./python-lessons/practical-python/) - Code and exercises from the excellent [Practical Python by David Beazley](https://dabeaz-course.github.io/practical-python/Notes/Contents.html)
 * [./python-lessons/python-mastery](./python-lessons/python-mastery) - Code, course material, exercises for [Advanced Python Mastery](https://github.com/dabeaz-course/python-mastery?tab=readme-ov-file) by David Beazley
-* [./coursera-ai-courses](./coursera-ai-courses/) - AI/ML courses on Coursera. See subdirectories for each course
-* [./coursera-ai-courses/ai-for-everyone/](./coursera-ai-courses/ai-for-everyone/) - Andrew Ng's less technical intro to AI
-* [./coursera-ai-courses/machine-learning/](./coursera-ai-courses/machine-learning/) - Andrew Ng's updated technical ML course
-* [./coursera-ai-courses/advanced-learning-algorithms/](./coursera-ai-courses/advanced-learning-algorithms/) - Advanced learning algorithms like k-means, PCA, decision trees, etc.
+* [./ai-courses-and-books](./ai-courses-and-books/) - AI/ML courses on Coursera. See subdirectories for each course
+* [./ai-courses-and-books/ai-for-everyone/](./ai-courses-and-books/ai-for-everyone/) - Andrew Ng's less technical intro to AI
+* [./ai-courses-and-books/machine-learning/](./ai-courses-and-books/machine-learning/) - Andrew Ng's updated technical ML course
+* [./ai-courses-and-books/advanced-learning-algorithms/](./ai-courses-and-books/advanced-learning-algorithms/) - Advanced learning algorithms like k-means, PCA, decision trees, etc.
 * [./pytorch-intro](./pytorch-intro/) - Intro material on using PyTorch. See the [README](./pytorch-intro/README.md) for the details there.
 
 ## PyTorch tutorials on YouTube
@@ -48,6 +48,7 @@ https://medium.com/bitgrit-data-science-publication/a-roadmap-to-learn-ai-in-202
     * https://www.coursera.org/learn/unsupervised-learning-recommenders-reinforcement-learning
     * https://github.com/dibgerge/ml-coursera-python-assignments
 * AI books and courses
+    * ➡️ Dive Into Deep Learning - https://d2l.ai/
     * Designing Machine Learning Systems By Chip Huyen
     * AI Engineering By Chip Huyen
     * ➡️ Modern Automated AI Agents: Building Agentic AI to Perform Complex Tasks By Sinan Ozdemir
