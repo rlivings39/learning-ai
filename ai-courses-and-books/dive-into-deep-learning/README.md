@@ -13,3 +13,17 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
+
+## Some preparatory info
+
+PyTorch provides the `Tensor` class which mimics the `NumPy` array but with more functionality. Use `Pandas` to import and manipulate tabular data.
+
+Visualization libraries include `seaborn, Bokeh, matplotlib`.
+
+https://d2l.ai/chapter_preliminaries/calculus.html shows some visualization examples and introduces the `%@save` comment.
+
+## Next
+
+Finish https://d2l.ai/chapter_preliminaries/calculus.html
+
+
