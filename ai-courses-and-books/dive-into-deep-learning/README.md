@@ -24,8 +24,8 @@ https://d2l.ai/chapter_preliminaries/calculus.html shows some visualization exam
 
 The book presents some useful identities for gradients
 
-* $\nabla_xAx = A^T$ and $\nabla_xx^TA = A$
-* For square matrices $\nabla_xx^TAx = (A+A^T)x$ so that $\nabla_x\|x\|^2 = \nabla_xx^Tx = 2x$
+* $\nabla_x Ax = A^T$ and $\nabla_x x^TA = A$
+* For square matrices $\nabla_x x^TAx = (A+A^T)x$ so that $\nabla_x\|x\|^2 = \nabla_x x^Tx = 2x$
 * For any matrix $\nabla_x\|X\|_F^2 = 2X$
 
 The multi-variate chain rule applies frequently in deep learning. For $y = f(u)$ with $u\in\R^m = (g_1(x), g_2(x), ..., g_m(x))$ and $x\in\R^n$ or $u = g(x)$ we have
@@ -37,7 +37,7 @@ $$
 so that
 
 $$
-\nabla_x y = A\nabla_u y \text{ for } A\in\R^{n\times m}
+\nabla_x y = A\nabla_u y \text{ for } A \in \R ^{n \times m}
 $$
 
 where $A$ is the derivative of the vector $u$ wrt the vector $x$.
@@ -56,5 +56,5 @@ Finish https://d2l.ai/chapter_preliminaries/calculus.html
 
 - [ ] Work through multivariate chain rule and gradient identities with matrix formulations. [More info](https://d2l.ai/chapter_appendix-mathematics-for-deep-learning/multivariable-calculus.html)
 - [ ] Review Jacobians and [non-scalar backprop](https://d2l.ai/chapter_preliminaries/autograd.html)
-
+- [ ] Learn how autograd actually works in PyTorch
 
