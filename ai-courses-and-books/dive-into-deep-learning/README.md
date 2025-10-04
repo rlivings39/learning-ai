@@ -48,13 +48,19 @@ It generally works by producing a computational graph as you compute your object
 
 In PyTorch you set `requires_grad=True` for the tensors for which you'd like to differentiate with respect to. Then you compute the target value, call `backward()` to do autograd, and access `x.grad`.
 
+## Linear neural networks for regression
+
+See [machine-learning/README.md](../machine-learning/README.md#linear-regression) for the Coursera treatment on this.
+
+
 ## Next
 
-Finish https://d2l.ai/chapter_preliminaries/calculus.html
+https://d2l.ai/chapter_linear-regression/linear-regression.html
 
 ## TODO
 
 - [ ] Work through multivariate chain rule and gradient identities with matrix formulations. [More info](https://d2l.ai/chapter_appendix-mathematics-for-deep-learning/multivariable-calculus.html)
 - [ ] Review Jacobians and [non-scalar backprop](https://d2l.ai/chapter_preliminaries/autograd.html)
 - [ ] Learn how autograd actually works in PyTorch
+- [ ] Probability section
 
