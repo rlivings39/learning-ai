@@ -52,7 +52,7 @@ Many other cost functions are used for different applications. Squared error cos
 
 Once the cost function is defined, the goal of training/fitting is to find parameters that minimize the cost function. It can be useful to plot or visualize the cost function to see where it may be minimized. This likely won't be possible given sufficiently complex cost functions but optimization techniques can be applied.
 
-For linear regression you have 2 independent parameters so the cost function is a surface. Looking at contour plots of the cost function can give insight into where the minimum is .
+For linear regression you have 2 independent parameters so the cost function is a surface. Looking at contour plots of the cost function can give insight into where the minimum is.
 
 ## Training a supervised learning model
 
@@ -80,7 +80,7 @@ Gradient descent has an interesting property where it may settle to a local mini
 Take steps looking like
 
 $$
-w = w - \alpha*\frac{d}{dw}J(w,b)\\
+w = w - \alpha*\frac{d}{dw}J(w,b) \\
 b = b - \alpha*\frac{d}{db}J(w,b)
 $$
 
@@ -92,7 +92,12 @@ The partial term is subtracted so that you descend for positive slope and ascend
 
 The cost function for linear regression is convex so there's only one local minimum which matches the global minimum.
 
-**Batch gradient descent** Uses all training samples in each step. There are other algorithms using subsets of the data.
+**Batch gradient descent** Uses all training samples in each step. There are other algorithms using subsets of the data. For a batch of data $B$ the update step looks like
+
+$$
+w \leftarrow w - \dfrac{\alpha}{|B|} \sum_{i\in B}\partial_{w}l^{(i)}(w,b) \\
+b \leftarrow b - \dfrac{\alpha}{|B|} \sum_{i\in B}\partial_{b}l^{(i)}(w,b)
+$$
 
 ### Choice of the learning rate
 
@@ -108,9 +113,17 @@ With a fixed learning rate, steps decrease as you approach the minimum because d
 
 Similar to linear regression but with multiple input variables. So each $x^i$ is a vector of the $n$ features/variables. These are indexed as $x^i_j$ where the superscript $i$ is the training example index and the subscript $j$ is the index of the feature.
 
-The formula is $$f_{w,b}(\vec{x}) = w_1x_1 + w_2x_2 + ... + w_nx_n + b = \vec{w} \cdot \vec{x} + b$$
+The formula is $$f_{w,b}(\vec{x}) = w_1x_1 + w_2x_2 + ... + w_nx_n + b = \vec{w} \cdot \vec{x} + b = \vec{w}^T \vec{x} + b $$
 
 **Note** Use vectorized operations in NumPy rather than explicit loops for faster execution.
+
+When we have multiple examples it can be useful to group them into a matrix, $X$ and compute
+
+$$
+\hat{y} = Xw + b
+$$
+
+to compute multiple predictions.
 
 ## Alternative: normal equation
 
