@@ -55,7 +55,7 @@ See [machine-learning/README.md](../machine-learning/README.md#linear-regression
 
 ## Next
 
-https://d2l.ai/chapter_linear-regression/linear-regression.html
+https://d2l.ai/chapter_linear-regression/oo-design.html
 
 ## TODO
 
