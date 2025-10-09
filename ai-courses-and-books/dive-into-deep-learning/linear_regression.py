@@ -94,13 +94,16 @@ class DataModule:
         return self.get_dataloader(train=False)
 
 
+@dataclass
 class Trainer:
     """Base class for training models"""
 
-    def __init__(self, max_epochs, num_gpus=0, gradient_clip_val=0):
-        self.max_epochs = max_epochs
-        self.gradient_clip_val = gradient_clip_val
-        assert num_gpus == 0, "No gpu support yet"
+    max_epochs: int
+    num_gpus = 0
+    gradient_clip_val = 0
+
+    def __post_init__(self):
+        assert self.num_gpus == 0, "No gpu support yet"
 
     def prepare_data(self, data: DataModule):
         self.train_dataloader = data.train_dataloader()
@@ -124,9 +127,6 @@ class Trainer:
         self.val_batch_idx = 0
         for self.epoch in range(self.max_epochs):
             self.fit_epoch()
-
-    def fit_epoch(self):
-        raise NotImplementedError
 
     def prepare_batch(self, batch):
         return batch
