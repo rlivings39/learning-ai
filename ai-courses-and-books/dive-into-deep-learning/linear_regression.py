@@ -73,7 +73,7 @@ class Module(nn.Module):
         l = self.loss(self(*batch[:-1]), batch[-1])
         self.plot("loss", l, train=False)
 
-    def configure_optimizers(self) -> SGD:
+    def configure_optimizers(self):
         raise NotImplementedError
 
 
@@ -210,3 +210,33 @@ class LinearRegressionScratch(Module):
 
     def configure_optimizers(self):
         return SGD([self.w, self.b], self.learning_rate)
+
+
+@dataclass
+class LinearRegression(Module):
+    """Linear regression model with PyTorch"""
+
+    learning_rate: float
+
+    def __post_init__(self):
+        super().__post_init__()
+        self.net = nn.LazyLinear(1)
+        self.net.weight.data.normal_(0, 0.01)
+        self.net.bias.data.fill_(0)
+        self._loss_fn = nn.MSELoss()
+
+    def __hash__(self):
+        """Hacky hash since dataclass isn't hashable by default"""
+        return self.net.__hash__()
+
+    def forward(self, X):
+        return self.net(X)
+
+    def loss(self, y_hat, y):
+        return self._loss_fn(y_hat, y)
+
+    def configure_optimizers(self):
+        return torch.optim.SGD(self.parameters(), lr=self.learning_rate)
+
+    def get_w_b(self):
+        return (self.net.weight.data, self.net.bias.data)
