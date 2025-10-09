@@ -52,6 +52,7 @@ In PyTorch you set `requires_grad=True` for the tensors for which you'd like to 
 
 See [machine-learning/README.md](../machine-learning/README.md#linear-regression) for the Coursera treatment on this.
 
+A neural network with a single fully connected linear layer can be used to perform traditional linear regression [linear_regression.py](./linear_regression.py) and [linear_regression.ipynb](./linear_regression.ipynb) demonstrate this.
 
 ## Next
 
