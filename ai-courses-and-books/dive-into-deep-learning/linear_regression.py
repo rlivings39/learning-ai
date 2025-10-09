@@ -226,7 +226,7 @@ class LinearRegression(Module):
         self._loss_fn = nn.MSELoss()
 
     def __hash__(self):
-        """Hacky hash since dataclass isn't hashable by default"""
+        """Hacky hash since dataclass isn't hashable by default but torch relies on models being hashable"""
         return self.net.__hash__()
 
     def forward(self, X):
