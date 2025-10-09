@@ -257,11 +257,17 @@ In other cases, you can create a model that exactly passes through all training 
 
 The same ideas apply to classification and logistic regression. You can use high-order polynomials to fit complicated decision boundaries but wind up overfitting.
 
+[Dive into Deep Learning](https://d2l.ai/chapter_linear-regression/generalization.html) covers generalization for linear models. They describe that there's no reason for us to assume that the distributions of our training and test sets match the distribution of the overall sample space we're looking to predict from. We need the assumption that these are independently drawn from identical distributions (IID) for anything to make sense.
+
+Training error is a simple sum-based statistic. Generalization error is an integral over all of the data in the sample space. We can never fully compute it.
+
+In particular, for general models, low training error does not necessarily imply low generalization error.
+
 ### Addressing overfitting
 
 1. You can collect more training data to smooth out the fit. Seems to be the preferred strategy.
 2. Using fewer features can help to avoid overfitting. E.g. stop using polynomial features, just eliminate other linear features. There are algorithms to choose useful features.
-3. Regularization is shrinking the values of the features to avoid large variance. It is common to only regularize the `wj` and not `b`.
+3. **Regularization** is shrinking the values of the features to avoid large variance. It is common to only regularize the `wj` and not `b`. This is also called **weight decay**
 
 The main idea is to add large penalties for features
 
