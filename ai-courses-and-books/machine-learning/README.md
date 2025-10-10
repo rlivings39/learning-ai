@@ -191,6 +191,10 @@ Maps an input to one of a finite set of outputs. E.g. Is this email spam -> yes 
 
 Linear regression is terrible for this kind of problem. Adding outlier values can drag a decision boundary far out of place.
 
+There are 2 styles of classification problems. First those where we're interested in hard assignments to categories. Second are those where we make soft assignments assessing probabilities of each category.
+
+There is also multi-label classification where multiple labels may be appropriate.
+
 Binary classification means there are 2 categories.
 
 ### Logistic regression
@@ -246,6 +250,27 @@ b = b - a*1/m*sum(f_wb(xi) - yi)
 ```
 
 The [logistic regression gradient descent lab](./week3-labs/C1_W3_Lab06_Gradient_Descent_Soln.ipynb). The [scikit-learn lab](./week3-labs/C1_W3_Lab07_Scikit_Learn_Soln.ipynb) shows how simple this is with scikit-learn.
+
+### Linear model for classification
+
+For a classic classification problem with 3 categories and 4 features we compute a system of 3 equations with 4 weights and a bias per equation. This can be expressed in a matrix equation
+
+$$
+o = Wx + b
+$$
+
+This gives values that we can treat as probabilities but has poor properties. We apply the `softmax` function to the output vector for better properties (we also vectorize computations by grouping examples into a minibatch $X$)
+
+$$
+O = XW + b \\
+\hat{Y} = softmax(O)
+$$
+
+where
+
+$$
+\hat{Y}_i = \frac{exp(o_i)}{\sum_j exp(o_j)}
+$$
 
 ## Overfitting and regularization
 
