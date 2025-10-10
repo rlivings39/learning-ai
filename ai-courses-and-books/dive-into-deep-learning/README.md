@@ -54,6 +54,12 @@ See [machine-learning/README.md](../machine-learning/README.md#linear-regression
 
 A neural network with a single fully connected linear layer can be used to perform traditional linear regression [linear_regression.py](./linear_regression.py) and [linear_regression.ipynb](./linear_regression.ipynb) demonstrate this.
 
+## Classification in linear networks
+
+See [machine-learning/README.md](ai-courses-and-books/machine-learning/README.md#logistic-regression) for the basics.
+
+
+
 ## Next
 
 https://d2l.ai/chapter_linear-regression/oo-design.html
