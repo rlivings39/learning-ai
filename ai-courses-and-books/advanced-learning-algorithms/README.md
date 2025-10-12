@@ -175,7 +175,13 @@ If you have N classes with weights and biases for them compute `z_i = w_i \dot +
 
 With N=2, the computation reduces to basically logistic regression.
 
-The loss for softmax regression is `loss(a1,...,an,y) = -log(a_i) for y = i`
+The loss for softmax regression is `loss(a1,...,an,y) = -log(a_i) for y = i`.  If $y$ is a one-hot encoded vector this can be written
+
+$$
+l(y, \hat{y}) = -\sum_{j=1}^qy_j \log \hat{y}_j
+$$
+
+This is also called **cross-entropy loss**.
 
 To leverage this in a NN, use the same hidden layers and an output layer that uses softmax
 
