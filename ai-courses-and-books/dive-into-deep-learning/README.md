@@ -62,7 +62,7 @@ See [machine-learning/README.md](ai-courses-and-books/machine-learning/README.md
 
 ## Next
 
-https://d2l.ai/chapter_linear-regression/oo-design.html
+https://d2l.ai/chapter_multilayer-perceptrons/index.html
 
 ## TODO
 
