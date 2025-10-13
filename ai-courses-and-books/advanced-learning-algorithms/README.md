@@ -12,7 +12,7 @@ Neural networks have taken off recently for a few reasons. The amount of digital
 
 Consider you're planning to sell a shirt and you want to predict if it will be a top seller.
 
-Suppose you have a system that takes the price and outputs if the shirt will be a top seller. If you use the sigmoid algorithm you can view a neuron as a computer that takes in the price and spits out the output probability (a.k.a. activation)
+Suppose you have a system that takes the price and outputs if the shirt will be a top seller. If you use the sigmoid activation you can view a neuron as a computer that takes in the price and spits out the output probability (a.k.a. activation)
 
 Consider the same problem with features (price, shipping cost, marketing, material). We may think that variables are (affordability, awareness, perceived quality). We make a neuron for each of those 3 variables. Each of those uses one or more input features. Their outputs are wired to a final neuron.
 
@@ -49,6 +49,12 @@ We often index the layers with the input layer starting at 0. A square bracket s
 When we say a network has N layers, it has N-1 hidden layers and 1 output layer. The input layer is not included.
 
 For an arbitrary layer `l` and unit `j` the equation is `a_jl = g(w_jl \dot a_lm1) + b_jl`. `g` is the **activation function**. We've used sigmoid but there are others.
+
+### Why nonlinearity?
+
+[Dive into Deep Learning](https://d2l.ai/chapter_multilayer-perceptrons/mlp.html#limitations-of-linear-models) describes why solely linear models have some limitations. In particular, linearity implies monotonicity and fixed marginal changes over large ranges. E.g. an income increase from $0 to $50,000 will have a huge impact on loan repayment compared to an increase from $1M to $1.05M.
+
+Introducing multiple layers in a model (aka hidden layers) with nonlinear activation functions helps to overcome linearity limitations.
 
 ## Making inferences with neural networks (forward propagation)
 
@@ -138,6 +144,8 @@ Commonly used activations are
 2. Another common activation function is ReLU (rectified linear unit) `g(z) = max(0,z)`
 3. A linear activation function is `g(z) = z` is sometimes said to be using "no activation function"
 4. Softmax used to choose between several output categories
+
+Sigmoid is useful for output layers when we want probabilities. However it has optimization issues because its gradient vanishes for large magnitude positive and negative numbers causing a plateau where optimizers can get stuck.
 
 Convolutional layers are another type of layer. They work by having each unit only analyze a subset of the input data. This allows for faster processing and can help avoid overfitting.
 

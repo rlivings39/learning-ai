@@ -3,13 +3,15 @@
 import random
 import time
 from dataclasses import dataclass
-from typing import List
+from typing import List, Tuple
 
 import numpy as np
 import torch
 import torch.utils.data
+import torchvision
 from d2l import torch as d2l
 from torch import nn
+from torchvision import transforms
 
 
 @dataclass
@@ -33,8 +35,8 @@ class SGD:
 class Module(nn.Module):
     """Base class of our models"""
 
-    plot_train_per_epoch = 2
-    plot_valid_per_epoch = 1
+    plot_train_per_epoch: int = 2
+    plot_valid_per_epoch: int = 1
 
     def __post_init__(self):
         super().__init__()
@@ -81,8 +83,8 @@ class Module(nn.Module):
 class DataModule:
     """Base class of data"""
 
-    root = "../data"
-    num_workers = 4
+    root: str = "../data"
+    num_workers: int = 0
 
     def get_dataloader(self, train):
         raise NotImplementedError
@@ -95,12 +97,58 @@ class DataModule:
 
 
 @dataclass
+class FashionMNIST(DataModule):
+    """Fashion-MNIST dataset"""
+
+    batch_size: int = 64
+    resize: Tuple[int, ...] = (28, 28)
+
+    def __post_init__(self):
+        xform = transforms.Compose(
+            [transforms.Resize(self.resize), transforms.ToTensor()]
+        )
+        self.train = torchvision.datasets.FashionMNIST(
+            root=self.root, train=True, transform=xform, download=True
+        )
+        self.val = torchvision.datasets.FashionMNIST(
+            root=self.root, train=False, transform=xform, download=True
+        )
+
+    def text_labels(self, indices):
+        labels = [
+            "t-shirt",
+            "trouser",
+            "pullover",
+            "dress",
+            "coat",
+            "sandal",
+            "shirt",
+            "sneaker",
+            "bag",
+            "ankle boot",
+        ]
+        return [labels[int(i)] for i in indices]
+
+    def get_dataloader(self, train):
+        data = self.train if train else self.val
+        return torch.utils.data.DataLoader(
+            data, self.batch_size, shuffle=train, num_workers=self.num_workers
+        )
+
+    def visualize(self, batch, nrows=1, ncols=8, labels=[]):
+        X, y = batch
+        if not labels:
+            labels = self.text_labels(y)
+        d2l.show_images(X.squeeze(1), nrows, ncols, titles=labels)
+
+
+@dataclass
 class Trainer:
     """Base class for training models"""
 
     max_epochs: int
-    num_gpus = 0
-    gradient_clip_val = 0
+    num_gpus: int = 0
+    gradient_clip_val: int = 0
 
     def __post_init__(self):
         assert self.num_gpus == 0, "No gpu support yet"
@@ -162,8 +210,8 @@ class Trainer:
 class SyntheticRegressionData(DataModule):
     """Synthetic data for linear regression"""
 
-    w: torch.Tensor
-    b: float
+    w: torch.Tensor = torch.tensor(0)
+    b: float = 0.0
     noise = 0.01
     num_train = 1000
     num_val = 1000
@@ -189,9 +237,9 @@ class SyntheticRegressionData(DataModule):
 class LinearRegressionScratch(Module):
     """A linear regression model implemented from scratch"""
 
-    num_inputs: int
-    learning_rate: float
-    sigma = 0.01
+    num_inputs: int = 0
+    learning_rate: float = 0.1
+    sigma: float = 0.01
 
     def __post_init__(self):
         super().__post_init__()
@@ -216,7 +264,7 @@ class LinearRegressionScratch(Module):
 class LinearRegression(Module):
     """Linear regression model with PyTorch"""
 
-    learning_rate: float
+    learning_rate: float = 0.11
 
     def __post_init__(self):
         super().__post_init__()
@@ -242,13 +290,70 @@ class LinearRegression(Module):
         return (self.net.weight.data, self.net.bias.data)
 
 
+@dataclass
 class Classifier(Module):
     """Base class of classification models"""
+
+    learning_rate: float = 0.1
+
+    def __post_init__(self):
+        super().__post_init__()
 
     def validation_step(self, batch):
         Y_hat = self(*batch[:-1])
         self.plot("loss", self.loss(Y_hat, batch[-1]), train=False)
         self.plot("accuracy", self.accuracy(Y_hat, batch[-1]), train=False)
 
+    def accuracy(self, Y_hat, Y, averaged=True):
+        """Compute number of correct predictions"""
+        Y_hat = Y_hat.reshape((-1, Y_hat.shape[-1]))
+        preds = Y_hat.argmax(axis=1).type(Y.dtype)
+        compare = (preds == Y.reshape(-1)).type(torch.float32)
+        return compare.mean() if averaged else compare
+
     def configure_optimizers(self):
-        return torch.optim.SGD(self.parameters(), lr=self.lr)
+        return torch.optim.SGD(self.parameters(), lr=self.learning_rate)
+
+
+def relu(X):
+    a = torch.zeros_like(X)
+    return torch.max(X, a)
+
+
+def cross_entropy(y_hat, y):
+    l = -torch.log(y_hat[list(range(len(y_hat))), y]).mean()
+    return l
+
+
+@dataclass
+class MultiLayerPerceptronScratch(Classifier):
+    """A multi-layer perceptron (MLP) built from scratch with 1 hidden layer"""
+
+    num_inputs: int = 0
+    num_outputs: int = 0
+    num_hiddens: int = 0
+    learning_rate: float = 0.1
+    sigma: float = 0.01
+
+    def __post_init__(self):
+        super().__post_init__()
+        self.W1 = nn.Parameter(
+            torch.randn(self.num_inputs, self.num_hiddens) * self.sigma
+        )
+        self.b1 = nn.Parameter(torch.zeros(self.num_hiddens))
+        self.W2 = nn.Parameter(
+            torch.randn(self.num_hiddens, self.num_outputs) * self.sigma
+        )
+        self.b2 = nn.Parameter(torch.zeros(self.num_outputs))
+
+    def __hash__(self):
+        return hash((self.W1, self.b1, self.W2, self.b2))
+
+    def forward(self, X):
+        X = X.reshape((-1, self.num_inputs))
+        H = relu(torch.matmul(X, self.W1) + self.b1)
+        Y = torch.matmul(H, self.W2) + self.b2
+        return Y
+
+    def loss(self, y_hat, y):
+        return cross_entropy(y_hat, y)
