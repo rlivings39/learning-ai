@@ -83,7 +83,7 @@ class Module(nn.Module):
 class DataModule:
     """Base class of data"""
 
-    root: str = "../data"
+    root: str = "./data"
     num_workers: int = 0
 
     def get_dataloader(self, train):
